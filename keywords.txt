@@ -1,0 +1,39 @@
+#######################################
+# Syntax Coloring Map For Qtouch
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Arduino_IoTSKcarrier	KEYWORD1
+IoTSKcarrier		KEYWORD1
+Env	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+carrier.leds.				KEYWORD2
+carrier.Buzzer.sound			KEYWORD2
+carrier.Buzzer.noSound			KEYWORD2
+carrier.Relay1.				KEYWORD2
+carrier.Relay2.				KEYWORD2
+carrier.Light.readIlluminance 		KEYWORD2
+readTemperature		KEYWORD2
+readHumidity		KEYWORD2
+readPressure		KEYWORD2
+readGyroscope		KEYWORD2
+readAcceleration	KEYWORD2
+#carrier.display.fillScreen		KEYWORD2
+#carrier.display.setCursor		KEYWORD2
+#carrier.display.setTextColor		KEYWORD2
+#carrier.display.print			KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+GET_SELFCAP_SENSOR_STATE	LITERAL1
+DEF_TOUCH_MEASUREMENT_PERIOD_MS	LITERAL1
