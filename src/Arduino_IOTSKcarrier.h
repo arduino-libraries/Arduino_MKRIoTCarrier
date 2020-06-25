@@ -6,7 +6,7 @@
 #include <Wire.h>
 
 //Sensor libraries
-#include <Arduino_APDS9306.h>   //Ambient light
+#include <Arduino_APDS9960.h>   //Ambient light
 #include <Arduino_LPS22HB.h>    //Preassure sensor
 #include <Arduino_LSM6DS3.h>    //IMU
 #include <Arduino_HTS221.h>     // env sensor
@@ -24,7 +24,7 @@
 
 //RGB LEDs
 #include <Adafruit_DotStar.h>
-#define NUMPIXELS 5 // Number of LEDs in strip
+#define NUMPIXELS  5 // Number of LEDs in strip
 #define DATAPIN    5
 #define CLOCKPIN   4
 
@@ -32,7 +32,7 @@
 //Taken from the carrier schematics
 #define RELAY_1     14
 #define RELAY_2     13
-#define BUZZER      6
+#define BUZZER      7
 
 #define GROVE_AN1   A5
 #define GROVE_AN2   A6
@@ -66,7 +66,7 @@ class IOTSKcarrier{
     int begin();
 
     //Sensors
-    APDS9306& Light = APDS;
+    APDS9960& Light = APDS;
     LPS22HBClass& Preassure = BARO;
     LSM6DS3Class& IMUmodule  = IMU;
     HTS221Class& Env = HTS;
