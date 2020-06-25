@@ -85,9 +85,9 @@ void loop() {
 
   //SENSORS
   //Ambient light sensor
-  light = carrier.Light.readIlluminance();
+  //light = carrier.Light.readIlluminance();
   Serial.println("Ambient light sensor");
-  Serial.print("\t light:");
+  Serial.print("\t light: Waiting for new update");
   Serial.println(light);
   displayLight();
 
