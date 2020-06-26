@@ -14,7 +14,8 @@ IOTSKcarrier carrier; //Constructor of the carrier maybe we can include it on th
 float temperature;
 float humidity;
 
-float light;
+int light;
+int r,g,b;
 
 float preassure;
 
@@ -85,9 +86,13 @@ void loop() {
 
   //SENSORS
   //Ambient light sensor
-  //light = carrier.Light.readIlluminance();
+  //It set the values that you point inside the brackets
+  while (! carrier.Light.colorAvailable()) {
+    delay(5);
+  }
+  carrier.Light.readColor(r,g, b, light);
   Serial.println("Ambient light sensor");
-  Serial.print("\t light: Waiting for new update");
+  Serial.print("\t light: ");
   Serial.println(light);
   displayLight();
 
