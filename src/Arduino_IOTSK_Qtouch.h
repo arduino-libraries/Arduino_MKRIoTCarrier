@@ -27,7 +27,6 @@ class IOTSKcarrier_Qtouch{
     public:
     IOTSKcarrier_Qtouch(int padIndex, IOTSKcarrier_Qtouch_Manager * pManager); //Individual
     
-    int getPad();
 
     bool getTouch();
     bool onTouchDown();
@@ -36,7 +35,7 @@ class IOTSKcarrier_Qtouch{
     
     //Set touch settings
     
-    void updateConfig(int newRes, int newHyst);
+    void updateConfig(int newSens, int newHyst);
 
     private:
     
