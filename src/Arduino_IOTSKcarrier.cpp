@@ -1,6 +1,8 @@
 
 #include <Arduino_IOTSKcarrier.h>
 
+
+    
 IOTSKcarrier::IOTSKcarrier(){
 
 }
@@ -11,8 +13,26 @@ int IOTSKcarrier::begin(){
     pinMode(TFT_BACKLIGHT, OUTPUT);
     digitalWrite(TFT_BACKLIGHT, HIGH); // Backlight on
     
+    if(CARRIER_CASE){
+        setSensivity(5u);
+    }else{
+        setSensivity(0u);
+    }
+
+    if(CARRIER_CASE){
+        setSensivity(5u);
+    }else{
+        setSensivity(100u);
+    }
+    Buttons.begin();    //init buttons
+
+
     //init LEDs
     leds.begin();
+
+    //PMIC init
+    PMIC.begin();
+    PMIC.enableBoostMode();
     
 
     //Sensors

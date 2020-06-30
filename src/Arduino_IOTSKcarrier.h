@@ -2,8 +2,12 @@
 #ifndef ARDUINO_IOTSKcarrier_h
 #define ARDUINO_IOTSKcarrier_h
 
+extern bool CARRIER_CASE;
+
 #include <Arduino.h>
 #include <Wire.h>
+
+#include <Arduino_PMIC.h>       //PMIC
 
 //Sensor libraries
 #include <Arduino_APDS9960.h>   //Ambient light
@@ -59,6 +63,11 @@
 #define TFT_DC        1
 #define TFT_BACKLIGHT 3
 
+//Touch pads values for using the case or just directly on the board
+//Define on the sketch to use it
+//#define CARRIER_CASE
+//#define CARRIER_NO_CASE
+
 
 class IOTSKcarrier{
     public:
@@ -80,11 +89,12 @@ class IOTSKcarrier{
     IOTSKcarrier_Buzzer Buzzer =  IOTSKcarrier_Buzzer(BUZZER);  //Buzzer, pin 6
 
     //Buttons
-    IOTSKcarrier_Qtouch Button1 = IOTSKcarrier_Qtouch(A0);
-    IOTSKcarrier_Qtouch Button2 = IOTSKcarrier_Qtouch(A1);
-    IOTSKcarrier_Qtouch Button3 = IOTSKcarrier_Qtouch(A2);
-    IOTSKcarrier_Qtouch Button4 = IOTSKcarrier_Qtouch(A3);
-    IOTSKcarrier_Qtouch Button5 = IOTSKcarrier_Qtouch(A4);
+    IOTSKcarrier_Qtouch_Manager Buttons = IOTSKcarrier_Qtouch_Manager();
+    IOTSKcarrier_Qtouch Button1 = IOTSKcarrier_Qtouch(0, &Buttons);
+    IOTSKcarrier_Qtouch Button2 = IOTSKcarrier_Qtouch(1, &Buttons);
+    IOTSKcarrier_Qtouch Button3 = IOTSKcarrier_Qtouch(2, &Buttons);
+    IOTSKcarrier_Qtouch Button4 = IOTSKcarrier_Qtouch(3, &Buttons);
+    IOTSKcarrier_Qtouch Button5 = IOTSKcarrier_Qtouch(4, &Buttons);
 
     //Display
     Adafruit_ST7789 display = Adafruit_ST7789(&SPI, TFT_CS, TFT_DC, TFT_RST);
@@ -93,5 +103,7 @@ class IOTSKcarrier{
     Adafruit_DotStar leds = Adafruit_DotStar(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
     private:
 };
+
+
 
 #endif
