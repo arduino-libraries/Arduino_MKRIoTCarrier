@@ -1,41 +1,49 @@
 #include <Arduino_IOTSKcarrier.h>
 IOTSKcarrier carrier; //Constructor of the carrier maybe we can include it on the library itself
 
-/*  --- Qtouch Sketch test v0.1 ---
- *  This sketch Shows up the easiest way to control the buttons
- *  Keep in mind that this can change in the future, use it to brainstorm
- *  
- *  Good Luck!
- *  
- *  
- *  Functions:
- *    getTouch() - Return true if the button is being touched
- *    
- */
+//Auto configure the sense distance for the touch pads
+bool CARRIER_CASE = false;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   while (!Serial);
-  carrier.begin();
+
+  //Init all the components from the board
+  carrier.begin(); 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
-  if (carrier.Button1.getTouch()) {
-    Serial.println("Button 1 got touch");
+
+  //Each time you want to update the reads from the pads use this
+  //It will update all the pads at the same time
+  carrier.Buttons.update();
+
+  //Different types of touches
+  //When you first touch it
+  if (carrier.Button1.onTouchDown()) {
+    Serial.print("TOUCH DOWN");
   }
-  if (carrier.Button2.getTouch()) {
-    Serial.println("Button 2 got touch");
+
+  //When you release it
+  if (carrier.Button2.onTouchUp()) {
+    Serial.print("TOUCH UP");
   }
-  if (carrier.Button3.getTouch()) {
-    Serial.println("Button 3 got touch");
+
+  //When it detects a change, down or up
+  if (carrier.Button3.onTouchChange()) {
+    Serial.print("TOUCH CHANGE");
   }
+
+  //Normal, if it is being pressed
   if (carrier.Button4.getTouch()) {
-    Serial.println("Button 4 got touch");
+    Serial.print("GETTING TOUCH");
   }
   if (carrier.Button5.getTouch()) {
-    Serial.println("Button 5 got touch");
+    Serial.print("GETTING TOUCH");
   }
+  
+  Serial.println();
+  delay(100);
 }
