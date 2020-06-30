@@ -2,7 +2,7 @@
 IOTSKcarrier carrier; //Constructor of the carrier maybe we can include it on the library itself
 
 //Auto configure the sense distance for the touch pads
-bool CARRIER_CASE = false;
+bool CARRIER_CASE = true;
 
 void setup() {
   // put your setup code here, to run once:
@@ -26,7 +26,7 @@ void loop() {
     Serial.print("TOUCH DOWN");
     carrier.leds.setPixelColor(0, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
-    delay(500);
+    delay(50);
   } else {
     carrier.leds.setPixelColor(0, 0);
     carrier.leds.show();                     // Refresh strip
@@ -37,7 +37,7 @@ void loop() {
     Serial.print("TOUCH UP");
     carrier.leds.setPixelColor(1, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
-    delay(500);
+    delay(50);
   } else {
     carrier.leds.setPixelColor(1, 0);
     carrier.leds.show();                     // Refresh strip
@@ -48,7 +48,7 @@ void loop() {
     Serial.print("TOUCH CHANGE");
     carrier.leds.setPixelColor(2, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
-    delay(500);
+    delay(50);
   } else {
     carrier.leds.setPixelColor(2, 0);
     carrier.leds.show();                     // Refresh strip
@@ -59,7 +59,7 @@ void loop() {
     Serial.print("GETTING TOUCH");
     carrier.leds.setPixelColor(3, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
-    delay(500);
+    delay(5);
   } else {
     carrier.leds.setPixelColor(3, 0);
     carrier.leds.show();                     // Refresh strip
@@ -69,7 +69,7 @@ void loop() {
     Serial.print("GETTING TOUCH");
     carrier.leds.setPixelColor(4, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
-    delay(500);
+    delay(5);
   } else {
     carrier.leds.setPixelColor(4, 0);
     carrier.leds.show();                     // Refresh strip
@@ -77,5 +77,5 @@ void loop() {
 
 
   Serial.println();
-  delay(100);
+  delay(10);
 }
