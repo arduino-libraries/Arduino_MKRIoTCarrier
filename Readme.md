@@ -14,3 +14,8 @@ Display:
 LEDs:
 * Adafruit DotStar
  
+MISC: 
+* Qtouch - Touch Pads
+
+Others:
+* PMIC BQ24195
