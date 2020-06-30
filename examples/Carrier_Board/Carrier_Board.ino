@@ -11,6 +11,9 @@
 #include <Arduino_IOTSKcarrier.h>
 IOTSKcarrier carrier; //Constructor of the carrier maybe we can include it on the library itself
 
+//Set the pad sense distance for using them with or without the enclosure
+bool CARRIER_CASE = false;
+
 float temperature;
 float humidity;
 
