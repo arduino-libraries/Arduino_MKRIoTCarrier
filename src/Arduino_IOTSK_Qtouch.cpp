@@ -70,9 +70,9 @@ bool IOTSKcarrier_Qtouch::onTouchChange(){
     }
 }
 
-void IOTSKcarrier_Qtouch::updateConfig(int newSens, int newHyst){
+void IOTSKcarrier_Qtouch::updateConfig(int newSens){
     setSensivity(newSens);
-    setHysteresis(newHyst);
+    //setHysteresis(newHyst);
 }
 
 //Manager

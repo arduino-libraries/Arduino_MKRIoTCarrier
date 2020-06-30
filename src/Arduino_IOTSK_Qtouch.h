@@ -35,7 +35,7 @@ class IOTSKcarrier_Qtouch{
     
     //Set touch settings
     
-    void updateConfig(int newSens, int newHyst);
+    void updateConfig(int newSens);
 
     private:
     
