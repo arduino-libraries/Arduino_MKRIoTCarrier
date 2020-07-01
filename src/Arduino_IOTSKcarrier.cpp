@@ -13,6 +13,9 @@ int IOTSKcarrier::begin(){
     pinMode(TFT_BACKLIGHT, OUTPUT);
     digitalWrite(TFT_BACKLIGHT, HIGH); // Backlight on
     
+    //Default rotation to align it with the carrier
+    display.setRotation(2);
+
     if(CARRIER_CASE){
         setSensivity(5u);
     }else{
