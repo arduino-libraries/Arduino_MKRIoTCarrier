@@ -12,7 +12,7 @@ IOTSKcarrier	KEYWORD1
 Light	KEYWORD1
 Preassure	KEYWORD1
 IMUmodule	KEYWORD1
-Env	KEYWORD1	KEYWORD1
+Env	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
