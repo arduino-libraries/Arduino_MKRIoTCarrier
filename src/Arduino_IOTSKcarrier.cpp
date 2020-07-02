@@ -17,13 +17,7 @@ int IOTSKcarrier::begin(){
     display.setRotation(2);
 
     if(CARRIER_CASE){
-        TOUCH.setSensorsSensitivity(5u);
-    }else{
-        TOUCH.setSensorsSensitivity(0u);
-    }
-
-    if(CARRIER_CASE){
-        TOUCH.setSensorsSensitivity(5u);
+        TOUCH.setSensorsSensitivity(4u);
     }else{
         TOUCH.setSensorsSensitivity(100u);
     }
