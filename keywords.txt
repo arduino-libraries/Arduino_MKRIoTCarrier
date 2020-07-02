@@ -1,39 +1,36 @@
-#######################################
-# Syntax Coloring Map For Qtouch
-#######################################
+###########################################
+# Syntax Coloring Map For Arduino_APDS9960
+###########################################
+# Class
+###########################################
 
-#######################################
-# Datatypes (KEYWORD1)
-#######################################
+Arduino_APDS9960	KEYWORD1
+APDS9960	KEYWORD1
+APDS	KEYWORD1
 
-Arduino_IoTSKcarrier	KEYWORD1
-IoTSKcarrier		KEYWORD1
-Env	KEYWORD1
+###########################################
+# Methods and Functions 
+###########################################
 
-#######################################
-# Methods and Functions (KEYWORD2)
-#######################################
+begin	KEYWORD2
+end	KEYWORD2
 
-carrier.leds.				KEYWORD2
-carrier.Buzzer.sound			KEYWORD2
-carrier.Buzzer.noSound			KEYWORD2
-carrier.Relay1.				KEYWORD2
-carrier.Relay2.				KEYWORD2
-carrier.Light.readIlluminance 		KEYWORD2
-readTemperature		KEYWORD2
-readHumidity		KEYWORD2
-readPressure		KEYWORD2
-readGyroscope		KEYWORD2
-readAcceleration	KEYWORD2
-#carrier.display.fillScreen		KEYWORD2
-#carrier.display.setCursor		KEYWORD2
-#carrier.display.setTextColor		KEYWORD2
-#carrier.display.print			KEYWORD2
+gestureAvailable	KEYWORD2
+readGesture	KEYWORD2
+colorAvailable	KEYWORD2
+readColor	KEYWORD2
+proximityAvailable	KEYWORD2
+readProximity	KEYWORD2
+setGestureSensitivity	KEYWORD2
+setInterruptPin	KEYWORD2
+setLEDBoost	KEYWORD2
 
+###########################################
+# Constants
+###########################################
 
-#######################################
-# Constants (LITERAL1)
-#######################################
-
-GET_SELFCAP_SENSOR_STATE	LITERAL1
-DEF_TOUCH_MEASUREMENT_PERIOD_MS	LITERAL1
+GESTURE_NONE	LITERAL1
+GESTURE_UP	LITERAL1
+GESTURE_DOWN	LITERAL1
+GESTURE_LEFT	LITERAL1
+GESTURE_RIGHT	LITERAL1
