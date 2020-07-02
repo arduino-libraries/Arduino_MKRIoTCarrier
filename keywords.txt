@@ -1,36 +1,60 @@
-###########################################
-# Syntax Coloring Map For Arduino_APDS9960
-###########################################
-# Class
-###########################################
+#######################################
+# Syntax Coloring Map For Qtouch
+#######################################
 
-Arduino_APDS9960	KEYWORD1
-APDS9960	KEYWORD1
-APDS	KEYWORD1
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
 
-###########################################
-# Methods and Functions 
-###########################################
+Arduino_IOTSKcarrier	KEYWORD1
+IOTSKcarrier	KEYWORD1
 
-begin	KEYWORD2
-end	KEYWORD2
+Light	KEYWORD1
+Preassure	KEYWORD1
+IMUmodule	KEYWORD1
+Env	KEYWORD1	KEYWORD1
 
-gestureAvailable	KEYWORD2
-readGesture	KEYWORD2
-colorAvailable	KEYWORD2
-readColor	KEYWORD2
-proximityAvailable	KEYWORD2
-readProximity	KEYWORD2
-setGestureSensitivity	KEYWORD2
-setInterruptPin	KEYWORD2
-setLEDBoost	KEYWORD2
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
 
-###########################################
-# Constants
-###########################################
+Relay1	KEYWORD2
+Relay2	KEYWORD2
+open	KEYWORD2
+close	KEYWORD2
+getStatus	KEYWORD2
 
-GESTURE_NONE	LITERAL1
-GESTURE_UP	LITERAL1
-GESTURE_DOWN	LITERAL1
-GESTURE_LEFT	LITERAL1
-GESTURE_RIGHT	LITERAL1
+Buzzer	KEYWORD2
+getPin	KEYWORD2
+sound	KEYWORD2
+noSound	KEYWORD2
+
+Buttons	KEYWORD2
+Button1	KEYWORD2
+Button2	KEYWORD2
+Button3	KEYWORD2
+Button4	KEYWORD2
+Button5	KEYWORD2
+getTouch	KEYWORD2
+onTouchDown	KEYWORD2
+onTouchUp	KEYWORD2
+onTouchChange	KEYWORD2
+updateConfig	KEYWORD2
+update	KEYWORD2
+t_state	KEYWORD2
+
+display	KEYWORD2
+
+leds	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+CARRIER_CASE	LITERAL1
+BUZZER	LITERAL1
+RELAY_1	LITERAL1
+RELAY_2	LITERAL1
+GROVE_AN1	LITERAL1
+GROVE_AN2	LITERAL1
+SD_CS	LITERAL1
