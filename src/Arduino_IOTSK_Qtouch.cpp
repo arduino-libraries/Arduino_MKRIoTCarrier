@@ -78,7 +78,7 @@ IOTSKcarrier_Qtouch_Manager::IOTSKcarrier_Qtouch_Manager(){
 
 }
 void IOTSKcarrier_Qtouch_Manager::update(){
-    TOUCH .pool();
+    TOUCH .poll();
     if(TOUCH.available()){
         t_state[0] = TOUCH.read(0);
         t_state[1] = TOUCH.read(1);
