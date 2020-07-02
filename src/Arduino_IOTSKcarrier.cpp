@@ -17,15 +17,15 @@ int IOTSKcarrier::begin(){
     display.setRotation(2);
 
     if(CARRIER_CASE){
-        setSensivity(5u);
+        TOUCH.setSensorsSensitivity(5u);
     }else{
-        setSensivity(0u);
+        TOUCH.setSensorsSensitivity(0u);
     }
 
     if(CARRIER_CASE){
-        setSensivity(5u);
+        TOUCH.setSensorsSensitivity(5u);
     }else{
-        setSensivity(100u);
+        TOUCH.setSensorsSensitivity(100u);
     }
     Buttons.begin();    //init buttons
 

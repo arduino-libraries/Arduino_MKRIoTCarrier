@@ -2,7 +2,7 @@
 #ifndef ARDUINO_IOTSKcarrier_h
 #define ARDUINO_IOTSKcarrier_h
 
-extern bool CARRIER_CASE;
+
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -65,8 +65,7 @@ extern bool CARRIER_CASE;
 
 //Touch pads values for using the case or just directly on the board
 //Define on the sketch to use it
-//#define CARRIER_CASE
-//#define CARRIER_NO_CASE
+extern bool CARRIER_CASE;
 
 
 class IOTSKcarrier{
