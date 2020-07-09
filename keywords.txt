@@ -6,8 +6,8 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-Arduino_IOTSKcarrier	KEYWORD1
-IOTSKcarrier	KEYWORD1
+Arduino_MKRIoTCarrier	KEYWORD1
+MKRIoTCarrier	KEYWORD1
 
 Light	KEYWORD1
 Preassure	KEYWORD1
