@@ -9,7 +9,7 @@ Sensors:
 
 Display:
 * Adafruit_GFX
-* Adafruit ST7735 and ST7789
+* Adafruit_ST7735_and_ST7789_Library
  
 LEDs:
 * Adafruit DotStar
