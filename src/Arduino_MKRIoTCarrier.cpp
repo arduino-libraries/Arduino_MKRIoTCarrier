@@ -35,9 +35,10 @@ int MKRIoTCarrier::begin(){
     //Sensors
     uint8_t sensorsOK = 0;
 
-    if(!Light.begin()){
+	 if(!Light.begin()){
         sensorsOK |= 0b1 << 0;
     }
+	Light.enableColor();
     if(!Preassure.begin()){
         sensorsOK |= 0b1 << 1;
     }
