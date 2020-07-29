@@ -1,5 +1,5 @@
-#include <Arduino_IOTSKcarrier.h>
-IOTSKcarrier carrier; //Constructor of the carrier maybe we can include it on the library itself
+#include <Arduino_MKRIoTCarrier.h>
+MKRIoTCarrier carrier; //Constructor of the carrier maybe we can include it on the library itself
 
 //Auto configure the sense distance for the touch pads
 bool CARRIER_CASE = false;
