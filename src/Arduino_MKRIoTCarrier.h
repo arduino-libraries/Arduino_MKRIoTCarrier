@@ -11,7 +11,7 @@
 
 //Sensor libraries
 #include <Arduino_APDS9960.h>   //Ambient light
-#include <Arduino_LPS22HB.h>    //Preassure sensor
+#include <Arduino_LPS22HB.h>    //Pressure sensor
 #include <Arduino_LSM6DS3.h>    //IMU
 #include <Arduino_HTS221.h>     // env sensor
 
@@ -75,7 +75,7 @@ class MKRIoTCarrier{
 
     //Sensors
     APDS9960& Light = APDS;
-    LPS22HBClass& Preassure = BARO;
+    LPS22HBClass& Pressure = BARO;
     LSM6DS3Class& IMUmodule  = IMU;
     HTS221Class& Env = HTS;
 
