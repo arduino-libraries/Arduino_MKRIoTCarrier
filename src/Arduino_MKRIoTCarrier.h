@@ -1,7 +1,7 @@
 
 #ifndef ARDUINO_MKRIoTCarrier_h
 #define ARDUINO_MKRIoTCarrier_h
-ARDUINO_MKRIoTCarrier_h
+
 
 
 #include <Arduino.h>
