@@ -38,7 +38,7 @@ int MKRIoTCarrier::begin(){
     if(!Light.begin()){
         sensorsOK |= 0b1 << 0;
     }
-    if(!Preassure.begin()){
+    if(!Pressure.begin()){
         sensorsOK |= 0b1 << 1;
     }
     if(!IMUmodule.begin()){
@@ -62,7 +62,7 @@ int MKRIoTCarrier::begin(){
             Serial.println("Ambient light sensor is not connected!");
         }
         if(sensorsOK & 0b0010){
-            Serial.println("Preassure sensor is not connected!");
+            Serial.println("Pressure sensor is not connected!");
         }
         if(sensorsOK & 0b0100){
             Serial.println("IMU is not connected");
