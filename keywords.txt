@@ -10,7 +10,7 @@ Arduino_MKRIoTCarrier	KEYWORD1
 MKRIoTCarrier	KEYWORD1
 
 Light	KEYWORD1
-Preassure	KEYWORD1
+Pressure	KEYWORD1
 IMUmodule	KEYWORD1
 Env	KEYWORD1
 
