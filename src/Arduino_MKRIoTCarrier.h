@@ -74,7 +74,7 @@ class MKRIoTCarrier{
     int begin();
 
     //Sensors
-	APDS9960& Light = APDS;
+    APDS9960& Light = APDS;
     LPS22HBClass& Preassure = BARO;
     LSM6DS3Class& IMUmodule  = IMU;
     HTS221Class& Env = HTS;
