@@ -9,19 +9,19 @@ MKRIoTCarrier_Relay::MKRIoTCarrier_Relay(int pin){
 
 //NC state
 void MKRIoTCarrier_Relay::close(){
-    digitalWrite(_pin , HIGH);
-    _status = HIGH;
+    digitalWrite(_pin , LOW);
+    _status = LOW;
 
 }
 
 //NO state
 void MKRIoTCarrier_Relay::open(){
-    digitalWrite(_pin , LOW);
-    _status = LOW;
+    digitalWrite(_pin , HIGH);
+    _status = HIGH;
 }
 
 int MKRIoTCarrier_Relay::getStatus(){
-    Serial.println("status");
-    Serial.println(_status , BIN);
+    //Serial.println("status");
+    //Serial.println(_status , BIN);
     return (int)_status;
 }

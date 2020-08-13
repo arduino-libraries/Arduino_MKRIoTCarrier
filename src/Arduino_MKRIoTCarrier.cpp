@@ -1,10 +1,25 @@
+/*
+  This file is part of the Arduino_MKRIoTCarrier library.
+  Copyright (c) 2020 Arduino SA. All rights reserved.
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+  
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 
 #include <Arduino_MKRIoTCarrier.h>
-
-
     
 MKRIoTCarrier::MKRIoTCarrier(){
-
 }
 
 int MKRIoTCarrier::begin(){
@@ -23,7 +38,6 @@ int MKRIoTCarrier::begin(){
     }
     Buttons.begin();    //init buttons
 
-
     //init LEDs
     leds.begin();
 
@@ -31,7 +45,6 @@ int MKRIoTCarrier::begin(){
     PMIC.begin();
     PMIC.enableBoostMode();
     
-
     //Sensors
     uint8_t sensorsOK = 0;
 
@@ -52,8 +65,6 @@ int MKRIoTCarrier::begin(){
     SD.begin(SD_CS);
 
     Serial.println(sensorsOK,BIN);
-
-    
 
     //If some of the sensors are not connected
     if(sensorsOK > 0){

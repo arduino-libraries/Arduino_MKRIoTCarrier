@@ -1,8 +1,24 @@
+/*
+  This file is part of the Arduino_MKRIoTCarrier library.
+  Copyright (c) 2020 Arduino SA. All rights reserved.
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 
 #ifndef ARDUINO_MKRIoTCarrier_h
 #define ARDUINO_MKRIoTCarrier_h
-
-
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -31,7 +47,6 @@
 #define NUMPIXELS  5 // Number of LEDs in strip
 #define DATAPIN    5
 #define CLOCKPIN   4
-
 
 //Taken from the carrier schematics
 #define RELAY_1     14
@@ -67,7 +82,6 @@
 //Define on the sketch to use it
 extern bool CARRIER_CASE;
 
-
 class MKRIoTCarrier{
     public:
     MKRIoTCarrier();
@@ -102,7 +116,4 @@ class MKRIoTCarrier{
     Adafruit_DotStar leds = Adafruit_DotStar(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
     private:
 };
-
-
-
 #endif
