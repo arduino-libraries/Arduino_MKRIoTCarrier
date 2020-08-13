@@ -31,6 +31,7 @@ int MKRIoTCarrier::begin(){
     
     //Default rotation to align it with the carrier
     display.setRotation(2);
+	display.fillScreen(ST77XX_BLACK);
 
     if(CARRIER_CASE){
         TOUCH.setSensorsSensitivity(4u);
@@ -41,6 +42,7 @@ int MKRIoTCarrier::begin(){
 
     //init LEDs
     leds.begin();
+	leds.clear();
 
     //PMIC init
     PMIC.begin();
