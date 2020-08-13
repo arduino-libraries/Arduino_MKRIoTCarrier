@@ -50,11 +50,11 @@ int MKRIoTCarrier::begin(){
     PMIC.enableBoostMode();
     
     //Sensors
-    uint8_t sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3 | !SD.begin(SD_CS) << 4 ;
+    uint8_t sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3 ;
 //	Serial.println(sensorsOK , BIN);
 
     //If some of the sensors are not connected
-    if(sensorsOK > 0){
+    if(sensorsOK > 3 && sensorsOK ){
         Serial.println("Error detected!");
         if(sensorsOK & 0b0001){
             Serial.println("Ambient light sensor is not connected!");
@@ -72,9 +72,9 @@ int MKRIoTCarrier::begin(){
        //while (true);
 	   return false;
     }
-	
+
 	//Its OK if the SD card is not plugged in
-	if(sensorsOK & 0b10000){
+	if(!SD.begin(SD_CS)){
             Serial.println("Sd card not detected");
         }
     return true;
