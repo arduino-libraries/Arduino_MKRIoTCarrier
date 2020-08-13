@@ -43,16 +43,12 @@ int MKRIoTCarrier::begin(){
     //init LEDs
     leds.begin();
 	leds.clear();
+	leds.show();
 
     //PMIC init
     PMIC.begin();
     PMIC.enableBoostMode();
     
-
-
-
-
-	
     //Sensors
     uint8_t sensorsOK = 0;
 
