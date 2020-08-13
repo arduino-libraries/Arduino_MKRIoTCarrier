@@ -17,6 +17,7 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+
 #include "Arduino_MKRIoTCarrier_Buzzer.h"
 
 MKRIoTCarrier_Buzzer::MKRIoTCarrier_Buzzer(int pin){
