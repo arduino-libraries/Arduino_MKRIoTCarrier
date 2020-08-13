@@ -54,7 +54,7 @@ int MKRIoTCarrier::begin(){
 //	Serial.println(sensorsOK , BIN);
 
     //If some of the sensors are not connected
-    if(sensorsOK > 3 && sensorsOK ){
+    if(sensorsOK > 0 ){
         Serial.println("Error detected!");
         if(sensorsOK & 0b0001){
             Serial.println("Ambient light sensor is not connected!");
