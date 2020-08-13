@@ -23,27 +23,28 @@ void loop() {
   //Different types of touches
   //When you first touch it
   if (carrier.Button1.onTouchDown()) {
-    Serial.print("TOUCH DOWN");
+    Serial.println("Button 1 : TOUCH DOWN");
   }
 
   //When you release it
   if (carrier.Button2.onTouchUp()) {
-    Serial.print("TOUCH UP");
+    Serial.println("Button 2 : TOUCH UP");
   }
 
   //When it detects a change, down or up
   if (carrier.Button3.onTouchChange()) {
-    Serial.print("TOUCH CHANGE");
+    Serial.println("Button 3 : TOUCH CHANGE");
   }
 
   //Normal, if it is being pressed
   if (carrier.Button4.getTouch()) {
-    Serial.print("GETTING TOUCH");
+    Serial.println("Button 4 : GETTING TOUCH");
   }
   if (carrier.Button5.getTouch()) {
-    Serial.print("GETTING TOUCH");
+    Serial.println("Button 5 : GETTING TOUCH");
   }
   
-  Serial.println();
-  delay(100);
+  //Serial.println();
+  delay(20);
+  
 }
