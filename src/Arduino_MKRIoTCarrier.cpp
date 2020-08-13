@@ -43,6 +43,7 @@ int MKRIoTCarrier::begin(){
     //init LEDs
     leds.begin();
 	leds.clear();
+	leds.show();
 
     //PMIC init
     PMIC.begin();
