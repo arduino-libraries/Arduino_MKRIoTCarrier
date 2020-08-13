@@ -113,7 +113,7 @@ void loop() {
   pressure = carrier.Pressure.readPressure();
   Serial.println("Barometric sensor");
   Serial.print("\t Pressure:");
-  Serial.println(preassure);
+  Serial.println(pressure);
   displayBaro();
 
   //IMU
