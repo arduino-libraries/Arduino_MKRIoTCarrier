@@ -47,8 +47,12 @@ int MKRIoTCarrier::begin(){
     //PMIC init
     PMIC.begin();
     PMIC.enableBoostMode();
-    //test branch
-	//asdsaa
+    
+
+
+
+
+	
     //Sensors
     uint8_t sensorsOK = 0;
 
