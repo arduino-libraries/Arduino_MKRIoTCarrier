@@ -23,7 +23,7 @@
 MKRIoTCarrier_Relay::MKRIoTCarrier_Relay(int pin){
     _pin = pin;
     pinMode(_pin ,OUTPUT);
-    open();
+    close();
     
 }
 
