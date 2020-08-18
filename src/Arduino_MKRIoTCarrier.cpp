@@ -19,31 +19,37 @@
 
 
 #include <Arduino_MKRIoTCarrier.h>
-    
+
+// Constructor
 MKRIoTCarrier::MKRIoTCarrier(){
 }
 
+// Main begin, initialization of all the features from the carrier
+// Output: If some sensor return false, it will Print it in the Serial Monitor
 int MKRIoTCarrier::begin(){
-    //Display
-    display.init(240, 240);                // Initialize ST7789 screen
+    // Display
+    display.init(240, 240);            // Initialize ST7789 screen
     pinMode(TFT_BACKLIGHT, OUTPUT);
     digitalWrite(TFT_BACKLIGHT, HIGH); // Backlight on
     
     //Default rotation to align it with the carrier
     display.setRotation(2);
-	display.fillScreen(ST77XX_BLACK);
+    display.fillScreen(ST77XX_BLACK);
 
+    //Set up the start configuration for the touch pads
     if(CARRIER_CASE){
         TOUCH.setSensorsSensitivity(4u);
     }else{
         TOUCH.setSensorsSensitivity(100u);
     }
-    Buttons.begin();    //init buttons
+	
+    // init buttons
+    Buttons.begin();
 
     //init LEDs
     leds.begin();
-	leds.clear();
-	leds.show();
+    leds.clear();
+    leds.show();
 
     //PMIC init
     PMIC.begin();
@@ -51,9 +57,9 @@ int MKRIoTCarrier::begin(){
     
     //Sensors
     uint8_t sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3 ;
-//	Serial.println(sensorsOK , BIN);
+    // Serial.println(sensorsOK , BIN);
 
-    //If some of the sensors are not connected
+    // Check if some of the sensors is not connected
     if(sensorsOK > 0 ){
         Serial.println("Error detected!");
         if(sensorsOK & 0b0001){
@@ -70,7 +76,7 @@ int MKRIoTCarrier::begin(){
         }
 
        //while (true);
-	   return false;
+	return false;
     }
 
 	//Its OK if the SD card is not plugged in
