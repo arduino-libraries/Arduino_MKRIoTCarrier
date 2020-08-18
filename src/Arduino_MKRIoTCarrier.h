@@ -69,7 +69,7 @@
 #define DISP_CS     2
 #define DISP_BL_RST 3   //BOTH DISP_BL and DISP_RST , DISP_RST connected to Arduino's RST pin too
 
-#define INT         7   //Every sensor interrupt pin , PULL-UP
+#define INT         6   //Every sensor interrupt pin , PULL-UP
 
 #define LED_CKI     4
 #define LED_SDI     5
