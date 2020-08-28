@@ -19,3 +19,5 @@ MISC:
 
 Others:
 * PMIC BQ24195
+* Adafruit_BusIO
+* Adafruit_GFX_Library
