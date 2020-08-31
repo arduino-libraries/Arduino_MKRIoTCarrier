@@ -65,10 +65,6 @@
 #define Y3          A3
 #define Y4          A4
 
-#define DISP_DC     1
-#define DISP_CS     2
-#define DISP_BL_RST 3   //BOTH DISP_BL and DISP_RST , DISP_RST connected to Arduino's RST pin too
-
 #define INT         6   //Every sensor interrupt pin , PULL-UP
 
 #define LED_CKI     4
@@ -111,7 +107,7 @@ class MKRIoTCarrier{
     MKRIoTCarrier_Qtouch Button5 = MKRIoTCarrier_Qtouch(4, &Buttons);
 
     //Display
-    Adafruit_ST7789 display = Adafruit_ST7789(&SPI, TFT_CS, TFT_DC, TFT_RST);
+    Adafruit_ST7789 display = Adafruit_ST7789(&SPI, TFT_CS, TFT_DC, -1);
 	
     //RGB LEDs
     Adafruit_DotStar leds = Adafruit_DotStar(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
