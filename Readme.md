@@ -1,6 +1,6 @@
 # MKRIoTCarrier 
 
-image:https://travis-ci.org/arduino-libraries/MKRGSM.svg?branch=master["Build Status", link="https://travis-ci.org/arduino-libraries/MKRGSM"]
+![](https://travis-ci.org/arduino-libraries/MKRGSM.svg?branch=master)
 
 This library enables the MKR family to use the MKR IoT Carrier
 
