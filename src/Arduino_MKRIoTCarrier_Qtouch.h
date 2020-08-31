@@ -22,7 +22,7 @@
 #define ARDUINO_MKRIoTCarrier_Qtouch
 
 #include "Arduino.h"
-#include "Arduino_Qtouch.h"
+#include "Arduino_MCHPTouch.h"
 
 //manager
 class MKRIoTCarrier_Qtouch_Manager{
