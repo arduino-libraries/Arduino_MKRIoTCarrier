@@ -19,7 +19,7 @@
 
 
 #include <Arduino_MKRIoTCarrier_Qtouch.h>
-#include "Arduino_Qtouch.h"
+#include "Arduino_MCHPTouch.h"
 
 //Individual pad
 MKRIoTCarrier_Qtouch::MKRIoTCarrier_Qtouch(int padIndex, MKRIoTCarrier_Qtouch_Manager * pManager){
