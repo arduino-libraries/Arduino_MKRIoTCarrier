@@ -21,15 +21,19 @@
 #include <Arduino_MKRIoTCarrier.h>
     
 MKRIoTCarrier::MKRIoTCarrier(){
+	//Restart cleaner
+	//display.fillScreen(ST77XX_BLACK);
+	//leds.clear();
+	//leds.show();
+
 }
 
 int MKRIoTCarrier::begin(){
     //Display
     display.init(240, 240);                // Initialize ST7789 screen
-    pinMode(TFT_BACKLIGHT, OUTPUT);
-    digitalWrite(TFT_BACKLIGHT, HIGH); // Backlight on
+    pinMode(3,INPUT_PULLUP);			   // RESET fix
     
-    //Default rotation to align it with the carrier
+	//Default rotation to align it with the carrier
     display.setRotation(2);
 	display.fillScreen(ST77XX_BLACK);
 
