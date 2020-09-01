@@ -36,11 +36,13 @@ This library has been made to use it with the IoT Starter Kit Carrier
 ### MKRIoTCarrier
 
 Constructor of the object
+
 ```cpp
 MKRIoTCarrier yourName; //In the examples we name it as *carrier*
 ```
 
 Intialization example sketch
+
 ```
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
@@ -65,6 +67,7 @@ The chip select (CS) pin can be known with SD_CS
 
 
 **Syntax Example**
+
 ```cpp
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
