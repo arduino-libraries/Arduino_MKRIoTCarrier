@@ -41,7 +41,7 @@ MKRIoTCarrier yourName; //In the examples we name it as *carrier*
 ```
 
 Intialization example sketch
-```cpp
+```
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
 
