@@ -8,8 +8,6 @@ The library can be downloaded from the Arduino IDE’s library manager or by goi
 
 This library has been made to use it with the IoT Starter Kit Carrier
 
-
-
 ## Examples Included
 *   Actuators
     *   Buzzer_Melody
