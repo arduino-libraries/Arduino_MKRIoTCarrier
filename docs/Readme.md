@@ -244,6 +244,7 @@ uint32_t myColor = carrier.leds.Color(green, red, blue)
 
 ### Pressure sensor - LPS22HB (Barometric)
 Visit our reference about [LPS22HB](https://www.arduino.cc/en/Reference/ArduinoLPS22HB)
+
 **Syntax Example**
 ```cpp
 float pressure; 
@@ -252,6 +253,7 @@ pressure = carrier.Light.readPressure()
 
 ### IMU - LSM6DS3
 Visit our reference about [LSM6DS3](https://www.arduino.cc/en/Reference/Arduino_LSM6DS3)
+
 **Syntax Example**
 ```cpp
 float aX,aY,aZ;
@@ -260,6 +262,7 @@ carrier.IMUmodule.getAcceleration(aX, aY, aZ);
 
 ### Humidity and Temperature - HTS221
 Visit our reference about [HTS221](https://www.arduino.cc/en/Reference/ArduinoHTS221)
+
 **Syntax Example**
 ```cpp
 float humidity;
@@ -268,6 +271,7 @@ humidity = carrier.Env.readHumidity();
 
 ### Ambient light, Gesture and Proximity - APDS9960
 Visit our reference about [APDS9960](https://www.arduino.cc/en/Reference/ArduinoAPDS9960)
+
 **Syntax Example**
 ```cpp
 int proximity;
