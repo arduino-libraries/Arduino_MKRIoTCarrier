@@ -11,7 +11,7 @@ http://www.arduino.cc/en/Reference/MKRIoTCarrier
 
 ## License 
 
-Copyright (c) 2020 Arduino AG. All right reserved.
+Copyright (c) 2020 Arduino AG.
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
