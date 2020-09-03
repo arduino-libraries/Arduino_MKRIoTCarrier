@@ -1,12 +1,10 @@
 # **MKR IoT Carrier Reference**
 
-This is a basic documentation about the library used in the *MKR IoT Carrier* made for internal purposes to make the Kit’s content.
+This is a basic documentation about the library for the *MKR IoT Carrier* .
 
-For any question/suggestion please message  @marqdevx
+The library can be downloaded from the Arduino IDE’s library manager or by going to the [github repository](https://github.com/arduino-libraries/Arduino_MKRIoTCarrier)
 
-The library can be downloaded from the Arduino IDE’s library manager or by going to the	 [github repository](https://github.com/arduino-libraries/Arduino_MKRIoTCarrier)
-
-This library has been made to use it with the IoT Starter Kit Carrier
+This carrier has a lot of features and sensors to play with, some of them are the capacitive buttons, 5 RGB LEDs, the 240x240 RGB display and much more!
 
 ## Examples Included
 *   Actuators
