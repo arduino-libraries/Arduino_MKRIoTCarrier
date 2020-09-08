@@ -79,6 +79,15 @@
 //Define on the sketch to use it
 extern bool CARRIER_CASE;
 
+//Gesture change for APDS9960
+enum {
+  NONE = -1,
+  DOWN = 3,
+  UP = 2 ,
+  LEFT  = 1,
+  RIGHT = 0
+};
+
 class MKRIoTCarrier{
     public:
     MKRIoTCarrier();
