@@ -44,19 +44,19 @@ void loop() {
     int gesture = APDS.readGesture();
 
     switch (gesture) {
-      case GESTURE_UP:
+      case UP:
         Serial.println("Detected UP gesture");
         break;
 
-      case GESTURE_DOWN:
+      case DOWN:
         Serial.println("Detected DOWN gesture");
         break;
 
-      case GESTURE_LEFT:
+      case LEFT:
         Serial.println("Detected LEFT gesture");
         break;
 
-      case GESTURE_RIGHT:
+      case RIGHT:
         Serial.println("Detected RIGHT gesture");
         break;
 
