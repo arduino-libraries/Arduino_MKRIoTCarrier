@@ -1,11 +1,6 @@
-/*  This sketch will test everything on the carrier board
-
-  This library "Arduino_IOTSKcarrier.h" wraps the 4 sensor's libraries to make it more compact
-  It has also the Relays to make it easier to use them
-
-  The TFT display library is accesed by "display" instead of "tft"
-
-  Below you will see how to access everything inside the Carrier, not every functionalities
+/*  
+This sketch will test the carrier board
+Unless the touch pads
 */
 
 #include <Arduino_MKRIoTCarrier.h>
@@ -31,22 +26,21 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);  //Wait to open the Serial monitor to start the program and see details on errors
 
-  //SD card
-  //You can init the SD card with SD.begin(SD_CS)
-  //SD_CS refers to pin 0
-
   //Init everything and outputs the errors
   carrier.begin();
-
-
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   //LED show up
   //( led index , red , green , blue )
-  carrier.leds.setPixelColor(0, 0 , 0 , 20);
+  carrier.leds.setPixelColor(0,  0 ,  0 , 20);
+  carrier.leds.setPixelColor(1,  0 , 20 , 0 );
+  carrier.leds.setPixelColor(2, 20 ,  0 , 0 );
+  carrier.leds.setPixelColor(3,  0 , 20 , 20);
+  carrier.leds.setPixelColor(4, 20 , 20 , 20);
   carrier.leds.show();
+  
   //Function to display
   displayTitle();
 
@@ -60,8 +54,8 @@ void loop() {
   
   //Simple relay open and close loop
   /*  Relay function
-     open()  - goes to Normally Open (NO) circuit, status LED will be OFF
-     close() - goes to Normally Close (NC) cirucit, status LED will be ON
+     open()  - goes to Normally Open (NO) circuit, status LED will be ON
+     close() - goes to Normally Close (NC) cirucit, status LED will be OFF
   */
   carrier.Relay1.close();
   delay(1000);
@@ -86,9 +80,8 @@ void loop() {
 
   delay(1000);
 
-
   //SENSORS
-  //Ambient light sensor
+  //RGB and Light sensor
   //It set the values that you point inside the brackets
   while (! carrier.Light.colorAvailable()) {
     delay(5);
@@ -99,7 +92,7 @@ void loop() {
   Serial.println(light);
   displayLight();
 
-  //Env sensor
+  //Env sensor (Temp and Hum)
   temperature = carrier.Env.readTemperature();
   humidity = carrier.Env.readHumidity();
   Serial.println("Env sensor");
