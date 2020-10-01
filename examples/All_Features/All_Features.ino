@@ -151,11 +151,11 @@ void displayTitle() {
 
   carrier.display.setCursor(80, 120);
   carrier.display.setTextColor(ST77XX_RED);
-  carrier.display.print("IoT ");
+  carrier.display.print("MKR ");
   carrier.display.setTextColor(ST77XX_GREEN);
-  carrier.display.print("Starter ");
+  carrier.display.print("IoT ");
   carrier.display.setTextColor(ST77XX_MAGENTA);
-  carrier.display.print("Kit");
+  carrier.display.print("Carrier");
   carrier.display.setCursor(105, 130);
   carrier.display.setTextColor(ST77XX_WHITE);
   carrier.display.print("Library");
