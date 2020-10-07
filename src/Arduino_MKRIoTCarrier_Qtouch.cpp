@@ -103,4 +103,6 @@ void MKRIoTCarrier_Qtouch_Manager::update(){
 void MKRIoTCarrier_Qtouch_Manager::updateConfig(int newSens){
     TOUCH.setSensorsSensitivity(newSens);
     //TOUCH.setSernsorsHysteresis(newHyst);
+    TOUCH.begin();
+	  customSens = true;
 }
