@@ -33,21 +33,25 @@ int MKRIoTCarrier::begin(){
     display.init(240, 240);                // Initialize ST7789 screen
     pinMode(3,INPUT_PULLUP);			   // RESET fix
     
-	//Default rotation to align it with the carrier
+    //Default rotation to align it with the carrier
     display.setRotation(2);
-	display.fillScreen(ST77XX_BLACK);
+    display.fillScreen(ST77XX_BLACK);
 
-    if(CARRIER_CASE){
-        TOUCH.setSensorsSensitivity(4u);
-    }else{
-        TOUCH.setSensorsSensitivity(100u);
+
+    if(!Buttons.customSens){
+
+	if(CARRIER_CASE){
+	    TOUCH.setSensorsSensitivity(4u);
+	}else{
+	    TOUCH.setSensorsSensitivity(100u);
+	}
+	Buttons.begin();    //init buttons
     }
-    Buttons.begin();    //init buttons
 
     //init LEDs
     leds.begin();
-	leds.clear();
-	leds.show();
+    leds.clear();
+    leds.show();
 
     //PMIC init
     PMIC.begin();
@@ -55,7 +59,7 @@ int MKRIoTCarrier::begin(){
     
     //Sensors
     uint8_t sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3 ;
-//	Serial.println(sensorsOK , BIN);
+    //Serial.println(sensorsOK , BIN);
 
     //If some of the sensors are not connected
     if(sensorsOK > 0 ){
