@@ -34,7 +34,10 @@ class MKRIoTCarrier_Qtouch_Manager{
 
     int t_state[5];
 
-    private:
+    //Set touch settings
+    void updateConfig(int newSens);
+  	bool customSens = false;
+  
 };
 
 class MKRIoTCarrier_Qtouch{
@@ -45,9 +48,6 @@ class MKRIoTCarrier_Qtouch{
     bool onTouchDown();
     bool onTouchUp();
     bool onTouchChange();
-    
-    //Set touch settings
-    void updateConfig(int newSens);
 
     private:
     MKRIoTCarrier_Qtouch_Manager  * _pManager;
