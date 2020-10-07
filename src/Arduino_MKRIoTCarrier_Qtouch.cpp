@@ -82,11 +82,6 @@ bool MKRIoTCarrier_Qtouch::onTouchChange(){
     }
 }
 
-void MKRIoTCarrier_Qtouch::updateConfig(int newSens){
-    TOUCH.setSensorsSensitivity(newSens);
-    //TOUCH.setSernsorsHysteresis(newHyst);
-}
-
 //Manager
 bool MKRIoTCarrier_Qtouch_Manager::begin(){
 return TOUCH.begin();
@@ -103,4 +98,9 @@ void MKRIoTCarrier_Qtouch_Manager::update(){
         t_state[3] = TOUCH.read(3);
         t_state[4] = TOUCH.read(4);
     }
+}
+
+void MKRIoTCarrier_Qtouch_Manager::updateConfig(int newSens){
+    TOUCH.setSensorsSensitivity(newSens);
+    //TOUCH.setSernsorsHysteresis(newHyst);
 }
