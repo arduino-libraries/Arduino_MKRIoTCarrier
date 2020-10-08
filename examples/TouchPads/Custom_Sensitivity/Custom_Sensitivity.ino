@@ -6,15 +6,15 @@ bool CARRIER_CASE = false;
 // When CARRIER_CASE is true it's set to 4  (further)
 // But if you use Buttons.updateConfig(value) It will not set the above values
 
-unsigned int trheshold = 100;
+unsigned int threshold = 100;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   while (!Serial);
 
-  //Now we can set our custom touch trheshold
-  carrier.Buttons.updateConfig(trheshold);
+  //Now we can set our custom touch threshold
+  carrier.Buttons.updateConfig(threshold);
   carrier.begin();
 }
 
