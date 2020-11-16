@@ -22,7 +22,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   carrier.Buttons.update();
   //Lets test 1 button, they should all react in the same way
-  if (carrier.Button1.getTouch()) {
+  if (carrier.Button0.getTouch()) {
     Serial.println("touching");
   }
 }
