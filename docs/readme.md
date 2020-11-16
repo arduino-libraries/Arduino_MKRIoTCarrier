@@ -134,8 +134,8 @@ void setup(){
 void loop(){
    carrier.Buttons.update();	// Read the buttons state
    
-   //Check if the Button 1 is being touched
-   if (carrier.Button1.getTouch()){
+   //Check if the Button 0 is being touched
+   if (carrier.Button0.getTouch()){
       Serial.println("Touching Button 1");
    }
    
