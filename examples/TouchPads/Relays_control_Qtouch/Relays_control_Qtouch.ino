@@ -42,7 +42,7 @@ void loop() {
   //The LED changes to Green its going to be NC (Normally Closed) or Orange to NO (Normally Open)
   //Then the middle pad its going to upload the relay status, to confirm both new status
 
-  if (carrier.Button1.onTouchDown()) {
+  if (carrier.Button0.onTouchDown()) {
     newRelay2 = !newRelay2;
     if (newRelay2) {
       carrier.leds.setPixelColor(0, c_orange);
@@ -52,7 +52,7 @@ void loop() {
     carrier.leds.show();
 
   }
-  if (carrier.Button5.onTouchDown()) {
+  if (carrier.Button4.onTouchDown()) {
     newRelay1 = !newRelay1;
     if (newRelay1) {
       carrier.leds.setPixelColor(4, c_orange);
@@ -62,7 +62,7 @@ void loop() {
     carrier.leds.show();
   }
 
-  if (carrier.Button3.onTouchDown()) {
+  if (carrier.Button2.onTouchDown()) {
     carrier.leds.setPixelColor(2, c_orange);
     carrier.leds.show();
 
