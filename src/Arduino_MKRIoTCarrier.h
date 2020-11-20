@@ -109,11 +109,11 @@ class MKRIoTCarrier{
 
     //Buttons
     MKRIoTCarrier_Qtouch_Manager Buttons = MKRIoTCarrier_Qtouch_Manager();
-    MKRIoTCarrier_Qtouch Button0 = MKRIoTCarrier_Qtouch(0, &Buttons);
-    MKRIoTCarrier_Qtouch Button1 = MKRIoTCarrier_Qtouch(1, &Buttons);
-    MKRIoTCarrier_Qtouch Button2 = MKRIoTCarrier_Qtouch(2, &Buttons);
-    MKRIoTCarrier_Qtouch Button3 = MKRIoTCarrier_Qtouch(3, &Buttons);
-    MKRIoTCarrier_Qtouch Button4 = MKRIoTCarrier_Qtouch(4, &Buttons);
+    MKRIoTCarrier_Qtouch Button1 = MKRIoTCarrier_Qtouch(0, &Buttons);
+    MKRIoTCarrier_Qtouch Button2 = MKRIoTCarrier_Qtouch(1, &Buttons);
+    MKRIoTCarrier_Qtouch Button3 = MKRIoTCarrier_Qtouch(2, &Buttons);
+    MKRIoTCarrier_Qtouch Button4 = MKRIoTCarrier_Qtouch(3, &Buttons);
+    MKRIoTCarrier_Qtouch Button5 = MKRIoTCarrier_Qtouch(4, &Buttons);
 
     //Display
     Adafruit_ST7789 display = Adafruit_ST7789(&SPI, TFT_CS, TFT_DC, -1);
