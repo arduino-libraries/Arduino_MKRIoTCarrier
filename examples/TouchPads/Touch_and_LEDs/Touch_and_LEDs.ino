@@ -22,7 +22,7 @@ void loop() {
 
   //Different types of touches
   //When you first touch it
-  if (carrier.Button0.onTouchDown()) {
+  if (carrier.Button1.onTouchDown()) {
     Serial.println("Touched Down Button 1");
     carrier.leds.setPixelColor(0, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
@@ -33,7 +33,7 @@ void loop() {
   }
 
   //When you release it
-  if (carrier.Button1.onTouchUp()) {
+  if (carrier.Button2.onTouchUp()) {
     Serial.println("Release Touch Button 2");
     carrier.leds.setPixelColor(1, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
@@ -44,7 +44,7 @@ void loop() {
   }
 
   //When it detects a change, down or up
-  if (carrier.Button2.onTouchChange()) {
+  if (carrier.Button3.onTouchChange()) {
     Serial.println("Changed Touch Button 3");
     carrier.leds.setPixelColor(2, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
@@ -55,7 +55,7 @@ void loop() {
   }
 
   //Normal, if it is being pressed
-  if (carrier.Button3.getTouch()) {
+  if (carrier.Button4.getTouch()) {
     Serial.println("Touching Button 4");
     carrier.leds.setPixelColor(3, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
@@ -65,7 +65,7 @@ void loop() {
     carrier.leds.show();                     // Refresh strip
   }
 
-  if (carrier.Button4.getTouch()) {
+  if (carrier.Button5.getTouch()) {
     Serial.println("Touching Button 5");
     carrier.leds.setPixelColor(4, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
