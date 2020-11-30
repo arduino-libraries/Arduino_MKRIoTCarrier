@@ -75,7 +75,6 @@ setup(){
    carrier.begin();  //SD card initialized here
    
    myFile = SD.open("test.txt", FILE_WRITE);
-   
 }
 ```
 
@@ -247,7 +246,7 @@ Visit our reference about [LPS22HB](https://www.arduino.cc/en/Reference/ArduinoL
 **Syntax Example**
 ```cpp
 float pressure; 
-pressure = carrier.Light.readPressure()
+pressure = carrier.Pressure.readPressure()
 ```
 
 ### IMU - LSM6DS3
@@ -256,7 +255,7 @@ Visit our reference about [LSM6DS3](https://www.arduino.cc/en/Reference/Arduino_
 **Syntax Example**
 ```cpp
 float aX,aY,aZ;
-carrier.IMUmodule.getAcceleration(aX, aY, aZ);
+carrier.IMUmodule.readAcceleration(aX, aY, aZ);
 ```
 
 ### Humidity and Temperature - HTS221
