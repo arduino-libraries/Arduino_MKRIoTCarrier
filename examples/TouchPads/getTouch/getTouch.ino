@@ -31,19 +31,19 @@ void loop() {
   carrier.Buttons.update();
 
   // Checks if new data are available
-  if (carrier.Button1.getTouch()) {
+  if (carrier.Button0.getTouch()) {
     Serial.println("Touching Button 1");
   }
-  if (carrier.Button2.getTouch()) {
+  if (carrier.Button1.getTouch()) {
     Serial.println("Touching Button 2");
   }
-  if (carrier.Button3.getTouch()) {
+  if (carrier.Button2.getTouch()) {
     Serial.println("Touching Button 3");
   }
-  if (carrier.Button4.getTouch()) {
+  if (carrier.Button3.getTouch()) {
     Serial.println("Touching Button 4");
   }
-  if (carrier.Button5.getTouch()) {
+  if (carrier.Button4.getTouch()) {
     Serial.println("Touching Button 5");
   }
 

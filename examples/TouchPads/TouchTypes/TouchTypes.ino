@@ -30,19 +30,19 @@ void loop() {
   // polling the sensor for new measure
   carrier.Buttons.update();
 
-  if (carrier.Button1.onTouchDown()) {
+  if (carrier.Button0.onTouchDown()) {
     Serial.println("Touched Down Button 1");
   }
-  if (carrier.Button2.onTouchUp()) {
+  if (carrier.Button1.onTouchUp()) {
     Serial.println("Release Touch Button 2");
   }
-  if (carrier.Button3.onTouchChange()) {
+  if (carrier.Button2.onTouchChange()) {
     Serial.println("Changed Touch Button 3");
   }
-  if (carrier.Button4.getTouch()) {
+  if (carrier.Button3.getTouch()) {
     Serial.println("Touching Button 4");
   }
-  if (carrier.Button5.getTouch()) {
+  if (carrier.Button4.getTouch()) {
     Serial.println("Touching Button 5");
   }
   delay(20);

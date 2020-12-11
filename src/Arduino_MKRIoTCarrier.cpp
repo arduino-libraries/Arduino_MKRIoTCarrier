@@ -19,6 +19,10 @@
 
 
 #include <Arduino_MKRIoTCarrier.h>
+
+//Touch pads values for using the case or just directly on the board
+//Define on the sketch to use it
+bool CARRIER_CASE = false;
     
 MKRIoTCarrier::MKRIoTCarrier(){
 	//Restart cleaner
