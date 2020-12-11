@@ -3,7 +3,6 @@
 */
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
-bool CARRIER_CASE = false;
 
 //False means Normally closed
 bool newRelay1 = false;
@@ -16,6 +15,8 @@ uint32_t c_green = carrier.leds.Color(40, 0, 0);
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  
+  CARRIER_CASE = false;
   carrier.begin();
 
   carrier.leds.setPixelColor(0, c_green);

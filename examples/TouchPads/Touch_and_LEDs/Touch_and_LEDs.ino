@@ -1,8 +1,6 @@
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier; //Constructor of the carrier maybe we can include it on the library itself
 
-//Auto configure the sense distance for the touch pads
-bool CARRIER_CASE = false;
 
 void setup() {
   // put your setup code here, to run once:
@@ -10,6 +8,7 @@ void setup() {
   while (!Serial);
 
   //Init all the components from the board
+  CARRIER_CASE = false;
   carrier.begin();
 }
 

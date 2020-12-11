@@ -1,6 +1,5 @@
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
-bool CARRIER_CASE = false;
 
 File myFile;
 
@@ -12,6 +11,7 @@ void setup() {
   }
 
   //  Init the entire Carrier
+  CARRIER_CASE = false;
   carrier.begin();
   
   // open the file. note that only one file can be open at a time,

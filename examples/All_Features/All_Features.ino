@@ -6,9 +6,6 @@ Unless the touch pads
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier; //Constructor of the carrier maybe we can include it on the library itself
 
-//Set the pad sense distance for using them with or without the enclosure
-bool CARRIER_CASE = false;
-
 float temperature;
 float humidity;
 
@@ -27,6 +24,7 @@ void setup() {
   while (!Serial);  //Wait to open the Serial monitor to start the program and see details on errors
 
   //Init everything and outputs the errors
+  CARRIER_CASE = false;
   carrier.begin();
 }
 

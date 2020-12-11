@@ -1,6 +1,5 @@
 #include "Arduino_MKRIoTCarrier.h"
 MKRIoTCarrier carrier;
-bool CARRIER_CASE = false;
 
 // When CARRIER_CASE is false it's set to 100 (closer)
 // When CARRIER_CASE is true it's set to 4  (further)
@@ -13,6 +12,7 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 
+  //CARRIER_CASE = false;
   //Now we can set our custom touch threshold
   carrier.Buttons.updateConfig(threshold);
   carrier.begin();

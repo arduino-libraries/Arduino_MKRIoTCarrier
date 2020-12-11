@@ -12,13 +12,13 @@
 */
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
-bool CARRIER_CASE = false;
 
 
 void setup() {
   Serial.begin(9600);
   while (!Serial);
   // Qtouch initialization
+  CARRIER_CASE = false;
   if (!carrier.begin()) {
     Serial.println("Error in sensors initialization!");
     while (1);

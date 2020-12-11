@@ -6,12 +6,12 @@
 MKRIoTCarrier carrier;
 
 float p = 3.1415926;
-bool CARRIER_CASE = false;
 
 void setup(void) {
   
   Serial.begin(9600);
   Serial.print(F("Hello! ST77xx TFT Test"));
+  CARRIER_CASE = false;
   carrier.begin();
 
   uint16_t time = millis();
