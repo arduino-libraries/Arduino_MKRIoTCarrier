@@ -1,9 +1,6 @@
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier; //Constructor of the carrier maybe we can include it on the library itself
 
-//Set the pad sense distance for using them with or without the enclosure
-bool CARRIER_CASE = false;
-
 //Be sure that the Pins are the same as your wiring
 int moisture = A5;
 int moist;
@@ -14,6 +11,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   while(!Serial);
+  CARRIER_CASE = false;
   carrier.begin();
   pinMode(moisture,INPUT);
   pinMode(pir,INPUT);

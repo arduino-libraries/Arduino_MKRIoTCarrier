@@ -12,13 +12,13 @@
 */
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
-bool CARRIER_CASE = false;
 
 
 void setup() {
   Serial.begin(9600);
   while (!Serial);
   // Qtouch initialization
+  CARRIER_CASE = false;
   if (!carrier.begin()) {
     Serial.println("Error in sensors initialization!");
     while (1);
@@ -31,19 +31,19 @@ void loop() {
   carrier.Buttons.update();
 
   // Checks if new data are available
-  if (carrier.Button1.getTouch()) {
+  if (carrier.Button0.getTouch()) {
     Serial.println("Touching Button 1");
   }
-  if (carrier.Button2.getTouch()) {
+  if (carrier.Button1.getTouch()) {
     Serial.println("Touching Button 2");
   }
-  if (carrier.Button3.getTouch()) {
+  if (carrier.Button2.getTouch()) {
     Serial.println("Touching Button 3");
   }
-  if (carrier.Button4.getTouch()) {
+  if (carrier.Button3.getTouch()) {
     Serial.println("Touching Button 4");
   }
-  if (carrier.Button5.getTouch()) {
+  if (carrier.Button4.getTouch()) {
     Serial.println("Touching Button 5");
   }
 

@@ -8,7 +8,6 @@
 #include "pitches.h"
 
 MKRIoTCarrier carrier;
-bool CARRIER_CASE = false;
 
 // notes in the melody:
 int melody[] = {
@@ -21,6 +20,9 @@ int noteDurations[] = {
 };
 
 void setup() {
+  CARRIER_CASE = false;
+  carrier.begin();
+  
   // iterate over the notes of the melody:
   for (int thisNote = 0; thisNote < 8; thisNote++) {
 

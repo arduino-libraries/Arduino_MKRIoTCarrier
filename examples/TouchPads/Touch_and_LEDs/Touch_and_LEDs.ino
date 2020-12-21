@@ -1,8 +1,6 @@
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier; //Constructor of the carrier maybe we can include it on the library itself
 
-//Auto configure the sense distance for the touch pads
-bool CARRIER_CASE = false;
 
 void setup() {
   // put your setup code here, to run once:
@@ -10,6 +8,7 @@ void setup() {
   while (!Serial);
 
   //Init all the components from the board
+  CARRIER_CASE = false;
   carrier.begin();
 }
 
@@ -22,7 +21,7 @@ void loop() {
 
   //Different types of touches
   //When you first touch it
-  if (carrier.Button1.onTouchDown()) {
+  if (carrier.Button0.onTouchDown()) {
     Serial.println("Touched Down Button 1");
     carrier.leds.setPixelColor(0, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
@@ -33,7 +32,7 @@ void loop() {
   }
 
   //When you release it
-  if (carrier.Button2.onTouchUp()) {
+  if (carrier.Button1.onTouchUp()) {
     Serial.println("Release Touch Button 2");
     carrier.leds.setPixelColor(1, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
@@ -44,7 +43,7 @@ void loop() {
   }
 
   //When it detects a change, down or up
-  if (carrier.Button3.onTouchChange()) {
+  if (carrier.Button2.onTouchChange()) {
     Serial.println("Changed Touch Button 3");
     carrier.leds.setPixelColor(2, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
@@ -55,7 +54,7 @@ void loop() {
   }
 
   //Normal, if it is being pressed
-  if (carrier.Button4.getTouch()) {
+  if (carrier.Button3.getTouch()) {
     Serial.println("Touching Button 4");
     carrier.leds.setPixelColor(3, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip
@@ -65,7 +64,7 @@ void loop() {
     carrier.leds.show();                     // Refresh strip
   }
 
-  if (carrier.Button5.getTouch()) {
+  if (carrier.Button4.getTouch()) {
     Serial.println("Touching Button 5");
     carrier.leds.setPixelColor(4, 20, 20, 20);   // 'Off' pixel at tail
     carrier.leds.show();                     // Refresh strip

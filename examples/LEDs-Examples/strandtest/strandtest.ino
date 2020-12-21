@@ -1,10 +1,10 @@
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
-bool CARRIER_CASE;
 
 #define NUMPIXELS 5
 
 void setup() {
+  CARRIER_CASE = false;
   carrier.begin();
 }
 

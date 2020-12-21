@@ -3,7 +3,6 @@
 */
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
-bool CARRIER_CASE = false;
 
 //False means Normally closed
 bool newRelay1 = false;
@@ -16,6 +15,8 @@ uint32_t c_green = carrier.leds.Color(40, 0, 0);
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  
+  CARRIER_CASE = false;
   carrier.begin();
 
   carrier.leds.setPixelColor(0, c_green);
@@ -42,7 +43,7 @@ void loop() {
   //The LED changes to Green its going to be NC (Normally Closed) or Orange to NO (Normally Open)
   //Then the middle pad its going to upload the relay status, to confirm both new status
 
-  if (carrier.Button1.onTouchDown()) {
+  if (carrier.Button0.onTouchDown()) {
     newRelay2 = !newRelay2;
     if (newRelay2) {
       carrier.leds.setPixelColor(0, c_orange);
@@ -52,7 +53,7 @@ void loop() {
     carrier.leds.show();
 
   }
-  if (carrier.Button5.onTouchDown()) {
+  if (carrier.Button4.onTouchDown()) {
     newRelay1 = !newRelay1;
     if (newRelay1) {
       carrier.leds.setPixelColor(4, c_orange);
@@ -62,7 +63,7 @@ void loop() {
     carrier.leds.show();
   }
 
-  if (carrier.Button3.onTouchDown()) {
+  if (carrier.Button2.onTouchDown()) {
     carrier.leds.setPixelColor(2, c_orange);
     carrier.leds.show();
 

@@ -10,7 +10,7 @@ Read more about the Kits:
 
 
 For more information about this library please visit us at
-https://www.arduino.cc/reference/en/libraries/arduino_mkriotcarrier/
+http://www.arduino.cc/en/Reference/MKRIoTCarrier
 
 ## License 
 

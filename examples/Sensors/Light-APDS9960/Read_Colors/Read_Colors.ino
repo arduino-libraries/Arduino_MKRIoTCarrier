@@ -4,12 +4,12 @@
 
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
-bool CARRIER_CASE = false;
 
 void setup() {
   Serial.begin(9600);
   while (!Serial);
 
+  CARRIER_CASE = false;
   carrier.begin();
 }
 
