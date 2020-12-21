@@ -43,14 +43,14 @@ Intialization example sketch
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
 
-//Needs to be declared in order to setup correctly the touch pads
-bool CARRIER_CASE = false; 
-
 setup(){
-  if(!carrier.begin(){  //It will see any sensor failure
-     Serial.println("Failure on init");
-     while(1);
-  }
+Serial.begin(9600);
+//This will adjust the sensitivity of the touch pads, not mandatory to set it, by default is false
+CARRIER_CASE = false; 
+if(!carrier.begin(){  //It will see any sensor failure
+   Serial.println("Failure on init");
+   while(1);
+ }
 }
 ```
 
@@ -67,11 +67,11 @@ The chip select (CS) pin can be known with SD_CS
 ```cpp
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
-bool CARRIER_CASE = false; 
 
 File myFile;
 
 setup(){
+   CARRIER_CASE = false; 
    carrier.begin();  //SD card initialized here
    
    myFile = SD.open("test.txt", FILE_WRITE);
@@ -79,8 +79,6 @@ setup(){
 ```
 
 ### Buttons class
-
-Mandatory to create the bool `bool CARRIER_CASE = true/false`
 
 Init the calaibration and the set up for the touchable pads (Already done in the MKRIoTCarrier class' begin())
 ```cpp
@@ -92,6 +90,8 @@ Buttons.update()
 ```
 
 ### ButtonX class
+
+Button0 - Button4
 
 Get if the pad is getting touched, true until it gets released
 ```cpp
@@ -114,7 +114,8 @@ ButtonX.onTouchChange()
 ```
 
 In case you have another enclosure you can change the sensivity of the pads, 3-100
-Automatically configured in the main class begin() when you declare the `CARRIER_CASE` boolean
+Automatically configured when you set the `CARRIER_CASE` boolean, by default is false (sensitivity threshold 4)
+
 ```cpp
 ButtonX.updateConfig(int newSens)
 ```
@@ -123,10 +124,10 @@ ButtonX.updateConfig(int newSens)
 ```cpp
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
-bool CARRIER_CASE = true/false;
 
 void setup(){
    Serial.begin(9600);
+   CARRIER_CASE = true/false;
    carrier.begin();
 }
 
@@ -162,11 +163,11 @@ Control both relays and get the status of them
 
 You can control them by using `Relay1 `and `Relay2`
 
-Swap to the NormallyOpen (NO) circuit from the relay
+Swap to the NormallyOpen (NO) circuit of the relay
 ```cpp
 RelayX.open()
 ```
-Swap to the NormallyClosed (NC) circuit from the relay, default mode on power off
+Swap to the NormallyClosed (NC) circuit of the relay, default mode on power off
 ```cpp
 RelayX.close()
 ```
@@ -186,11 +187,11 @@ The documentation form Adafruit [here](https://learn.adafruit.com/adafruit-dotst
 ```cpp
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
-bool CARRIER_CASE = false;
 
 uint32_t myCustomColor = carrier.leds.Color(255,100,50);
 
 void setup(){
+   CARRIER_CASE = false;
    carrier.begin();
    carrier.leds.fill(myCustomColor, 0, 5);
    carrier.leds.show();
