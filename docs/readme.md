@@ -71,7 +71,7 @@ MKRIoTCarrier carrier;
 File myFile;
 
 setup(){
-   bool CARRIER_CASE = false; 
+   CARRIER_CASE = false; 
    carrier.begin();  //SD card initialized here
    
    myFile = SD.open("test.txt", FILE_WRITE);
