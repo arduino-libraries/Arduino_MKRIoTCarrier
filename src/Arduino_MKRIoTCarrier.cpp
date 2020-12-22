@@ -44,13 +44,13 @@ int MKRIoTCarrier::begin(){
 
     if(!Buttons.customSens){
 
-	if(CARRIER_CASE){
-	    TOUCH.setSensorsSensitivity(4u);
-	}else{
-	    TOUCH.setSensorsSensitivity(100u);
-	}
-	Buttons.begin();    //init buttons
+        if(CARRIER_CASE){
+            TOUCH.setSensorsSensitivity(5u);
+        }else{
+            TOUCH.setSensorsSensitivity(100u);
+        }
     }
+    Buttons.begin();    //init buttons
 
     //init LEDs
     leds.begin();

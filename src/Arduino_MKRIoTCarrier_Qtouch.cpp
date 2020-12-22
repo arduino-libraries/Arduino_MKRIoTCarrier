@@ -30,6 +30,7 @@ MKRIoTCarrier_Qtouch::MKRIoTCarrier_Qtouch(int padIndex, MKRIoTCarrier_Qtouch_Ma
 bool MKRIoTCarrier_Qtouch::getTouch(){
     bool getState = _pManager->t_state[_padIndex];
     _saveToHistory(getState);
+  
     return(getState);
 }
 
@@ -82,9 +83,17 @@ bool MKRIoTCarrier_Qtouch::onTouchChange(){
     }
 }
 
+
+void MKRIoTCarrier_Qtouch::updateConfig(int newSens){
+    TOUCH.setSensorsSensitivityChannel(newSens, _padIndex);
+    //TOUCH.begin();
+	_pManager->customSens = true;
+}
+
+
 //Manager
 bool MKRIoTCarrier_Qtouch_Manager::begin(){
-return TOUCH.begin();
+    return TOUCH.begin();
 }
 MKRIoTCarrier_Qtouch_Manager::MKRIoTCarrier_Qtouch_Manager(){
 
@@ -103,6 +112,6 @@ void MKRIoTCarrier_Qtouch_Manager::update(){
 void MKRIoTCarrier_Qtouch_Manager::updateConfig(int newSens){
     TOUCH.setSensorsSensitivity(newSens);
     //TOUCH.setSernsorsHysteresis(newHyst);
-    TOUCH.begin();
-	  customSens = true;
+    //TOUCH.begin();
+	customSens = true;
 }
