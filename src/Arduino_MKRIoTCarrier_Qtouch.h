@@ -49,6 +49,8 @@ class MKRIoTCarrier_Qtouch{
     bool onTouchUp();
     bool onTouchChange();
 
+    void updateConfig(int newSens);
+
     private:
     MKRIoTCarrier_Qtouch_Manager  * _pManager;
     int _padIndex;  
