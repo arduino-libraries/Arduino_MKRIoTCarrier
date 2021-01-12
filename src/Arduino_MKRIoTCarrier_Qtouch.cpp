@@ -85,7 +85,7 @@ bool MKRIoTCarrier_Qtouch::onTouchChange(){
 
 
 void MKRIoTCarrier_Qtouch::updateConfig(int newSens){
-    TOUCH.setSensorsSensitivityChannel(newSens, _padIndex);
+    TOUCH.setSensorsSensitivity(newSens, _padIndex);
     //TOUCH.begin();
 	_pManager->customSens = true;
 }
