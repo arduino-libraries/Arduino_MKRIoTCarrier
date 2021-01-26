@@ -285,6 +285,112 @@ The resolution is 240 x 240.
 
 Initialized inside the main `begin()`
 
-You can find the library documentation from Adafruit to draw [here](https://learn.adafruit.com/adafruit-gfx-graphics-library/graphics-primitives)
+Colors : every color with the prefix ‘ST77XX_’ i.e. ST77XX_BLACK. Colors available from the library are BLACK, WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW, ORANGE
+
+In order to turn on the screen you will need to add this inside the setup()
+(already inside the main begin())
+display.init(240, 240);
+pinMode(TFT_BLACKLIGHT, OUTPUT);
+digitalWrite(TFT_BLACKLIGHT,HIGH);
 
 Colors : every color with the prefix ‘ST77XX_’ i.e. ST77XX_BLACK. Colors available from the library are BLACK, WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW, ORANGE
+
+#### General:
+    
+Fill the entire screen with the selected color
+```cpp
+   display.fillScreen(color)
+```
+
+Get width and height
+```cpp
+   display.width() / height()
+```
+
+Rotates the coordinate system (number between 0 and 3)
+```cpp
+   display.setRotation(0-3)
+```
+
+#### Text:
+Set the cursor to write text in the selected pixels
+```cpp
+   display.setCursor(screenX, screenY)
+```
+
+```cpp
+   display.print(text)
+```
+It will print the string inside in the current cursor             position
+
+```cpp
+    display.setTextColor(color)
+```
+Saves the selected color to print the text until the color             is changed again
+
+```cpp
+    display.setTextSize(size)
+```
+Sets the size of the text that is gonna be printed
+
+```cpp
+   display.setTextWrap(True/False)
+```
+        Set the auto wrap of the text, if it is not the text will             not jump to the next line.
+
+####Drawings:
+Draw a Line from the start Vector to the End vector with the selected color, Use drawFastVLine() and drawFastHLine()             introducing the same settings, to avoid the agular calc.
+```cpp
+   display.drawLine(startX, startY, endX, endY, color)
+```
+
+Draw a Circle from the center Vector with the selected radius and color
+```cpp
+   display.drawCircle(centerX, centerY, radius, color)
+```
+   
+Draw a rectangle
+```cpp
+   display.drawRect(topLeftX, topLeftY, width, height, color)
+```
+
+Draw a filled rectangle
+```cpp
+    display.fillRect(topLeftX, topLeftY, width, height, color)
+```
+
+Draw a filled circle from the center Vector, with the selected radius and color
+```cpp
+    display.fillCircle(centerX, centerY, radius, color)
+```
+
+Draw a rounded rectangle
+```cpp
+    display.drawRoundRect(topLeftX, topLeftY, width, height, curveRadius, color)
+```
+
+Draw a filled and rounded rectangle
+```cpp
+    display.fillRoundRect(topLeftX, topLeftY, width, height, curveRadius, color)
+```
+
+Draw a triangle by introducing the 3 points and color    
+```cpp
+    display.drawTriangle(x0, y0, x1, y1, x2, y2, color)
+```
+
+Draw a filled triangle
+```cpp
+    display.fillTriangle(x0, y0, x1, y1, x2, y2, color)
+```
+
+Draw a character
+```cpp
+    display.drawChar(topLeftX, topLeftY, character, color, backgroundColor, size)
+```
+
+Draw a bitmap, the bitmap needs to be with PROGMEM
+```cpp
+    display.drawBitmap(startX, startY, bitmap, width, height, color)
+```
+   
