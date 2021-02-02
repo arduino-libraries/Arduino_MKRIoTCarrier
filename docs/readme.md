@@ -321,12 +321,12 @@ Set the cursor to write text in the selected pixels
 ```cpp
    display.print(text)
 ```
-It will print the string inside in the current cursor             position
+It will print the string inside in the current cursor position
 
 ```cpp
     display.setTextColor(color)
 ```
-Saves the selected color to print the text until the color             is changed again
+Saves the selected color to print the text until the color is changed again
 
 ```cpp
     display.setTextSize(size)
@@ -336,9 +336,9 @@ Sets the size of the text that is gonna be printed
 ```cpp
    display.setTextWrap(True/False)
 ```
-        Set the auto wrap of the text, if it is not the text will             not jump to the next line.
+Set the auto wrap of the text, if it is not the text will not jump to the next line.
 
-####Drawings:
+#### Drawings:
 Draw a Line from the start Vector to the End vector with the selected color, Use drawFastVLine() and drawFastHLine()             introducing the same settings, to avoid the agular calc.
 ```cpp
    display.drawLine(startX, startY, endX, endY, color)
