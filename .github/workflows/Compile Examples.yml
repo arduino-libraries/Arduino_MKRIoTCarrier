@@ -58,7 +58,7 @@ jobs:
             - name: Adafruit ST7735 and ST7789 Library
             - name: Arduino_MCHPTouch
           sketch-paths: |
-            - ./examples/
+            - ./examples/All_Features
           enable-deltas-report: true
           sketches-report-path: ${{ env.SKETCHES_REPORTS_PATH }}
 
