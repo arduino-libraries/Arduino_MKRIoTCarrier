@@ -11,7 +11,6 @@ on:
       - ".github/workflows/compile-examples.yml"
       - "examples/**"
       - "src/**"
-      - "!examples/Display/Show_GIF/"
   # Scheduled trigger checks for breakage caused by changes to external resources (libraries, platforms)
   schedule:
     # run every Saturday at 3 AM UTC
@@ -59,7 +58,17 @@ jobs:
             - name: Adafruit ST7735 and ST7789 Library
             - name: Arduino_MCHPTouch
           sketch-paths: |
-            - './examples/'
+            # Ignoring Display/AnimatedGif compiling the rest of them
+            - './examples/Actuators/'
+            - './examples/All_Features/'
+            - './examples/Grove_Inputs/'
+            - './examples/LEDs-Examples/'
+            - './examples/SD_card/'
+            - './examples/Sensors'
+            - './examples/TouchPads'
+            - './examples/Display/Compose_images/'
+            - './examples/Display/Graphics/'
+            
           enable-deltas-report: true
           sketches-report-path: ${{ env.SKETCHES_REPORTS_PATH }}
 
