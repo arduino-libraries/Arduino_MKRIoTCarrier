@@ -1,6 +1,6 @@
 # MKRIoTCarrier 
 
-[![Compile Examples](https://github.com/arduino-libraries/Arduino_MKRIoTCarrier/actions/workflows/Compile%20Examples.yml/badge.svg)](https://github.com/arduino-libraries/Arduino_MKRIoTCarrier/actions/workflows/Compile%20Examples.yml)
+[![Compiling](https://github.com/arduino-libraries/Arduino_MKRIoTCarrier/actions/workflows/Compile%20Examples.yml/badge.svg)](https://github.com/arduino-libraries/Arduino_MKRIoTCarrier/actions/workflows/Compile%20Examples.yml)
 
 This library enables the MKR family to use the MKR IoT Carrier
 
