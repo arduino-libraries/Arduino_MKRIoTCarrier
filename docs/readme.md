@@ -6,12 +6,23 @@ The library can be downloaded from the Arduino IDE’s library manager or by goi
 
 This carrier has a lot of features and sensors to play with, some of them are the capacitive buttons, 5 RGB LEDs, the 240x240 RGB display and much more!
 
+Its included in some kits:
+* [Explore IoT Kit](https://store.arduino.cc/explore-iot-kit)
+* [Oplà IoT Kit](https://store.arduino.cc/opla-iot-kit)
+
+and Standalone:
+* [MKR IoT Carrier](https://store.arduino.cc/mkr-iot-carrier)
+
+
 ## Examples Included
 *   Actuators
     *   Buzzer_Melody
     *   Relays_blink
 *   All Features
 *   Display
+    *   Compose_Images     
+    *   Graphics
+    *   Show_GIF (needs external library)
 *   LEDs
 *   SD_card
 *   Sensors
@@ -20,8 +31,10 @@ This carrier has a lot of features and sensors to play with, some of them are th
     *   Light
     *   Pressure
 *   TouchPads
+    *   CustomSensitivity 
     *   getTouch
     *   Relays_control_Qtouch
+    *   Touch_Signals
     *   Touch_and_LEDs
     *   TouchTypes
 *   Interruptions (TODO)
