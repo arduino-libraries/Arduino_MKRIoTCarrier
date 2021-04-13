@@ -2,11 +2,14 @@
 
 [![Compiling](https://github.com/arduino-libraries/Arduino_MKRIoTCarrier/actions/workflows/Compile%20Examples.yml/badge.svg)](https://github.com/arduino-libraries/Arduino_MKRIoTCarrier/actions/workflows/Compile%20Examples.yml)
 
-This library enables the MKR family to use the MKR IoT Carrier
+This library enables the MKR family to use the MKR IoT Carrier  
 
-Read more about the Kits:
- * [Explore IoT Kit](https://store.arduino.cc/explore-iot-kit) 
- * [Oplà IoT Kit](https://store.arduino.cc/opla-iot-kit)
+Get the carrier:
+ * [Standalone Board](https://store.arduino.cc/mkr-iot-carrier)  
+ * Kits:
+    * [Explore IoT Kit](https://store.arduino.cc/explore-iot-kit)
+    * [Oplà IoT Kit](https://store.arduino.cc/opla-iot-kit)
+ 
 
 
 For more information about this library please visit us at
