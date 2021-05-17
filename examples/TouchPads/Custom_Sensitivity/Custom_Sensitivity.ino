@@ -13,13 +13,14 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 
+  carrier.begin();
   //CARRIER_CASE = false;
   //Now we can set our custom touch threshold
   // First we update all the buttons with the new threshold
   // Then we overwrite individually one of them (they can be all set individually too)
   carrier.Buttons.updateConfig(threshold);
-  carrier.Button0.updateConfig(threshold_btn_0);
-  carrier.begin();
+  carrier.Buttons.updateConfig(threshold_btn_0);
+
 }
 
 void loop() {
@@ -27,23 +28,23 @@ void loop() {
   carrier.Buttons.update();
   
   // Verify your thresholds
-  if (carrier.Button0.getTouch()) {
+  if (carrier.Buttons.getTouch(TOUCH0)) {
     Serial.println("touching 0");
   }
   
-  if (carrier.Button1.getTouch()) {
+  if (carrier.Buttons.getTouch(TOUCH1)) {
     Serial.println("touching 1");
   }
   
-  if (carrier.Button2.getTouch()) {
+  if (carrier.Buttons.getTouch(TOUCH2)) {
     Serial.println("touching 2");
   }
   
-  if (carrier.Button3.getTouch()) {
+  if (carrier.Buttons.getTouch(TOUCH3)) {
     Serial.println("touching 3");
   }
   
-  if (carrier.Button4.getTouch()) {
+  if (carrier.Buttons.getTouch(4)) {
     Serial.println("touching 4");
   }
 }

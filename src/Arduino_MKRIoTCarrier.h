@@ -89,7 +89,7 @@ enum {
 };
 
 class MKRIoTCarrier{
-    public:
+  public:
     MKRIoTCarrier();
     int begin();
 
@@ -108,18 +108,13 @@ class MKRIoTCarrier{
     MKRIoTCarrier_Buzzer Buzzer =  MKRIoTCarrier_Buzzer(BUZZER);  //Buzzer, pin 6
 
     //Buttons
-    MKRIoTCarrier_Qtouch_Manager Buttons = MKRIoTCarrier_Qtouch_Manager();
-    MKRIoTCarrier_Qtouch Button0 = MKRIoTCarrier_Qtouch(0, &Buttons);
-    MKRIoTCarrier_Qtouch Button1 = MKRIoTCarrier_Qtouch(1, &Buttons);
-    MKRIoTCarrier_Qtouch Button2 = MKRIoTCarrier_Qtouch(2, &Buttons);
-    MKRIoTCarrier_Qtouch Button3 = MKRIoTCarrier_Qtouch(3, &Buttons);
-    MKRIoTCarrier_Qtouch Button4 = MKRIoTCarrier_Qtouch(4, &Buttons);
+    MKRIoTCarrierQtouch Buttons = MKRIoTCarrierQtouch();
 
     //Display
     Adafruit_ST7789 display = Adafruit_ST7789(&SPI, TFT_CS, TFT_DC, -1);
 	
     //RGB LEDs
     Adafruit_DotStar leds = Adafruit_DotStar(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
-    private:
+  private:
 };
 #endif

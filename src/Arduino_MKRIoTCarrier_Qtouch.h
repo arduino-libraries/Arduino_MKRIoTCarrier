@@ -24,42 +24,39 @@
 #include "Arduino.h"
 #include "Arduino_MCHPTouch.h"
 
-//manager
-class MKRIoTCarrier_Qtouch_Manager{
-    public:
-    MKRIoTCarrier_Qtouch_Manager(); 
-    
-    bool begin();
-    void update();
+typedef enum {
+  TOUCH1 = 0,
+  TOUCH2,
+  TOUCH3,
+  TOUCH4,
+  TOUCH5
+} touchButtons;
 
-    int t_state[5];
+class MKRIoTCarrierQtouch{
+  public:
+    MKRIoTCarrierQtouch();
+    bool begin();
+    bool update();
 
     //Set touch settings
-    void updateConfig(int newSens);
-  	bool customSens = false;
+    void updateConfig(int newSens, touchButtons padIndex);
   
-};
-
-class MKRIoTCarrier_Qtouch{
-    public:
-    MKRIoTCarrier_Qtouch(int padIndex, MKRIoTCarrier_Qtouch_Manager * pManager); //Individual
-    
-    bool getTouch();
-    bool onTouchDown();
-    bool onTouchUp();
-    bool onTouchChange();
+    bool getTouch(touchButtons _padIndex);
+    bool onTouchDown(touchButtons _padIndex);
+    bool onTouchUp(touchButtons _padIndex);
+    bool onTouchChange(touchButtons _padIndex);
 
     void updateConfig(int newSens);
 
-    private:
-    MKRIoTCarrier_Qtouch_Manager  * _pManager;
-    int _padIndex;  
+    bool customSens = false;
 
-    bool _touches[10];                //To know last touches
+  private:
+    int _padIndex;
+    bool _available = false;
 
-    void _saveToHistory(bool newEntry);
+    bool _touchesPrev[5] = {0, 0, 0, 0, 0};   //To know last touches
 
-    //Cfg
+    //Config
     bool setOnChange = false;       //Touch on change
     bool setOnNormal = false;       //Allways read
     bool setOnUp = false;           //When the pad is not being touched
