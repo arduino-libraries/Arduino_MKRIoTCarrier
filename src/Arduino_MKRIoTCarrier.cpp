@@ -36,6 +36,10 @@ int MKRIoTCarrier::begin() {
   display.setRotation(2);
   display.fillScreen(ST77XX_BLACK);
 
+  if (!CARRIER_CASE) {
+    Buttons.updateConfig(200);
+  }
+
   Buttons.begin();    //init buttons
 
   //init LEDs
