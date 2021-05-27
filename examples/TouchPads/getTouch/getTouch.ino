@@ -18,7 +18,6 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
   // Qtouch initialization
-  CARRIER_CASE = false;
   if (!carrier.begin()) {
     Serial.println("Error in sensors initialization!");
     while (1);
@@ -31,20 +30,20 @@ void loop() {
   carrier.Buttons.update();
 
   // Checks if new data are available
-  if (carrier.Button0.getTouch()) {
+  if (carrier.Buttons.getTouch(TOUCH0)) {
+    Serial.println("Touching Button 0");
+  }
+  if (carrier.Buttons.getTouch(TOUCH1)) {
     Serial.println("Touching Button 1");
   }
-  if (carrier.Button1.getTouch()) {
+  if (carrier.Buttons.getTouch(TOUCH2)) {
     Serial.println("Touching Button 2");
   }
-  if (carrier.Button2.getTouch()) {
+  if (carrier.Buttons.getTouch(TOUCH3)) {
     Serial.println("Touching Button 3");
   }
-  if (carrier.Button3.getTouch()) {
+  if (carrier.Buttons.getTouch(TOUCH4)) {
     Serial.println("Touching Button 4");
-  }
-  if (carrier.Button4.getTouch()) {
-    Serial.println("Touching Button 5");
   }
 
 }

@@ -24,42 +24,45 @@
 #include "Arduino.h"
 #include "Arduino_MCHPTouch.h"
 
-//manager
-class MKRIoTCarrier_Qtouch_Manager{
-    public:
-    MKRIoTCarrier_Qtouch_Manager(); 
-    
-    bool begin();
-    void update();
+static bool _available = false;
 
-    int t_state[5];
+typedef enum {
+  TOUCH0 = 0,
+  TOUCH1,
+  TOUCH2,
+  TOUCH3,
+  TOUCH4
+} touchButtons;
+
+class MKRIoTCarrierQtouch{
+  public:
+    MKRIoTCarrierQtouch();
+    MKRIoTCarrierQtouch(touchButtons padIndex);
+    bool begin();
+    bool update();
 
     //Set touch settings
+    void updateConfig(int newSens, touchButtons padIndex);
     void updateConfig(int newSens);
-  	bool customSens = false;
-  
-};
+    bool getTouch(touchButtons _padIndex);
+    bool getTouch() __attribute__((deprecated));
+    bool onTouchDown(touchButtons _padIndex);
+    bool onTouchDown() __attribute__((deprecated));
+    bool onTouchUp(touchButtons _padIndex);
+    bool onTouchUp() __attribute__((deprecated));
+    bool onTouchChange(touchButtons _padIndex);
+    bool onTouchChange() __attribute__((deprecated));
 
-class MKRIoTCarrier_Qtouch{
-    public:
-    MKRIoTCarrier_Qtouch(int padIndex, MKRIoTCarrier_Qtouch_Manager * pManager); //Individual
-    
-    bool getTouch();
-    bool onTouchDown();
-    bool onTouchUp();
-    bool onTouchChange();
+    bool customSens = false;
 
-    void updateConfig(int newSens);
+  private:
+    touchButtons _padID;
+    int _padIndex;
 
-    private:
-    MKRIoTCarrier_Qtouch_Manager  * _pManager;
-    int _padIndex;  
 
-    bool _touches[10];                //To know last touches
+    bool _touchesPrev[5] = {0, 0, 0, 0, 0};   //To know last touches
 
-    void _saveToHistory(bool newEntry);
-
-    //Cfg
+    //Config
     bool setOnChange = false;       //Touch on change
     bool setOnNormal = false;       //Allways read
     bool setOnUp = false;           //When the pad is not being touched
