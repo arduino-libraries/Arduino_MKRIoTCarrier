@@ -33,10 +33,10 @@ void loop() {
   if (carrier.Buttons.onTouchDown(TOUCH0)) {
     Serial.println("Touched Down Button 0");
   }
-  if (carrier.Buttons..onTouchUp(TOUCH1)) {
+  if (carrier.Buttons.onTouchUp(TOUCH1)) {
     Serial.println("Release Touch Button 1");
   }
-  if (carrier.Buttons..onTouchChange(TOUCH2)) {
+  if (carrier.Buttons.onTouchChange(TOUCH2)) {
     Serial.println("Changed Touch Button 2");
   }
   if (carrier.Buttons.getTouch(TOUCH3)) {

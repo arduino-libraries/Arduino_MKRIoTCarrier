@@ -44,7 +44,7 @@ void loop() {
     Serial.println("touching 3");
   }
   
-  if (carrier.Buttons.getTouch(4)) {
+  if (carrier.Buttons.getTouch(TOUCH4)) {
     Serial.println("touching 4");
   }
 }

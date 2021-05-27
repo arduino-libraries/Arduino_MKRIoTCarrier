@@ -24,35 +24,41 @@
 #include "Arduino.h"
 #include "Arduino_MCHPTouch.h"
 
+static bool _available = false;
+
 typedef enum {
-  TOUCH1 = 0,
+  TOUCH0 = 0,
+  TOUCH1,
   TOUCH2,
   TOUCH3,
-  TOUCH4,
-  TOUCH5
+  TOUCH4
 } touchButtons;
 
 class MKRIoTCarrierQtouch{
   public:
     MKRIoTCarrierQtouch();
+    MKRIoTCarrierQtouch(touchButtons padIndex);
     bool begin();
     bool update();
 
     //Set touch settings
     void updateConfig(int newSens, touchButtons padIndex);
-  
-    bool getTouch(touchButtons _padIndex);
-    bool onTouchDown(touchButtons _padIndex);
-    bool onTouchUp(touchButtons _padIndex);
-    bool onTouchChange(touchButtons _padIndex);
-
     void updateConfig(int newSens);
+    bool getTouch(touchButtons _padIndex);
+    bool getTouch() __attribute__((deprecated));
+    bool onTouchDown(touchButtons _padIndex);
+    bool onTouchDown() __attribute__((deprecated));
+    bool onTouchUp(touchButtons _padIndex);
+    bool onTouchUp() __attribute__((deprecated));
+    bool onTouchChange(touchButtons _padIndex);
+    bool onTouchChange() __attribute__((deprecated));
 
     bool customSens = false;
 
   private:
+    touchButtons _padID;
     int _padIndex;
-    bool _available = false;
+
 
     bool _touchesPrev[5] = {0, 0, 0, 0, 0};   //To know last touches
 

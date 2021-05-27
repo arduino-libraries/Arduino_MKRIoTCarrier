@@ -18,7 +18,7 @@
 */
 
 
-#ifndef ARDUINO_MKRIoTCarrier_h
+ifndef ARDUINO_MKRIoTCarrier_h
 #define ARDUINO_MKRIoTCarrier_h
 
 #include <Arduino.h>
@@ -109,6 +109,13 @@ class MKRIoTCarrier{
 
     //Buttons
     MKRIoTCarrierQtouch Buttons = MKRIoTCarrierQtouch();
+
+
+    MKRIoTCarrierQtouch Button0 __attribute__((deprecated)) = MKRIoTCarrierQtouch(TOUCH0);
+    MKRIoTCarrierQtouch Button1 __attribute__((deprecated)) = MKRIoTCarrierQtouch(TOUCH1);
+    MKRIoTCarrierQtouch Button2 __attribute__((deprecated)) = MKRIoTCarrierQtouch(TOUCH2);
+    MKRIoTCarrierQtouch Button3 __attribute__((deprecated)) = MKRIoTCarrierQtouch(TOUCH3);
+    MKRIoTCarrierQtouch Button4 __attribute__((deprecated)) = MKRIoTCarrierQtouch(TOUCH4); 
 
     //Display
     Adafruit_ST7789 display = Adafruit_ST7789(&SPI, TFT_CS, TFT_DC, -1);

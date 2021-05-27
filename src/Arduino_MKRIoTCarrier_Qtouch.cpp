@@ -25,11 +25,20 @@
 MKRIoTCarrierQtouch::MKRIoTCarrierQtouch() {
 }
 
+//Individual pad
+MKRIoTCarrierQtouch::MKRIoTCarrierQtouch(touchButtons padIndex) {
+  _padID = padIndex;
+}
+
 bool MKRIoTCarrierQtouch::getTouch(touchButtons padIndex) {
   if(_available) {
     return TOUCH.read(padIndex);
   }
   return false;
+}
+
+bool MKRIoTCarrierQtouch::getTouch() {
+  return getTouch(_padID);
 }
 
 bool MKRIoTCarrierQtouch::onTouchDown(touchButtons padIndex) {
@@ -43,6 +52,10 @@ bool MKRIoTCarrierQtouch::onTouchDown(touchButtons padIndex) {
   return false;
 }
 
+bool MKRIoTCarrierQtouch::onTouchDown() {
+  return onTouchDown(_padID);
+}
+
 bool MKRIoTCarrierQtouch::onTouchUp(touchButtons padIndex) {
   if(_available) {
     if(!getTouch(padIndex) && _touchesPrev[padIndex] == 1) {
@@ -52,6 +65,10 @@ bool MKRIoTCarrierQtouch::onTouchUp(touchButtons padIndex) {
     _touchesPrev[padIndex] = getTouch(padIndex);
   }
   return false;
+}
+
+bool MKRIoTCarrierQtouch::onTouchUp() {
+  return onTouchUp(_padID);
 }
 
 bool MKRIoTCarrierQtouch::onTouchChange(touchButtons padIndex) {
@@ -64,6 +81,9 @@ bool MKRIoTCarrierQtouch::onTouchChange(touchButtons padIndex) {
   return false;
 }
 
+bool MKRIoTCarrierQtouch::onTouchChange() {
+  return onTouchChange(_padID);
+}
 
 void MKRIoTCarrierQtouch::updateConfig(int newSens, touchButtons padIndex) {
   TOUCH.setSensorsSensitivity(newSens, padIndex);
@@ -80,10 +100,10 @@ bool MKRIoTCarrierQtouch::update() {
   TOUCH.poll();
   if(TOUCH.available()) {
     _available = true;
-    return true;
+    return _available;
   }
   _available =  false;
-  return false;
+  return _available;
 }
 
 void MKRIoTCarrierQtouch::updateConfig(int newSens) {
