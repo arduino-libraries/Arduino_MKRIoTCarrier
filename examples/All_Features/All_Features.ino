@@ -53,7 +53,7 @@ void loop() {
   //Simple relay open and close loop
   /*  Relay function
      open()  - goes to Normally Open (NO) circuit, status LED will be ON
-     close() - goes to Normally Close (NC) cirucit, status LED will be OFF
+     close() - goes to Normally Close (NC) circuit, status LED will be OFF
   */
   carrier.Relay1.close();
   delay(1000);

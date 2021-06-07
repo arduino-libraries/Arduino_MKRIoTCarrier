@@ -50,7 +50,7 @@ Constructor of the object
 MKRIoTCarrier yourName; //In the examples we name it as *carrier*
 ```
 
-Intialization example sketch
+Initialization example sketch
 
 ```cpp
 #include <Arduino_MKRIoTCarrier.h>
@@ -97,7 +97,7 @@ Init the calaibration and the set up for the touchable pads (Already done in the
 ```cpp
 Buttons.begin()
 ```
-Read the state of the pads and save them to be analize in the diferent type of touch events
+Read the state of the pads and save them to be analyze in the different type of touch events
 ```cpp
 Buttons.update()
 ```
@@ -126,7 +126,7 @@ Get both, touched and released
 ButtonX.onTouchChange()
 ```
 
-In case you have another enclosure you can change the sensivity of the pads, 3-100
+In case you have another enclosure you can change the sensitivity of the pads, 3-100
 Automatically configured when you set the `CARRIER_CASE` boolean, by default is false (sensitivity threshold 4)
 
 ```cpp

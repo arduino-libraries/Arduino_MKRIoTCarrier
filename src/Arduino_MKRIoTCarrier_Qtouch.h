@@ -64,7 +64,7 @@ class MKRIoTCarrierQtouch{
 
     //Config
     bool setOnChange = false;       //Touch on change
-    bool setOnNormal = false;       //Allways read
+    bool setOnNormal = false;       //Always read
     bool setOnUp = false;           //When the pad is not being touched
     bool setOnDown = false;         //When is pressed, to make 2 Downs you need to touch it, release it and touch it again
 };
