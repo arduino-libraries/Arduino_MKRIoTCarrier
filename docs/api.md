@@ -1,27 +1,27 @@
 # MKR IoT Carrier library - TEST in-progress
 
 ## Class1
-    ### `method1()`
-    #### Syntax
+### `method1()`
+#### Syntax
 
-    ```
-    servo.attach(pin) 
-    servo.attach(pin, min, max)
-    ```
+```
+servo.attach(pin) 
+servo.attach(pin, min, max)
+```
 
-    #### Parameters
+#### Parameters
 
-    * _servo_: a variable of type `Servo`
+* _servo_: a variable of type `Servo`
 
-    #### Example
-    ```
-    #include <Servo.h> 
-    ```
+#### Example
+```
+#include <Servo.h> 
+```
 
-    #### See also
+#### See also
 
-    * [test1()](#test1)
-    * [test2()](#test2)
+* [test1()](#test1)
+* [test2()](#test2)
 
 ## Class2
 
