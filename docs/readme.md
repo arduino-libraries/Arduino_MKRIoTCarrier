@@ -102,7 +102,55 @@ Read the state of the pads and save them to be analyze in the different type of 
 Buttons.update()
 ```
 
-### ButtonX class
+Get the status of the Buttons
+
+Buttons selector from `TOUCH0` to `TOUCH4`
+
+```cpp
+Buttons.getTouch(TOUCHX)
+
+Buttons.onTouchDown(TOUCHX)
+
+Buttons.onTouchUp(TOUCHX)
+
+Buttons.onTouchChange(TOUCHX)
+```
+
+In case you have another enclosure you can change the sensitivity of the pads, 50-255
+Automatically configured when you set the `CARRIER_CASE` boolean, by default is false (sensitivity threshold 200)
+
+```cpp
+Buttons.updateConfig(int newSens)
+```
+
+#### Syntax example
+```cpp
+#include <Arduino_MKRIoTCarrier.h>
+MKRIoTCarrier carrier;
+
+void setup(){
+   Serial.begin(9600);
+   CARRIER_CASE = true/false;
+   carrier.begin();
+}
+
+void loop(){
+   carrier.Buttons.update();	// Read the buttons state
+   
+   //Check if the Button 0 is being touched
+   if (carrier.Buttons.getTouch(TOUCH0)){
+      Serial.println("Touching Button 00");
+   }
+   
+   //You can replace getTouch(), with the other types of touch events
+   //If you use more than one type of events in the same Button its not going to be stable, watch out
+   //In case you need it, after each touch event make a Buttons.update() to read it correctly
+}
+
+```
+
+
+### ButtonX class (**Deprecated**)
 
 Button0 - Button4
 
@@ -126,8 +174,8 @@ Get both, touched and released
 ButtonX.onTouchChange()
 ```
 
-In case you have another enclosure you can change the sensitivity of the pads, 3-100
-Automatically configured when you set the `CARRIER_CASE` boolean, by default is false (sensitivity threshold 4)
+In case you have another enclosure you can change the sensitivity of the pads, 5-255
+Automatically configured when you set the `CARRIER_CASE` boolean, by default is false (sensitivity threshold 200)
 
 ```cpp
 ButtonX.updateConfig(int newSens)
@@ -149,7 +197,7 @@ void loop(){
    
    //Check if the Button 0 is being touched
    if (carrier.Button0.getTouch()){
-      Serial.println("Touching Button 1");
+      Serial.println("Touching Button 00");
    }
    
    //You can replace getTouch(), with the other types of touch events
@@ -346,7 +394,7 @@ Saves the selected color to print the text until the color is changed again
 ```
 Sets the size of the text that is gonna be printed
 
-```cpp
+```cpp 
    display.setTextWrap(True/False)
 ```
 Set the auto wrap of the text, if it is not the text will not jump to the next line.
