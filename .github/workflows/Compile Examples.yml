@@ -57,8 +57,8 @@ jobs:
             - name: Adafruit GFX Library
             - name: Adafruit ST7735 and ST7789 Library
             - name: Arduino_MCHPTouch
+            - name: AnimatedGIF
           sketch-paths: |
-            # Ignoring Display/AnimatedGif compiling the rest of them
             - './examples/Actuators/'
             - './examples/All_Features/'
             - './examples/Grove_Inputs/'
@@ -68,6 +68,7 @@ jobs:
             - './examples/TouchPads'
             - './examples/Display/Compose_images/'
             - './examples/Display/Graphics/'
+            - './examples/Display/Show_GIF'
             
           enable-deltas-report: true
           sketches-report-path: ${{ env.SKETCHES_REPORTS_PATH }}
