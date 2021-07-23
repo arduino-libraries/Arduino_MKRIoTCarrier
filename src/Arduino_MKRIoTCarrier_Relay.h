@@ -26,14 +26,14 @@
 class MKRIoTCarrier_Relay{
     public: 
     MKRIoTCarrier_Relay(int pin);
-    
+    void begin();
     void open();
     void close();
-
+    int getPin();
     int getStatus();
 
     private:
-    int _pin;
+    const int _pin;
     int _status;
 };
 

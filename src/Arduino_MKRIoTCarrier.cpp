@@ -71,9 +71,11 @@ int MKRIoTCarrier::begin() {
     }
     return false;
   }
-
+  Relay1.begin();
+  Relay2.begin();
   if(!SD.begin(SD_CS)) {
     Serial.println("Sd card not detected");
   }
+
   return true;
 }
