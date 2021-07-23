@@ -20,13 +20,16 @@
 
 #include "Arduino_MKRIoTCarrier_Relay.h"
 
-MKRIoTCarrier_Relay::MKRIoTCarrier_Relay(int pin){
-    _pin = pin;
+MKRIoTCarrier_Relay::MKRIoTCarrier_Relay(int pin):_pin{pin}
+{
+}
+void MKRIoTCarrier_Relay::begin(){
     pinMode(_pin ,OUTPUT);
     close();
-    
 }
-
+int MKRIoTCarrier_Relay::getPin(){
+    return _pin;
+}
 //NC state
 void MKRIoTCarrier_Relay::close(){
     digitalWrite(_pin , LOW);
