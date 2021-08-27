@@ -44,7 +44,7 @@
 #include <SPI.h>
 
 //RGB LEDs
-#include <Adafruit_DotStar.h>
+#include <Arduino_APA102.h>
 #define NUMPIXELS  5 // Number of LEDs in strip
 #define DATAPIN    5
 #define CLOCKPIN   4
@@ -121,7 +121,7 @@ class MKRIoTCarrier{
     Adafruit_ST7789 display = Adafruit_ST7789(&SPI, TFT_CS, TFT_DC, -1);
 	
     //RGB LEDs
-    Adafruit_DotStar leds = Adafruit_DotStar(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
+    Arduino_APA102 leds = Arduino_APA102(NUMPIXELS, DATAPIN, CLOCKPIN);
   private:
 };
 #endif
