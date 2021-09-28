@@ -21,7 +21,7 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 
-  CARRIER_CASE = false;
+  carrier.noCase();
   if (!carrier.begin()) {
     Serial.println("Failed to initialize!");
 

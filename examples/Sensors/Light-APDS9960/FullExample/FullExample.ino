@@ -21,7 +21,7 @@ void setup() {
   Serial.begin(9600);
   while (!Serial); // Wait for serial monitor to open
 
-  CARRIER_CASE = false;
+  carrier.noCase();
   if (!carrier.begin()) {
     Serial.println("Error");
     while (true); // Stop forever

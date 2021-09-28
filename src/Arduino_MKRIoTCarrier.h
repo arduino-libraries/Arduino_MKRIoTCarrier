@@ -93,6 +93,10 @@ class MKRIoTCarrier{
     MKRIoTCarrier();
     int begin();
 
+    // Case
+    void withCase() { CARRIER_CASE = true; };
+    void noCase()   { CARRIER_CASE = false; };
+
     //Sensors
     APDS9960& Light = APDS;
     LPS22HBClass& Pressure = BARO;

@@ -58,8 +58,6 @@ MKRIoTCarrier carrier;
 
 setup(){
 Serial.begin(9600);
-//This will adjust the sensitivity of the touch pads, not mandatory to set it, by default is false
-CARRIER_CASE = false; 
 if(!carrier.begin(){  //It will see any sensor failure
    Serial.println("Failure on init");
    while(1);
@@ -84,7 +82,6 @@ MKRIoTCarrier carrier;
 File myFile;
 
 setup(){
-   CARRIER_CASE = false; 
    carrier.begin();  //SD card initialized here
    
    myFile = SD.open("test.txt", FILE_WRITE);
@@ -127,7 +124,7 @@ ButtonX.onTouchChange()
 ```
 
 In case you have another enclosure you can change the sensitivity of the pads, 3-100
-Automatically configured when you set the `CARRIER_CASE` boolean, by default is false (sensitivity threshold 4)
+Automatically configured when you call `carrier.withCase()`, by default is false (sensitivity threshold 4)
 
 ```cpp
 ButtonX.updateConfig(int newSens)
@@ -140,7 +137,6 @@ MKRIoTCarrier carrier;
 
 void setup(){
    Serial.begin(9600);
-   CARRIER_CASE = true/false;
    carrier.begin();
 }
 
@@ -204,7 +200,6 @@ MKRIoTCarrier carrier;
 uint32_t myCustomColor = carrier.leds.Color(255,100,50);
 
 void setup(){
-   CARRIER_CASE = false;
    carrier.begin();
    carrier.leds.fill(myCustomColor, 0, 5);
    carrier.leds.show();

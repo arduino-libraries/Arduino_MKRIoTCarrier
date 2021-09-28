@@ -20,7 +20,6 @@ int noteDurations[] = {
 };
 
 void setup() {
-  CARRIER_CASE = false;
   carrier.begin();
   
   // iterate over the notes of the melody:

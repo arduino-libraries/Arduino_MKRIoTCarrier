@@ -15,7 +15,7 @@ uint32_t orange = carrier.leds.Color(50, 242, 0);
 
 void setup() {
   Serial.begin(9600);
-  CARRIER_CASE = false;
+  carrier.noCase();
   carrier.begin();
 
   uint16_t time = millis();

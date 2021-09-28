@@ -1,8 +1,8 @@
 #include "Arduino_MKRIoTCarrier.h"
 MKRIoTCarrier carrier;
 
-// When CARRIER_CASE is false it's set to 100 (closer)
-// When CARRIER_CASE is true it's set to 4  (further)
+// When calling carrier.noCase() (default) it's set to 100 (closer)
+// When calling carrier.case() it's set to 4  (further)
 // But if you use Buttons.updateConfig(value) It will not set the above values
 
 unsigned int threshold = 98;
@@ -14,7 +14,7 @@ void setup() {
   while (!Serial);
 
   carrier.begin();
-  //CARRIER_CASE = false;
+  //carrier.noCase();
   //Now we can set our custom touch threshold
   // First we update all the buttons with the new threshold
   // Then we overwrite individually one of them (they can be all set individually too)
