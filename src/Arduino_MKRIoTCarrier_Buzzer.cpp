@@ -37,7 +37,7 @@ void MKRIoTCarrier_Buzzer::noSound(){
 }
 
 void MKRIoTCarrier_Buzzer::beep(int freq, unsigned long duration) {
-    carrier.Buzzer.sound(freq);
+    this->sound(freq);
     delay(duration);
-    carrier.Buzzer.noSound();
+    this->noSound();
 }
