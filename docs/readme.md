@@ -170,6 +170,12 @@ Equivalent to noTone(), it will stop the tone signal
 Buzzer.noSound()
 ```
 
+To emit a beep you can use the `beep()` method:
+
+```
+Buzzer.beep();
+```
+
 ### Relay class
 
 Control both relays and get the status of them
