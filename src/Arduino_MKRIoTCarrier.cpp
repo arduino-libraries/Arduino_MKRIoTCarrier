@@ -28,6 +28,17 @@ MKRIoTCarrier::MKRIoTCarrier() {
 }
 
 int MKRIoTCarrier::begin() {
+
+  //Only when IoT Cloud library is included
+  #if defined MKRIoTCarrier_Cloud
+    while(ArduinoCloud.connected() != 1){
+      ArduinoCloud.update();
+      delay(500);
+    } 
+    
+    delay(500); 
+  #endif
+
   //Display
   display.init(240, 240);//.begin(true);      // Initialize ST7789 screen
   pinMode(3,INPUT_PULLUP);     // RESET fix
@@ -50,7 +61,7 @@ int MKRIoTCarrier::begin() {
   //PMIC init
   PMIC.begin();
   PMIC.enableBoostMode();
-
+  
   //Sensors
   uint8_t sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3;
 
@@ -76,6 +87,6 @@ int MKRIoTCarrier::begin() {
   if(!SD.begin(SD_CS)) {
     Serial.println("Sd card not detected");
   }
-
+  
   return true;
 }
