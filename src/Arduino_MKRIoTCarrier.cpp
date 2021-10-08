@@ -23,19 +23,31 @@
 //Touch pads values for using the case or just directly on the board
 //Define on the sketch to use it
 bool CARRIER_CASE = false;
-    
+#if defined MKRIoTCarrier_Cloud
+// IoT Cloud connection
+  bool _cloudConnected = false;
+  void _onCloudConnect(){
+    _cloudConnected = true;
+  }
+#endif
+
 MKRIoTCarrier::MKRIoTCarrier() {
+#if defined MKRIoTCarrier_Cloud
+  ArduinoCloud.addCallback(ArduinoIoTCloudEvent::CONNECT, _onCloudConnect);
+#endif
 }
 
 int MKRIoTCarrier::begin() {
 
   //Only when IoT Cloud library is included
   #if defined MKRIoTCarrier_Cloud
-    while(ArduinoCloud.connected() != 1){
+    //if(ArduinoCloud.connected() != 1){
+    if(Serial){
+      Serial.println("The carrier will be initialize after connecting with the IoT Cloud");
+    }
+    while(!_cloudConnected){
       ArduinoCloud.update();
-      delay(500);
-    } 
-    
+    }
     delay(500); 
   #endif
 
