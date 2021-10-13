@@ -102,35 +102,33 @@ Read the state of the pads and save them to be analyze in the different type of 
 Buttons.update()
 ```
 
-### ButtonX class
-
-Button0 - Button4
+Use TOUCHX being X a number from 0 to 4 (Button00 - Button04)
 
 Get if the pad is getting touched, true until it gets released
 ```cpp
-ButtonX.getTouch()
+Buttons.getTouch(TOUCHX)
 ```
 
 Get when have been a touch down
 ```cpp 
-ButtonX.onTouchDown()
+Buttons.onTouchDown(TOUCHX)
 ```
 
 Get when the button has been released
 ```cpp
-ButtonX.onTouchUp()
+Buttons.onTouchUp(TOUCHX)
 ```
 
 Get both, touched and released
 ```cpp
-ButtonX.onTouchChange()
+Buttons.onTouchChange(TOUCHX)
 ```
 
 In case you have another enclosure you can change the sensitivity of the pads, 3-100
 Automatically configured when you set the `CARRIER_CASE` boolean, by default is false (sensitivity threshold 4)
 
 ```cpp
-ButtonX.updateConfig(int newSens)
+Buttons.updateConfig(int newSens)
 ```
 
 #### Syntax example
@@ -148,8 +146,8 @@ void loop(){
    carrier.Buttons.update();	// Read the buttons state
    
    //Check if the Button 0 is being touched
-   if (carrier.Button0.getTouch()){
-      Serial.println("Touching Button 1");
+   if (carrier.Buttons.getTouch(TOUCH0)){
+      Serial.println("Touching Button 0");
    }
    
    //You can replace getTouch(), with the other types of touch events
@@ -302,9 +300,12 @@ Colors : every color with the prefix ‘ST77XX_’ i.e. ST77XX_BLACK. Colors ava
 
 In order to turn on the screen you will need to add this inside the setup()
 (already inside the main begin())
+
+```cpp
 display.init(240, 240);
 pinMode(TFT_BLACKLIGHT, OUTPUT);
 digitalWrite(TFT_BLACKLIGHT,HIGH);
+```
 
 Colors : every color with the prefix ‘ST77XX_’ i.e. ST77XX_BLACK. Colors available from the library are BLACK, WHITE, RED, GREEN, BLUE, CYAN, MAGENTA, YELLOW, ORANGE
 
