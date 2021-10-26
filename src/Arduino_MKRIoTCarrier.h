@@ -42,9 +42,10 @@
 #include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
 #include <SPI.h>
+#include <Arduino_MKRIoTCarrier_Display.h>
 
 //RGB LEDs
-#include <Adafruit_DotStar.h>
+#include <Arduino_APA102.h>
 #define NUMPIXELS  5 // Number of LEDs in strip
 #define DATAPIN    5
 #define CLOCKPIN   4
@@ -118,10 +119,10 @@ class MKRIoTCarrier{
     MKRIoTCarrierQtouch Button4 __attribute__((deprecated)) = MKRIoTCarrierQtouch(TOUCH4);
 
     //Display
-    Adafruit_ST7789 display = Adafruit_ST7789(&SPI, TFT_CS, TFT_DC, -1);
-	
+    //Adafruit_ST7789 display = Adafruit_ST7789(&SPI, TFT_CS, TFT_DC, -1);
+    Arduino_MKRIoTCarrier_Display display = Arduino_MKRIoTCarrier_Display(&SPI, TFT_CS, TFT_DC, -1);
     //RGB LEDs
-    Adafruit_DotStar leds = Adafruit_DotStar(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
+    Arduino_APA102 leds = Arduino_APA102(NUMPIXELS, DATAPIN, CLOCKPIN);
   private:
 };
 #endif
