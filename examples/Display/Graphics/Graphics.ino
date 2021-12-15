@@ -11,7 +11,7 @@ void setup(void) {
   
   Serial.begin(9600);
   Serial.print(F("Hello! ST77xx TFT Test"));
-  CARRIER_CASE = false;
+  carrier.noCase();
   carrier.begin();
 
   uint16_t time = millis();

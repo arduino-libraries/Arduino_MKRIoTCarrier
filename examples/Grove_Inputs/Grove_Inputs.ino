@@ -11,7 +11,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   while(!Serial);
-  CARRIER_CASE = false;
+  carrier.noCase();
   carrier.begin();
   pinMode(moisture,INPUT);
   pinMode(pir,INPUT);

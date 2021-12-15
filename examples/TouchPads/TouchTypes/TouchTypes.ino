@@ -17,8 +17,7 @@ MKRIoTCarrier carrier;
 void setup() {
   Serial.begin(9600);
   while (!Serial);
-  // Qtouch initialization
-  CARRIER_CASE = false;
+  carrier.noCase();
   if (!carrier.begin()) {
     Serial.println("Error in sensors initialization!");
     while (1);

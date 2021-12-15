@@ -11,7 +11,7 @@ void setup() {
   }
 
   //  Init the entire Carrier
-  CARRIER_CASE = false;
+  carrier.noCase();
   carrier.begin();
   
   // open the file. note that only one file can be open at a time,

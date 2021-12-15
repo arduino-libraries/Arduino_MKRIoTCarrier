@@ -8,7 +8,7 @@ void setup() {
   while (!Serial);
 
   //Init all the components from the board
-  CARRIER_CASE = false;
+  carrier.noCase();
   carrier.begin();
 }
 

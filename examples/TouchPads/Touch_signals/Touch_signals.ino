@@ -7,7 +7,7 @@ int msr[5];
 
 void setup() {
   // put your setup code here, to run once:
-  //CARRIER_CASE = false;     //No needed to use it, default false
+  //carrier.noCase();     //No need to use it, default false
   Serial.begin(9600);
   carrier.begin();
   

@@ -24,7 +24,7 @@ void setup() {
   while (!Serial);  //Wait to open the Serial monitor to start the program and see details on errors
 
   //Init everything and outputs the errors
-  CARRIER_CASE = false;
+  carrier.noCase();
   carrier.begin();
 }
 

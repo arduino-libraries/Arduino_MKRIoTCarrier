@@ -6,7 +6,7 @@ void setup() {
 
   Serial.begin(9600);
   Serial.println("Init");
-  CARRIER_CASE = false;
+  carrier.noCase();
   carrier.begin();
 }
 

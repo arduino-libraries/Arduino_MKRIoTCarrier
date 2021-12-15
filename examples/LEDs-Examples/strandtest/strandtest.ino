@@ -4,7 +4,7 @@ MKRIoTCarrier carrier;
 #define NUMPIXELS 5
 
 void setup() {
-  CARRIER_CASE = false;
+  carrier.noCase();
   carrier.begin();
 }
 

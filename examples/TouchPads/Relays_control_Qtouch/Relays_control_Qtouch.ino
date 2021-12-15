@@ -16,7 +16,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   
-  CARRIER_CASE = false;
+  carrier.noCase();
   carrier.begin();
 
   carrier.leds.setPixelColor(0, c_green);
