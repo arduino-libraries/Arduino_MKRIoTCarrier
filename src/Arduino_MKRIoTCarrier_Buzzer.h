@@ -31,6 +31,8 @@ class MKRIoTCarrier_Buzzer{
     void sound(int freq);
    
     void noSound();
+
+    void beep(int freq = 800, unsigned long duration = 20);
     
     private:
     int _pin;

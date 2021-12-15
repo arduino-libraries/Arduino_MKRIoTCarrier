@@ -35,3 +35,9 @@ void MKRIoTCarrier_Buzzer::sound(int freq){
 void MKRIoTCarrier_Buzzer::noSound(){
     noTone(_pin);
 }
+
+void MKRIoTCarrier_Buzzer::beep(int freq, unsigned long duration) {
+    this->sound(freq);
+    delay(duration);
+    this->noSound();
+}
