@@ -19,8 +19,7 @@ void setup() {
   // First we update all the buttons with the new threshold
   // Then we overwrite individually one of them (they can be all set individually too)
   carrier.Buttons.updateConfig(threshold);
-  carrier.Buttons.updateConfig(threshold_btn_0);
-
+  carrier.Buttons.updateConfig(threshold_btn_0, TOUCH0);
 }
 
 void loop() {
