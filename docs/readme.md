@@ -220,7 +220,7 @@ leds.begin()
 
 Sets the color of the index’s LED
 ```cpp
-leds.setPixelColor(index, green, red, blue)
+leds.setPixelColor(index, red, green, blue)
 ```
 
 In case you have custom colors you can use this method too
@@ -250,7 +250,7 @@ leds.fill(color, firstLedToCount, count)
 
 Save your custom color:
 ```cpp
-uint32_t myColor = carrier.leds.Color(green, red, blue)
+uint32_t myColor = carrier.leds.Color(red, green, blue)
 ```
 
 ### Pressure sensor - LPS22HB (Barometric)
