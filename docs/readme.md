@@ -263,7 +263,7 @@ pressure = carrier.Pressure.readPressure()
 ```
 
 ### IMU - LSM6DS3
-Visit our reference about [LSM6DS3](https://www.arduino.cc/en/Reference/Arduino_LSM6DS3)
+Visit our reference about [LSM6DS3](https://www.arduino.cc/reference/en/libraries/arduino_lsm6ds3/)
 
 **Syntax Example**
 ```cpp
