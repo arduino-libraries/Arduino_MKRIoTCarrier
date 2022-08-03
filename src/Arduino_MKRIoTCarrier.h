@@ -22,26 +22,11 @@
 #define ARDUINO_MKRIoTCarrier_h
 
 #include <Arduino.h>
-#include <Wire.h>
+#include <MKRIoTCarrierDefines.h>
 
-#include <Arduino_PMIC.h>       //PMIC
-
-//Sensor libraries
-#include <Arduino_APDS9960.h>   //Ambient light
-#include <Arduino_LPS22HB.h>    //Pressure sensor
-#include <Arduino_LSM6DS3.h>    //IMU
-#include <Arduino_HTS221.h>     // env sensor
-
-#include <Arduino_MKRIoTCarrier_Relay.h> //Relays
-#include <Arduino_MKRIoTCarrier_Buzzer.h>//Buzzer
-#include <Arduino_MKRIoTCarrier_Qtouch.h>//Buttons
-#include <SD.h>                  //SD card
-
-//Display
-#include <Adafruit_GFX.h>    // Core graphics library
-#include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
-#include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
-#include <SPI.h>
+#include <IMUClass.h>    //IMU
+#include <PressureClass.h>    //IMU
+#include <EnvClass.h>    //IMU
 
 //RGB LEDs
 #include <Adafruit_DotStar.h>
@@ -92,6 +77,7 @@ class MKRIoTCarrier{
   public:
     MKRIoTCarrier();
     int begin();
+    static int getBoardRevision();
 
     // Case
     void withCase() { CARRIER_CASE = true; };
@@ -99,9 +85,9 @@ class MKRIoTCarrier{
 
     //Sensors
     APDS9960& Light = APDS;
-    LPS22HBClass& Pressure = BARO;
-    LSM6DS3Class& IMUmodule  = IMU;
-    HTS221Class& Env = HTS;
+    PressureClass Pressure{MKRIoTCarrier::getBoardRevision};
+    IMUClass IMUmodule{MKRIoTCarrier::getBoardRevision};
+    EnvClass Env{MKRIoTCarrier::getBoardRevision};
 
     //Misc
     //Relays
@@ -126,5 +112,7 @@ class MKRIoTCarrier{
 	
     //RGB LEDs
     Adafruit_DotStar leds = Adafruit_DotStar(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BGR);
+  private:
+    int _revision;
 };
 #endif
