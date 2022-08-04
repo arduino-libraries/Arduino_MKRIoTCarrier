@@ -35,8 +35,7 @@
 #define CLOCKPIN   4
 
 //Taken from the carrier schematics
-#define RELAY_1     14
-#define RELAY_2     13
+
 #define BUZZER      7
 
 #define GROVE_AN1   A5
@@ -73,6 +72,11 @@ enum {
   RIGHT = 0
 };
 
+typedef enum {
+  RELAY_1 = 1,
+  RELAY_2
+} Relay_t;
+
 class MKRIoTCarrier{
   public:
     MKRIoTCarrier();
@@ -91,8 +95,8 @@ class MKRIoTCarrier{
 
     //Misc
     //Relays
-    MKRIoTCarrier_Relay Relay1 = MKRIoTCarrier_Relay(RELAY_1);    //Relay 1 , pin 14
-    MKRIoTCarrier_Relay Relay2 = MKRIoTCarrier_Relay(RELAY_2);    //Relay 2 , pin 13
+    MKRIoTCarrier_Relay Relay1 = MKRIoTCarrier_Relay{RELAY_1,MKRIoTCarrier::getBoardRevision};   
+    MKRIoTCarrier_Relay Relay2 = MKRIoTCarrier_Relay{RELAY_2,MKRIoTCarrier::getBoardRevision};   
 
     //Buzzer
     MKRIoTCarrier_Buzzer Buzzer =  MKRIoTCarrier_Buzzer(BUZZER);  //Buzzer, pin 6
@@ -113,6 +117,9 @@ class MKRIoTCarrier{
     //RGB LEDs
     Adafruit_DotStar leds = Adafruit_DotStar(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BGR);
   private:
-    int _revision;
+    static int _revision;
+    int _relay1_pin;
+    int _relay2_pin;
 };
+
 #endif

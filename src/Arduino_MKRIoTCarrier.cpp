@@ -27,10 +27,13 @@ bool CARRIER_CASE = false;
 MKRIoTCarrier::MKRIoTCarrier() {
 }
 
+int MKRIoTCarrier::_revision = 0;
+
 int MKRIoTCarrier::begin() {
 
   pinMode(AREF_PIN,INPUT_PULLDOWN);
-  _revision = digitalRead(AREF_PIN);
+  MKRIoTCarrier::_revision = digitalRead(AREF_PIN);
+
   //Display
   display.init(240, 240);//.begin(true);      // Initialize ST7789 screen
   pinMode(3,INPUT_PULLUP);     // RESET fix
@@ -53,13 +56,13 @@ int MKRIoTCarrier::begin() {
   //PMIC init
   PMIC.begin();
   PMIC.enableBoostMode();
+  
+  Relay1.begin();
+  Relay2.begin();
 
   //Sensors
-  if (_revision == BOARD_REVISION_2) {
-    uint8_t sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2;
-  } else {
-    uint8_t sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3;
-  }
+  uint8_t  sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3;
+  
 
   //If some of the sensors are not connected
   if(sensorsOK > 0 ){
@@ -73,15 +76,14 @@ int MKRIoTCarrier::begin() {
     if(sensorsOK & 0b0100){
       Serial.println("IMU is not connected");
     }
-    if (_revision != BOARD_REVISION_2) {
+    if (MKRIoTCarrier::_revision != BOARD_REVISION_2) {
       if(sensorsOK & 0b1000){
         Serial.println("Environmental sensor is not connected!");
       }
     }
     return false;
   }
-  Relay1.begin();
-  Relay2.begin();
+  
   if(!SD.begin(SD_CS)) {
     Serial.println("Sd card not detected");
   }
@@ -90,5 +92,5 @@ int MKRIoTCarrier::begin() {
 }
 
 int MKRIoTCarrier::getBoardRevision() {
-  return _revision;
+  return MKRIoTCarrier::_revision;
 }

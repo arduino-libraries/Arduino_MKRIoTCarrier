@@ -20,10 +20,34 @@
 
 #include "Arduino_MKRIoTCarrier_Relay.h"
 
-MKRIoTCarrier_Relay::MKRIoTCarrier_Relay(int pin):_pin{pin}
+MKRIoTCarrier_Relay::MKRIoTCarrier_Relay(int index, getRev_t getRev):_index{index}
 {
+    board_revision = getRev;
 }
 void MKRIoTCarrier_Relay::begin(){
+    
+    _revision = board_revision();
+    
+    if(_revision) 
+    {
+        
+        /*revisione 2 della scheda con pull up su AREF */
+        if(_index == 1) {
+            _pin = 1;
+        }
+        else if(_index == 2) {
+            _pin = 2;
+        }
+    }
+    else {
+        
+        if(_index == 1) {
+            _pin = 14;
+        }
+        else if(_index == 2) {
+            _pin = 13;
+        }
+    }
     pinMode(_pin ,OUTPUT);
     close();
 }
@@ -44,7 +68,6 @@ void MKRIoTCarrier_Relay::open(){
 }
 
 int MKRIoTCarrier_Relay::getStatus(){
-    //Serial.println("status");
-    //Serial.println(_status , BIN);
+    
     return (int)_status;
 }

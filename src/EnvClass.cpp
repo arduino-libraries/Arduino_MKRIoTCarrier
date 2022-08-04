@@ -22,7 +22,7 @@
 extern Bme68x* BME;
 
 // sets function called on slave write
-void EnvClass::EnvClass( int (*getRevision)(void) )
+EnvClass::EnvClass( getRev_t getRevision )
 {
   //If board_revision = 1, IMU module is LSM6DSOX, otherwhise is LSM6DS3
   board_revision = getRevision;
@@ -68,30 +68,29 @@ void EnvClass::end()
   }
 }
 
-int EnvClass::readTemperature(int units = CELSIUS)
+float EnvClass::readTemperature(int units /*= CELSIUS*/)
 {
   if (_revision == BOARD_REVISION_2) {
     bme68xData data;
     uint8_t nFieldsLeft = 0;
-    if (BME->fetchData())
-    {
-      nFieldsLeft = bme.getData(data);
-      return data.temperature;
-    }
+    uint8_t fetchDataResult = BME->fetchData();
+    nFieldsLeft = BME->getData(data);
+    return data.temperature;
   }
-  return HTS221->readTemperature(units);
+  else {
+    return HTS221->readTemperature(units);
+  }
 }
 
-int EnvClass::readHumidity()
+float EnvClass::readHumidity()
 {
   if (_revision == BOARD_REVISION_2) {
     bme68xData data;
     uint8_t nFieldsLeft = 0;
-    if (BME->fetchData())
-    {
-      nFieldsLeft = bme.getData(data);
-      return data.humidity;
-    }
+    uint8_t fetchDataResult = BME->fetchData();
+    nFieldsLeft = BME->getData(data); 
+    return data.humidity;
+    
   }
   return HTS221->readHumidity();
 }

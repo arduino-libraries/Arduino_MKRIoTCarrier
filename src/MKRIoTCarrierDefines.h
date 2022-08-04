@@ -24,8 +24,15 @@
 #include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
 
+
+/* Type for getRevision functions */
+using getRev_t = int (*)();
+
 #define BOARD_REVISION_2    1
 #define BME_SLAVE_ADDRESS   0x76
+
+#define LSM6DSOX_ADDRESS           0x6A
+#define LSM6DS3_ADDRESS            0x6A
 
 #ifdef ARDUINO_SAMD_MKRWIFI1010
 #define AREF_PIN 25

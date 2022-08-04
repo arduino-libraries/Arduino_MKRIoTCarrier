@@ -23,9 +23,7 @@ class IMUClass {
     float gyroscopeSampleRate(); // Sampling rate of the sensor.
     int gyroscopeAvailable(); // Check for available data from gyroscope
 
-    // Temperature
-    int readTemperature(int & temperature_deg);
-    int temperatureAvailable();
+    
 
   private:
     LSM6DS3Class* LSM6DS3;

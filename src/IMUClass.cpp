@@ -20,7 +20,7 @@
 #include "IMUClass.h"
 
 // sets function called on slave write
-void IMUClass::IMUClass( int (*getRevision)(void) )
+IMUClass::IMUClass( getRev_t getRevision)
 {
   //If board_revision = 1, IMU module is LSM6DSOX, otherwhise is LSM6DS3
   board_revision = getRevision;
@@ -38,9 +38,9 @@ int IMUClass::begin()
     if (LSM6DSOX == nullptr) return 0;
     return LSM6DSOX->begin();
   } else {
-    LSM6DS3 = new LSM6DS3Class;
+    LSM6DS3 = new LSM6DS3Class(Wire, LSM6DS3_ADDRESS);
     if (LSM6DS3 == nullptr) return 0;
-    return LSM6DS3->begin(Wire, LSM6DS3_ADDRESS);
+    return LSM6DS3->begin();
   }
 }
 
@@ -95,21 +95,7 @@ int IMUClass::gyroscopeAvailable()
   return LSM6DS3->gyroscopeAvailable();
 }
 
-int IMUClass::readTemperature(int & temperature_deg)
-{
-  if (_revision == BOARD_REVISION_2) {
-    return LSM6DSOX->readTemperature(temperature_deg);
-  }
-  return LSM6DS3->readTemperature(temperature_deg);
-}
 
-int IMUClass::temperatureAvailable()
-{
-  if (_revision == BOARD_REVISION_2) {
-    return LSM6DSOX->temperatureAvailable();
-  }
-  return LSM6DS3->temperatureAvailable();
-}
 
 float IMUClass::gyroscopeSampleRate()
 {

@@ -22,7 +22,7 @@
 Bme68x* BME;
 
 // sets function called on slave write
-void PressureClass::PressureClass( int (*getRevision)(void) )
+PressureClass::PressureClass( getRev_t getRevision)
 {
   //If board_revision = 1, IMU module is LSM6DSOX, otherwhise is LSM6DS3
   board_revision = getRevision;
@@ -69,32 +69,29 @@ void PressureClass::end()
   }
 }
 
-int PressureClass::readPressure(int units)
+float PressureClass::readPressure(int units)
 {
   if (_revision == BOARD_REVISION_2) {
     bme68xData data;
     uint8_t nFieldsLeft = 0;
-    if (BME->fetchData())
-    {
-      nFieldsLeft = bme.getData(data);
-      return data.pressure/1000;
-    }
+    BME->fetchData();
+    nFieldsLeft = BME->getData(data);
+    return data.pressure/1000;
+    
   }
   return LPS22HB->readPressure(units);
 }
 
-int PressureClass::readTemperature()
+float PressureClass::readTemperature()
 {
   if (_revision == BOARD_REVISION_2) {
     bme68xData data;
     uint8_t nFieldsLeft = 0;
-    if (BME->fetchData())
-    {
-      nFieldsLeft = bme.getData(data);
-      return data.temperature;
-    }
+    BME->fetchData();
+    nFieldsLeft = BME->getData(data);
+    return data.temperature;
+    
   }
   return LPS22HB->readTemperature();
 }
 
-Bme68x BME;
