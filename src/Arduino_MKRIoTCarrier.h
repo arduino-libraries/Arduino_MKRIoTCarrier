@@ -54,9 +54,9 @@
 #define LED_CKI     4
 #define LED_SDI     5
 
-#define TFT_CS        2
+#define TFT_CS        13
 #define TFT_RST       -1 // Or set to -1 and connect to Arduino RESET pin
-#define TFT_DC        1
+#define TFT_DC        14
 #define TFT_BACKLIGHT 3
 
 //Touch pads values for using the case or just directly on the board
