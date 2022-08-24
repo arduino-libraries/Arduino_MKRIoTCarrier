@@ -22,7 +22,7 @@
 // sets function called on slave write
 IMUClass::IMUClass( getRev_t getRevision)
 {
-  //If board_revision = 0, IMU module is LSM6DSOX, otherwhise is LSM6DS3
+  //If board_revision = 0, IMU module is LSM6DSOX, otherwise is LSM6DS3
   board_revision = getRevision;
 }
 
