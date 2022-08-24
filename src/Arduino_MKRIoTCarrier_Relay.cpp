@@ -38,7 +38,7 @@ void MKRIoTCarrier_Relay::begin(){
         }
     }
     else {
-        /*revisione 2 della scheda con pull up su AREF */
+        /*carrier's revision 2 with pull down on AREF */
         if(_index == 1) {
             _pin = 1;
         }
