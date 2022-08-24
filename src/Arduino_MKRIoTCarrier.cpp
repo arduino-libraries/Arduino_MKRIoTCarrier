@@ -43,7 +43,7 @@ int MKRIoTCarrier::begin() {
     Adafruit_ST7789 _display = Adafruit_ST7789(TFT_CS, TFT_DC, -1);
     display = _display;
   } else {
-    Adafruit_ST7789 _display = Adafruit_ST7789(TFT_CS_OLD, TFT_DC_OLD, -1);
+    Adafruit_ST7789 _display = Adafruit_ST7789(TFT_CS_REV1, TFT_DC_REV1, -1);
     display = _display;;
   }
 
