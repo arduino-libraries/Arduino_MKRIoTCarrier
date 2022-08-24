@@ -38,12 +38,12 @@
 
 #define BUZZER      7
 
-#define GROVE_AN1   A5
+#define GROVE_AN1   A0
 #define GROVE_AN2   A6
 
 #define SD_CS       0
 
-#define Y0          A0
+#define Y0          A5
 #define Y1          A1
 #define Y2          A2
 #define Y3          A3
@@ -58,6 +58,9 @@
 #define TFT_RST       -1 // Or set to -1 and connect to Arduino RESET pin
 #define TFT_DC        14
 #define TFT_BACKLIGHT 3
+
+#define TFT_CS_OLD        2
+#define TFT_DC_OLD        1
 
 //Touch pads values for using the case or just directly on the board
 //Define on the sketch to use it

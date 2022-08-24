@@ -9,9 +9,6 @@
 #include <Arduino_LPS22HB.h>    //Pressure sensor
 #include "bme68xLibrary.h"
 #include <Arduino_HTS221.h>     // env sensor
-#define IMU IMU6DS3
-#include <Arduino_LSM6DS3.h>
-#undef IMU
 #include <Arduino_LSM6DSOX.h>
 
 #include <Arduino_MKRIoTCarrier_Relay.h> //Relays
@@ -28,7 +25,7 @@
 /* Type for getRevision functions */
 using getRev_t = int (*)();
 
-#define BOARD_REVISION_2    1
+#define BOARD_REVISION_2    0
 #define BME_SLAVE_ADDRESS   0x76
 
 #define LSM6DSOX_ADDRESS           0x6A

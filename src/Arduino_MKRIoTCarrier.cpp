@@ -31,10 +31,22 @@ int MKRIoTCarrier::_revision = 0;
 
 int MKRIoTCarrier::begin() {
 
-  pinMode(AREF_PIN,INPUT_PULLDOWN);
+  pinMode(AREF_PIN,INPUT_PULLUP);
   MKRIoTCarrier::_revision = digitalRead(AREF_PIN);
 
+  if (!CARRIER_CASE) {
+    Buttons.updateConfig(200);
+  }
+
   //Display
+  if (_revision == BOARD_REVISION_2){
+    Adafruit_ST7789 _display = Adafruit_ST7789(TFT_CS, TFT_DC, -1);
+    display = _display;
+  } else {
+    Adafruit_ST7789 _display = Adafruit_ST7789(TFT_CS_OLD, TFT_DC_OLD, -1);
+    display = _display;;
+  }
+
   display.init(240, 240);//.begin(true);      // Initialize ST7789 screen
   pinMode(3,INPUT_PULLUP);     // RESET fix
 
@@ -42,11 +54,7 @@ int MKRIoTCarrier::begin() {
   display.setRotation(2);
   display.fillScreen(ST77XX_BLACK);
 
-  if (!CARRIER_CASE) {
-    Buttons.updateConfig(200);
-  }
-
-  Buttons.begin();    //init buttons
+  Buttons.begin(_revision == BOARD_REVISION_2);    //init buttons
 
   //init LEDs
   leds.begin();

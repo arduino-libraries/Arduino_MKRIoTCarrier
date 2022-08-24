@@ -22,7 +22,7 @@
 // sets function called on slave write
 IMUClass::IMUClass( getRev_t getRevision)
 {
-  //If board_revision = 1, IMU module is LSM6DSOX, otherwhise is LSM6DS3
+  //If board_revision = 0, IMU module is LSM6DSOX, otherwhise is LSM6DS3
   board_revision = getRevision;
 }
 
@@ -33,74 +33,43 @@ IMUClass::~IMUClass()
 int IMUClass::begin()
 {
   _revision = board_revision();
-  if (_revision == BOARD_REVISION_2) {
-    LSM6DSOX = new LSM6DSOXClass(Wire, LSM6DSOX_ADDRESS);
-    if (LSM6DSOX == nullptr) return 0;
-    return LSM6DSOX->begin();
-  } else {
-    LSM6DS3 = new LSM6DS3Class(Wire, LSM6DS3_ADDRESS);
-    if (LSM6DS3 == nullptr) return 0;
-    return LSM6DS3->begin();
-  }
+  LSM6DSOX = new LSM6DSOXClass(Wire, LSM6DSOX_ADDRESS);
+  if (LSM6DSOX == nullptr) return 0;
+  return LSM6DSOX->begin();
 }
 
 void IMUClass::end()
 {
-  if (_revision == BOARD_REVISION_2) {
-    LSM6DSOX->end();
-    delete LSM6DSOX;
-  } else {
-    LSM6DS3->end();
-    delete LSM6DS3;
-  }
+  LSM6DSOX->end();
+  delete LSM6DSOX;
 }
 
 int IMUClass::readAcceleration(float& x, float& y, float& z)
 {
-  if (_revision == BOARD_REVISION_2) {
-    return LSM6DSOX->readAcceleration(x,y,z);
-  }
-  return LSM6DS3->readAcceleration(x,y,z);
+  return LSM6DSOX->readAcceleration(x,y,z);
 }
 
 int IMUClass::accelerationAvailable()
 {
-  if (_revision == BOARD_REVISION_2) {
-    return LSM6DSOX->accelerationAvailable();
-  }
-  return LSM6DS3->accelerationAvailable();
+  return LSM6DSOX->accelerationAvailable();
 }
 
 float IMUClass::accelerationSampleRate()
 {
-  if (_revision == BOARD_REVISION_2) {
-    return LSM6DSOX->accelerationSampleRate();
-  }
-  return LSM6DS3->accelerationSampleRate();
+  return LSM6DSOX->accelerationSampleRate();
 }
 
 int IMUClass::readGyroscope(float& x, float& y, float& z)
 {
-  if (_revision == BOARD_REVISION_2) {
-    return LSM6DSOX->readGyroscope(x,y,z);
-  }
-  return LSM6DS3->readGyroscope(x,y,z);
+  return LSM6DSOX->readGyroscope(x,y,z);
 }
 
 int IMUClass::gyroscopeAvailable()
 {
-  if (_revision == BOARD_REVISION_2) {
-    return LSM6DSOX->gyroscopeAvailable();
-  }
-  return LSM6DS3->gyroscopeAvailable();
+  return LSM6DSOX->gyroscopeAvailable();
 }
-
-
 
 float IMUClass::gyroscopeSampleRate()
 {
-  if (_revision == BOARD_REVISION_2) {
-    return LSM6DSOX->gyroscopeSampleRate();
-  }
-  return LSM6DS3->gyroscopeSampleRate();
+  return LSM6DSOX->gyroscopeSampleRate();
 }

@@ -30,22 +30,20 @@ void MKRIoTCarrier_Relay::begin(){
     
     if(_revision) 
     {
-        
+        if(_index == 1) {
+            _pin = 14;
+        }
+        else if(_index == 2) {
+            _pin = 13;
+        }
+    }
+    else {
         /*revisione 2 della scheda con pull up su AREF */
         if(_index == 1) {
             _pin = 1;
         }
         else if(_index == 2) {
             _pin = 2;
-        }
-    }
-    else {
-        
-        if(_index == 1) {
-            _pin = 14;
-        }
-        else if(_index == 2) {
-            _pin = 13;
         }
     }
     pinMode(_pin ,OUTPUT);

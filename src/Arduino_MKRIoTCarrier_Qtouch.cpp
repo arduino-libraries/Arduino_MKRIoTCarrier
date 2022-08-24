@@ -92,7 +92,8 @@ void MKRIoTCarrierQtouch::updateConfig(int newSens, touchButtons padIndex) {
 
 
 //Manager
-bool MKRIoTCarrierQtouch::begin() {
+bool MKRIoTCarrierQtouch::begin(bool revision) {
+  TOUCH.setTouchPad(revision);
   return TOUCH.begin();
 }
 

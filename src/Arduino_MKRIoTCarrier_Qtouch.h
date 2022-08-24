@@ -38,7 +38,7 @@ class MKRIoTCarrierQtouch{
   public:
     MKRIoTCarrierQtouch();
     MKRIoTCarrierQtouch(touchButtons padIndex);
-    bool begin();
+    bool begin(bool revision);
     bool update();
 
     //Set touch settings

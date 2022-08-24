@@ -26,7 +26,6 @@ class IMUClass {
     
 
   private:
-    LSM6DS3Class* LSM6DS3;
     LSM6DSOXClass* LSM6DSOX;
 
   private:
