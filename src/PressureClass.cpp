@@ -24,7 +24,7 @@ Bme68x* BME;
 // sets function called on slave write
 PressureClass::PressureClass( getRev_t getRevision)
 {
-  //If board_revision = 1, IMU module is LSM6DSOX, otherwhise is LSM6DS3
+  //If board_revision = 1, IMU module is LSM6DSOX, otherwise is LSM6DS3
   board_revision = getRevision;
 }
 
