@@ -53,7 +53,9 @@ int PressureClass::begin()
     BME->setOpMode(BME68X_SEQUENTIAL_MODE);
     return 1;
   } else {
-    LPS22HB = new LPS22HBClass(Wire);
+    if (LPS22HB == nullptr) {
+      LPS22HB = new LPS22HBClass(Wire);
+    }
     if (LPS22HB == nullptr) return 0;
     return LPS22HB->begin();
   }
@@ -63,9 +65,11 @@ void PressureClass::end()
 {
   if (_revision == BOARD_REVISION_2) {
     delete BME;
+    BME = nullptr;
   } else {
     LPS22HB->end();
     delete LPS22HB;
+    LPS22HB = nullptr;
   }
 }
 

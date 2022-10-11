@@ -32,6 +32,7 @@ IMUClass::~IMUClass()
 
 int IMUClass::begin()
 {
+  // TODO: readd  LSM6DS3Class for revision 1
   _revision = board_revision();
   LSM6DSOX = new LSM6DSOXClass(Wire, LSM6DSOX_ADDRESS);
   if (LSM6DSOX == nullptr) return 0;

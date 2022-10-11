@@ -1,3 +1,5 @@
+#ifndef _CARRIE_DEFINES_
+#define _CARRIE_DEFINES_
 
 #include <Wire.h>
 #include <SPI.h>
@@ -25,7 +27,33 @@
 /* Type for getRevision functions */
 using getRev_t = int (*)();
 
-#define BOARD_REVISION_2    0
+typedef enum {
+    BOARD_REVISION_1 = 1,
+    BOARD_REVISION_2 = 2,
+} _mkr_io_carrier_board_revision;
+
+namespace mkr_iot_carrier_rev1 {
+    enum relays {
+        RELAY1 = 14,
+        RELAY2 = 13,
+    };
+    enum display {
+        TFT_CS = 2,
+        TFT_DC = 1,
+    };
+};
+
+namespace mkr_iot_carrier_rev2 {
+    enum relays {
+        RELAY1 = 1,
+        RELAY2 = 2,
+    };
+    enum display {
+        TFT_CS = 13,
+        TFT_DC = 14,
+    };
+};
+
 #define BME_SLAVE_ADDRESS   0x76
 
 #define LSM6DSOX_ADDRESS           0x6A
@@ -33,4 +61,6 @@ using getRev_t = int (*)();
 
 #ifdef ARDUINO_SAMD_MKRWIFI1010
 #define AREF_PIN 25
+#endif
+
 #endif

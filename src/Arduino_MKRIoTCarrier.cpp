@@ -27,12 +27,16 @@ bool CARRIER_CASE = false;
 MKRIoTCarrier::MKRIoTCarrier() {
 }
 
-int MKRIoTCarrier::_revision = 0;
+int MKRIoTCarrier::_revision = -1;
 
 int MKRIoTCarrier::begin() {
 
   pinMode(AREF_PIN,INPUT_PULLUP);
-  MKRIoTCarrier::_revision = digitalRead(AREF_PIN);
+  if (digitalRead(AREF_PIN) == LOW) {
+    MKRIoTCarrier::_revision = BOARD_REVISION_2;
+  } else {
+    MKRIoTCarrier::_revision = BOARD_REVISION_1;
+  }
 
   if (!CARRIER_CASE) {
     Buttons.updateConfig(200);
@@ -40,11 +44,11 @@ int MKRIoTCarrier::begin() {
 
   //Display
   if (_revision == BOARD_REVISION_2){
-    Adafruit_ST7789 _display = Adafruit_ST7789(TFT_CS, TFT_DC, -1);
+    Adafruit_ST7789 _display = Adafruit_ST7789(mkr_iot_carrier_rev2::TFT_CS, mkr_iot_carrier_rev2::TFT_DC, -1);
     display = _display;
   } else {
-    Adafruit_ST7789 _display = Adafruit_ST7789(TFT_CS_REV1, TFT_DC_REV1, -1);
-    display = _display;;
+    Adafruit_ST7789 _display = Adafruit_ST7789(mkr_iot_carrier_rev1::TFT_CS, mkr_iot_carrier_rev1::TFT_DC, -1);
+    display = _display;
   }
 
   display.init(240, 240);//.begin(true);      // Initialize ST7789 screen

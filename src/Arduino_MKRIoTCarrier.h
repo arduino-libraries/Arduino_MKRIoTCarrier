@@ -43,24 +43,13 @@
 
 #define SD_CS       0
 
-#define Y0          A5
-#define Y1          A1
-#define Y2          A2
-#define Y3          A3
-#define Y4          A4
-
 #define INT         6   //Every sensor interrupt pin , PULL-UP
 
 #define LED_CKI     4
 #define LED_SDI     5
 
-#define TFT_CS        13
 #define TFT_RST       -1 // Or set to -1 and connect to Arduino RESET pin
-#define TFT_DC        14
 #define TFT_BACKLIGHT 3
-
-#define TFT_CS_REV1       2
-#define TFT_DC_REV1        1
 
 //Touch pads values for using the case or just directly on the board
 //Define on the sketch to use it
@@ -115,7 +104,7 @@ class MKRIoTCarrier{
     MKRIoTCarrierQtouch Button4 __attribute__((deprecated)) = MKRIoTCarrierQtouch(TOUCH4);
 
     //Display
-    Adafruit_ST7789 display = Adafruit_ST7789(TFT_CS, TFT_DC, -1);
+    Adafruit_ST7789 display = Adafruit_ST7789(-1, -1, -1);
 	
     //RGB LEDs
     Adafruit_DotStar leds = Adafruit_DotStar(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BGR);

@@ -19,6 +19,7 @@
 
 
 #include "Arduino_MKRIoTCarrier_Relay.h"
+#include "MKRIoTCarrierDefines.h"
 
 MKRIoTCarrier_Relay::MKRIoTCarrier_Relay(int index, getRev_t getRev):_index{index}
 {
@@ -28,22 +29,22 @@ void MKRIoTCarrier_Relay::begin(){
     
     _revision = board_revision();
     
-    if(_revision) 
+    if(_revision == BOARD_REVISION_1) 
     {
         if(_index == 1) {
-            _pin = 14;
+            _pin = mkr_iot_carrier_rev1::RELAY1;
         }
         else if(_index == 2) {
-            _pin = 13;
+            _pin = mkr_iot_carrier_rev1::RELAY2;
         }
     }
     else {
         /*carrier's revision 2 with pull down on AREF */
         if(_index == 1) {
-            _pin = 1;
+            _pin = mkr_iot_carrier_rev2::RELAY1;
         }
         else if(_index == 2) {
-            _pin = 2;
+            _pin = mkr_iot_carrier_rev2::RELAY2;
         }
     }
     pinMode(_pin ,OUTPUT);
