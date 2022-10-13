@@ -57,6 +57,8 @@ jobs:
             - name: Adafruit GFX Library
             - name: Adafruit ST7735 and ST7789 Library
             - name: Arduino_MCHPTouch
+            - name: BSEC Software Library
+            - name: Arduino_LSM6DSOX
             - name: TFT_eSPI
           sketch-paths: |
             # Ignoring Display/AnimatedGif compiling the rest of them
