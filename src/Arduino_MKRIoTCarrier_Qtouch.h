@@ -23,6 +23,7 @@
 
 #include "Arduino.h"
 #include "Arduino_MCHPTouch.h"
+#include <MKRIoTCarrierDefines.h>
 
 static bool _available = false;
 
@@ -37,7 +38,8 @@ typedef enum {
 class MKRIoTCarrierQtouch{
   public:
     MKRIoTCarrierQtouch();
-    MKRIoTCarrierQtouch(touchButtons padIndex);
+    MKRIoTCarrierQtouch(int (*)(void));
+    MKRIoTCarrierQtouch(touchButtons padIndex,int (*)(void));
     bool begin();
     bool update();
 
@@ -59,6 +61,8 @@ class MKRIoTCarrierQtouch{
     touchButtons _padID;
     int _padIndex;
 
+    int (*board_revision)(void);
+    int _revision;
 
     bool _touchesPrev[5] = {0, 0, 0, 0, 0};   //To know last touches
 
