@@ -26,8 +26,16 @@ MKRIoTCarrierQtouch::MKRIoTCarrierQtouch() {
 }
 
 //Individual pad
-MKRIoTCarrierQtouch::MKRIoTCarrierQtouch(touchButtons padIndex) {
+MKRIoTCarrierQtouch::MKRIoTCarrierQtouch(touchButtons padIndex,getRev_t getRevision) {
   _padID = padIndex;
+  board_revision = getRevision;
+}
+
+// sets function called on slave write
+MKRIoTCarrierQtouch::MKRIoTCarrierQtouch(getRev_t getRevision)
+{
+  //If board_revision = 0, IMU module is LSM6DSOX, otherwise is LSM6DS3
+  board_revision = getRevision;
 }
 
 bool MKRIoTCarrierQtouch::getTouch(touchButtons padIndex) {
@@ -93,6 +101,22 @@ void MKRIoTCarrierQtouch::updateConfig(int newSens, touchButtons padIndex) {
 
 //Manager
 bool MKRIoTCarrierQtouch::begin() {
+  // FIXME: TODO: check that passing revision makes sense 
+  _revision = board_revision();
+  if (_revision == BOARD_REVISION_2){
+    TOUCH.setTouchPad(mkr_iot_carrier_rev2::Y0,
+                      mkr_iot_carrier_rev2::Y1,
+                      mkr_iot_carrier_rev2::Y2,
+                      mkr_iot_carrier_rev2::Y3,
+                      mkr_iot_carrier_rev2::Y4);
+
+  } else {
+    TOUCH.setTouchPad(mkr_iot_carrier_rev1::Y0,
+                      mkr_iot_carrier_rev1::Y1,
+                      mkr_iot_carrier_rev1::Y2,
+                      mkr_iot_carrier_rev1::Y3,
+                      mkr_iot_carrier_rev1::Y4);
+  }
   return TOUCH.begin();
 }
 
