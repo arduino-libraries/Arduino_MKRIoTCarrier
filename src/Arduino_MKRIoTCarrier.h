@@ -27,6 +27,7 @@
 #include <IMUClass.h>    //IMU
 #include <PressureClass.h>    //IMU
 #include <EnvClass.h>    //IMU
+#include "AirQualityClass.h"
 
 //RGB LEDs
 #include <Adafruit_DotStar.h>
@@ -37,7 +38,6 @@
 //Taken from the carrier schematics
 
 #define BUZZER      7
-
 
 #define SD_CS       0
 
@@ -82,6 +82,7 @@ class MKRIoTCarrier{
     PressureClass Pressure{MKRIoTCarrier::getBoardRevision};
     IMUClass IMUmodule{MKRIoTCarrier::getBoardRevision};
     EnvClass Env{MKRIoTCarrier::getBoardRevision};
+    AirQualityClass AirQuality{MKRIoTCarrier::getBoardRevision};
 
     //Misc
     //Relays

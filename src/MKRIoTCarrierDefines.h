@@ -63,6 +63,7 @@ namespace mkr_iot_carrier_rev1 {
 };
 
 namespace mkr_iot_carrier_rev2 {
+    static Bsec *iaqSensor = nullptr;
     enum relays {
         RELAY1 = 1,
         RELAY2 = 2,
