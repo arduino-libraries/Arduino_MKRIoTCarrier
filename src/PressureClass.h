@@ -13,16 +13,17 @@ class PressureClass {
     void end();
 
     float readPressure(int units = KILOPASCAL);
-    float readTemperature(void);
+    float readTemperature(int units = CELSIUS);
+
+  protected:
+    Bsec* iaqSensor;
 
   private:
   // Helper functions declarations
     int checkIaqSensorStatus(void);
 
     LPS22HBClass* LPS22HB;
-    Bsec *iaqSensor;
-    //LSM6DS3Class& LSM6DS3 = IMU;
-    //LSM6DSOXClass& LSM6DSOX = IMU;
+
 
   private:
 
