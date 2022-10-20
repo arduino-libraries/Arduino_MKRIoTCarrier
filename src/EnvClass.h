@@ -16,13 +16,13 @@ class EnvClass {
     float readTemperature(int units = CELSIUS);
     float readHumidity();
 
+  protected:
+    Bsec* iaqSensor;
+
   private:
     int checkIaqSensorStatus(void);
 
     HTS221Class* HTS221;
-    Bsec* iaqSensor;
-    //LSM6DS3Class& LSM6DS3 = IMU;
-    //LSM6DSOXClass& LSM6DSOX = IMU;
 
   private:
 

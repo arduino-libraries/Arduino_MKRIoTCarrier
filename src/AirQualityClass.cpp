@@ -17,19 +17,19 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "PressureClass.h"
+#include "AirQualityClass.h"
 
 // sets function called on slave write
-PressureClass::PressureClass( getRev_t getRevision)
+AirQualityClass::AirQualityClass( getRev_t getRevision)
 {
   board_revision = getRevision;
 }
 
-PressureClass::~PressureClass()
+AirQualityClass::~AirQualityClass()
 {
 }
 
-int PressureClass::begin()
+int AirQualityClass::begin()
 {
   _revision = board_revision();
   if (_revision == BOARD_REVISION_2) {
@@ -62,16 +62,11 @@ int PressureClass::begin()
       iaqSensor = mkr_iot_carrier_rev2::iaqSensor;
     }
     return 1;
-  } else {
-    if (LPS22HB == nullptr) {
-      LPS22HB = new LPS22HBClass(Wire);
-    }
-    if (LPS22HB == nullptr) return 0;
-    return LPS22HB->begin();
   }
+  return 0;
 }
 
-int PressureClass::checkIaqSensorStatus(void)
+int AirQualityClass::checkIaqSensorStatus(void)
 {
   if (iaqSensor->status != BSEC_OK) {
     if (iaqSensor->status < BSEC_OK) {
@@ -87,45 +82,66 @@ int PressureClass::checkIaqSensorStatus(void)
   return STATUS_OK;
 }
 
-void PressureClass::end()
+void AirQualityClass::end()
 {
   if (_revision == BOARD_REVISION_2) {
     delete iaqSensor;
     iaqSensor = nullptr;
-  } else {
-    LPS22HB->end();
-    delete LPS22HB;
-    LPS22HB = nullptr;
   }
 }
 
-float PressureClass::readPressure(int units)
+float AirQualityClass::readVOC()
 {
   if (_revision == BOARD_REVISION_2) {
     while(!iaqSensor->run()){ }
-    float reading = iaqSensor->pressure/1000;
-    if (units == MILLIBAR) { // 1 kPa = 10 millibar
-      return reading * 10;
-    } else if (units == PSI) {  // 1 kPa = 0.145038 PSI
-      return reading * 0.145038;
-    } else {
-      return reading;
-    }
+    float reading = iaqSensor->breathVocEquivalent;
+    return reading;
   }
-  return LPS22HB->readPressure(units);
 }
 
-float PressureClass::readTemperature(int units /*= CELSIUS*/)
+float AirQualityClass::readGasResistor()
 {
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){}
-    float reading = iaqSensor->temperature;
-    if (units == FAHRENHEIT){
-      return (reading * 9.0 / 5.0) + 32.0;
-    } else {
-      return reading;
-    }
+    while(!iaqSensor->run()){ }
+    float reading = iaqSensor->gasResistance;
+    return reading;
   }
-  return LPS22HB->readTemperature();
+}
+
+float AirQualityClass::readIAQ()
+{
+  if (_revision == BOARD_REVISION_2) {
+    while(!iaqSensor->run()){ }
+    float reading = iaqSensor->iaq;
+    return reading;
+  }
+}
+
+float AirQualityClass::readIAQAccuracy()
+{
+  if (_revision == BOARD_REVISION_2) {
+    while(!iaqSensor->run()){ }
+    float reading = iaqSensor->iaqAccuracy;
+    return reading;
+  }
+}
+
+float AirQualityClass::readStaticIAQ()
+{
+  if (_revision == BOARD_REVISION_2) {
+    while(!iaqSensor->run()){ }
+    float reading = iaqSensor->staticIaq;
+    return reading;
+  }
+}
+
+
+float AirQualityClass::readCO2()
+{
+  if (_revision == BOARD_REVISION_2) {
+    while(!iaqSensor->run()){ }
+    float reading = iaqSensor->co2Equivalent;
+    return reading;
+  }
 }
 

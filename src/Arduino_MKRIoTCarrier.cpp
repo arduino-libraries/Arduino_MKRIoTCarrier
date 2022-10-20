@@ -73,7 +73,7 @@ int MKRIoTCarrier::begin() {
   Relay2.begin();
 
   //Sensors
-  uint8_t  sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3;
+  uint8_t  sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3 | !AirQuality.begin() << 4;
   
 
   //If some of the sensors are not connected

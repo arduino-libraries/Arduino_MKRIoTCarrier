@@ -13,6 +13,7 @@ Light	KEYWORD1
 Pressure	KEYWORD1
 IMUmodule	KEYWORD1
 Env	KEYWORD1
+AirQuality	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -46,6 +47,13 @@ t_state	KEYWORD2
 display	KEYWORD2
 
 leds	KEYWORD2
+
+readCO2	KEYWORD2
+readStaticIAQ	KEYWORD2
+readIAQAccuracy	KEYWORD2
+readIAQ	KEYWORD2
+readGasResistor	KEYWORD2
+readVOC	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

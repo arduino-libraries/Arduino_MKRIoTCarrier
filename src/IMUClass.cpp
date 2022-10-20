@@ -1,5 +1,5 @@
 /*
-  This file is part of the Arduino_LSM6DSOX library.
+  This file is part of the Arduino_MKRIoTCarrier library.
   Copyright (c) 2021 Arduino SA. All rights reserved.
 
   This library is free software; you can redistribute it and/or
@@ -22,7 +22,6 @@
 // sets function called on slave write
 IMUClass::IMUClass( getRev_t getRevision)
 {
-  //If board_revision = 0, IMU module is LSM6DSOX, otherwise is LSM6DS3
   board_revision = getRevision;
 }
 
@@ -33,6 +32,7 @@ IMUClass::~IMUClass()
 int IMUClass::begin()
 {
   _revision = board_revision();
+  // If board_revision = BOARD_REVISION_2, IMU module is LSM6DSOX, otherwise is LSM6DS3
   if (_revision == BOARD_REVISION_2) {
     LSM6DSOX = new LSM6DSOXClass(Wire, LSM6DSOX_ADDRESS);
     if (LSM6DSOX == nullptr) return 0;
