@@ -73,7 +73,8 @@ int MKRIoTCarrier::begin() {
   Relay2.begin();
 
   //Sensors
-  uint8_t  sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3 | !AirQuality.begin() << 4;
+  uint8_t  sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3 |
+    (_revision == BOARD_REVISION_2 ? !AirQuality.begin() << 4 : 0);
   
 
   //If some of the sensors are not connected
@@ -88,10 +89,11 @@ int MKRIoTCarrier::begin() {
     if(sensorsOK & 0b0100){
       Serial.println("IMU is not connected");
     }
-    if (MKRIoTCarrier::_revision != BOARD_REVISION_2) {
-      if(sensorsOK & 0b1000){
-        Serial.println("Environmental sensor is not connected!");
-      }
+    if(sensorsOK & 0b1000){
+      Serial.println("Environmental sensor is not connected!");
+    }
+    if(sensorsOK & 0b10000){
+      Serial.println("Air quality sensor is not connected!");
     }
     return false;
   }
