@@ -23,12 +23,12 @@ void setup(void) {
 
   // large block of text
   carrier.display.fillScreen(ST77XX_BLACK);
-  testdrawtext("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur adipiscing ante sed nibh tincidunt feugiat. Maecenas enim massa, fringilla sed malesuada et, malesuada sit amet turpis. Sed porttitor neque ut ante pretium vitae malesuada nunc bibendum. Nullam aliquet ultrices massa eu hendrerit. Ut sed nisi lorem. In vestibulum purus a tortor imperdiet posuere. ", ST77XX_WHITE);
+  testdrawtext("Lorem ipsum dolor sit amet...", ST77XX_WHITE);
   delay(1000);
 
   // tft print function!
   tftPrintTest();
-  delay(4000);
+  delay(500);
 
   // a single pixel
   carrier.display.drawPixel(carrier.display.width() / 2, carrier.display.height() / 2, ST77XX_GREEN);
@@ -45,18 +45,9 @@ void setup(void) {
   testdrawrects(ST77XX_GREEN);
   delay(500);
 
-  testfillrects(ST77XX_YELLOW, ST77XX_MAGENTA);
-  delay(500);
-
   carrier.display.fillScreen(ST77XX_BLACK);
   testfillcircles(10, ST77XX_BLUE);
   testdrawcircles(10, ST77XX_WHITE);
-  delay(500);
-
-  testroundrects();
-  delay(500);
-
-  testtriangles();
   delay(500);
 
   mediabuttons();
@@ -67,10 +58,8 @@ void setup(void) {
 }
 
 void loop() {
-  carrier.display.invertDisplay(true);
-  delay(500);
-  carrier.display.invertDisplay(false);
-  delay(500);
+  testtriangles();
+  delay(2000);
 }
 
 void testlines(uint16_t color) {
@@ -116,7 +105,7 @@ void testlines(uint16_t color) {
 }
 
 void testdrawtext(char *text, uint16_t color) {
-  carrier.display.setCursor(0, 0);
+  carrier.display.setCursor(40, 100);
   carrier.display.setTextColor(color);
   carrier.display.setTextWrap(true);
   carrier.display.print(text);
@@ -136,14 +125,6 @@ void testdrawrects(uint16_t color) {
   carrier.display.fillScreen(ST77XX_BLACK);
   for (int16_t x = 0; x < carrier.display.width(); x += 6) {
     carrier.display.drawRect(carrier.display.width() / 2 - x / 2, carrier.display.height() / 2 - x / 2 , x, x, color);
-  }
-}
-
-void testfillrects(uint16_t color1, uint16_t color2) {
-  carrier.display.fillScreen(ST77XX_BLACK);
-  for (int16_t x = carrier.display.width() - 1; x > 6; x -= 6) {
-    carrier.display.fillRect(carrier.display.width() / 2 - x / 2, carrier.display.height() / 2 - x / 2 , x, x, color1);
-    carrier.display.drawRect(carrier.display.width() / 2 - x / 2, carrier.display.height() / 2 - x / 2 , x, x, color2);
   }
 }
 
@@ -167,37 +148,17 @@ void testtriangles() {
   carrier.display.fillScreen(ST77XX_BLACK);
   uint16_t color = 0xF800;
   int t;
-  int w = carrier.display.width() / 2;
-  int x = carrier.display.height() - 1;
+  int w = 120;
+  int x = 200;
   int y = 0;
-  int z = carrier.display.width();
+  int h = 40;
+  int z = 200;
   for (t = 0 ; t <= 15; t++) {
-    carrier.display.drawTriangle(w, y, y, x, z, x, color);
+    carrier.display.drawTriangle(w, y, h, x, z, x, color);
     x -= 4;
     y += 4;
     z -= 4;
-    color += 100;
-  }
-}
-
-void testroundrects() {
-  carrier.display.fillScreen(ST77XX_BLACK);
-  uint16_t color = 100;
-  int i;
-  int t;
-  for (t = 0 ; t <= 4; t += 1) {
-    int x = 0;
-    int y = 0;
-    int w = carrier.display.width() - 2;
-    int h = carrier.display.height() - 2;
-    for (i = 0 ; i <= 16; i += 1) {
-      carrier.display.drawRoundRect(x, y, w, h, 5, color);
-      x += 2;
-      y += 3;
-      w -= 4;
-      h -= 6;
-      color += 1100;
-    }
+    h += 4;
     color += 100;
   }
 }
@@ -205,36 +166,44 @@ void testroundrects() {
 void tftPrintTest() {
   carrier.display.setTextWrap(false);
   carrier.display.fillScreen(ST77XX_BLACK);
-  carrier.display.setCursor(0, 30);
+  carrier.display.setCursor(20, 80);
   carrier.display.setTextColor(ST77XX_RED);
   carrier.display.setTextSize(1);
   carrier.display.println("Hello World!");
+  carrier.display.setCursor(20, 90);
   carrier.display.setTextColor(ST77XX_YELLOW);
   carrier.display.setTextSize(2);
   carrier.display.println("Hello World!");
+  carrier.display.setCursor(20, 110);
   carrier.display.setTextColor(ST77XX_GREEN);
   carrier.display.setTextSize(3);
   carrier.display.println("Hello World!");
+  carrier.display.setCursor(20, 140);
   carrier.display.setTextColor(ST77XX_BLUE);
   carrier.display.setTextSize(4);
   carrier.display.print(1234.567);
   delay(1500);
-  carrier.display.setCursor(0, 0);
+  carrier.display.setCursor(20, 80);
   carrier.display.fillScreen(ST77XX_BLACK);
   carrier.display.setTextColor(ST77XX_WHITE);
   carrier.display.setTextSize(0);
   carrier.display.println("Hello World!");
+  carrier.display.setCursor(20, 90);
   carrier.display.setTextSize(1);
   carrier.display.setTextColor(ST77XX_GREEN);
   carrier.display.print(p, 6);
   carrier.display.println(" Want pi?");
   carrier.display.println(" ");
+  carrier.display.setCursor(20, 100);
   carrier.display.print(8675309, HEX); // print 8,675,309 out in HEX!
   carrier.display.println(" Print HEX!");
   carrier.display.println(" ");
   carrier.display.setTextColor(ST77XX_WHITE);
+  carrier.display.setCursor(20, 110);
   carrier.display.println("Sketch has been");
+  carrier.display.setCursor(20, 120);
   carrier.display.println("running for: ");
+  carrier.display.setCursor(20, 130);
   carrier.display.setTextColor(ST77XX_MAGENTA);
   carrier.display.print(millis() / 1000);
   carrier.display.setTextColor(ST77XX_WHITE);
@@ -244,20 +213,20 @@ void tftPrintTest() {
 void mediabuttons() {
   // play
   carrier.display.fillScreen(ST77XX_BLACK);
-  carrier.display.fillRoundRect(25, 10, 78, 60, 8, ST77XX_WHITE);
-  carrier.display.fillTriangle(42, 20, 42, 60, 90, 40, ST77XX_RED);
+  carrier.display.fillRoundRect(75, 60, 78, 60, 8, ST77XX_WHITE);
+  carrier.display.fillTriangle(92, 70, 92, 110, 140, 90, ST77XX_RED);
   delay(500);
   // pause
-  carrier.display.fillRoundRect(25, 90, 78, 60, 8, ST77XX_WHITE);
-  carrier.display.fillRoundRect(39, 98, 20, 45, 5, ST77XX_GREEN);
-  carrier.display.fillRoundRect(69, 98, 20, 45, 5, ST77XX_GREEN);
+  carrier.display.fillRoundRect(75, 140, 78, 60, 8, ST77XX_WHITE);
+  carrier.display.fillRoundRect(89, 148, 20, 45, 5, ST77XX_GREEN);
+  carrier.display.fillRoundRect(119, 148, 20, 45, 5, ST77XX_GREEN);
   delay(500);
   // play color
-  carrier.display.fillTriangle(42, 20, 42, 60, 90, 40, ST77XX_BLUE);
+  carrier.display.fillTriangle(92, 70, 92, 110, 140, 90, ST77XX_BLUE);
   delay(50);
   // pause color
-  carrier.display.fillRoundRect(39, 98, 20, 45, 5, ST77XX_RED);
-  carrier.display.fillRoundRect(69, 98, 20, 45, 5, ST77XX_RED);
+  carrier.display.fillRoundRect(89, 148, 20, 45, 5, ST77XX_RED);
+  carrier.display.fillRoundRect(119, 148, 20, 45, 5, ST77XX_RED);
   // play color
-  carrier.display.fillTriangle(42, 20, 42, 60, 90, 40, ST77XX_GREEN);
+  carrier.display.fillTriangle(92, 70, 92, 110, 140, 90, ST77XX_GREEN);
 }
