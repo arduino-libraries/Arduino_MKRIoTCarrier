@@ -102,6 +102,11 @@ int MKRIoTCarrier::begin() {
     Serial.println("Sd card not detected");
   }
 
+  if (_revision == BOARD_REVISION_2){
+    pinMode(TFT_BACKLIGHT, OUTPUT);
+    digitalWrite(TFT_BACKLIGHT, HIGH);
+  }
+
   return true;
 }
 
