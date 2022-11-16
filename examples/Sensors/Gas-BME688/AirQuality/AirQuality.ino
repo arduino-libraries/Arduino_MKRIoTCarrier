@@ -1,5 +1,5 @@
 /*
-  BME688 - CO2
+  BME688 - Air Quality Index (IAQ)
 */
 
 #include <Arduino_MKRIoTCarrier.h>

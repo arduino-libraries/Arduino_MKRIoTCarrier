@@ -1,5 +1,5 @@
 /*
-  BME688 - CO2
+  BME688 - Volatile Organic Compounds (VOC)
 */
 
 #include <Arduino_MKRIoTCarrier.h>
@@ -20,10 +20,10 @@ void loop() {
 
   // print each of the sensor values
   Serial.print("Gas Resistor Value = ");
-  Serial.println(airQualityStatic);
+  Serial.println(gasResistor);
 
   Serial.print("Volatile Organic Compounds (VOC) = ");
-  Serial.print(airQualityAccuracy);
+  Serial.print(volatileOrganicCompounds);
   Serial.println(" ppm");
 
   // wait 1 second to print again
