@@ -35,21 +35,12 @@ void loop() {
   carrier.display.fillScreen(ST77XX_BLACK);
   drawArduino(0x04B3);
   fadeLoop();
-  carrier.display.fillScreen(ST77XX_BLACK);
-  drawEIoT();
-  fadeLoop();
-  
   carrier.display.fillScreen(ST77XX_WHITE);
   drawArduino(0x0000);
   fadeLoop();
-  
   drawArduino(0xF324);
   fadeLoop();
   drawArduino(0x04B3);
-  fadeLoop();
-
-  carrier.display.fillScreen(ST77XX_WHITE);
-  drawEIoT();
   fadeLoop();
 }
 
@@ -70,15 +61,6 @@ void fadeLoop() {
   carrier.leds.clear();
   delay(500);
 
-}
-
-//Compose the differentn parts of the image
-void drawEIoT() {
-  carrier.display.drawBitmap(44, 25, ArduinoLogo, 152, 72, 0x04B3);
-  carrier.display.drawBitmap(48, 110, ArduinoText, 144, 23, 0x04B3);
-  carrier.display.drawBitmap(0, 150, ExploreFrame, 240, 75, 0xF324);
-  carrier.display.drawBitmap(0, 150, ExplreIoTKittext, 240, 75, 0x04B3);
-  carrier.display.drawBitmap(0, 150, ExploreIoTtext, 240, 75, 0xFFFF);
 }
 
 //Same with the Arduino Logo and the text
