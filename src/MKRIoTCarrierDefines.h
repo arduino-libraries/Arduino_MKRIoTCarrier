@@ -9,7 +9,7 @@
 //Sensor libraries
 #include <Arduino_APDS9960.h>   //Ambient light
 #include <Arduino_LPS22HB.h>    //Pressure sensor
-#include "bsec.h"
+#include "bsec/bsec.h"
 #include <Arduino_HTS221.h>     // env sensor
 #include <Arduino_LSM6DSOX.h>
 #include <Arduino_LSM6DS3.h>
