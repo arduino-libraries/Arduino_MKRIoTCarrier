@@ -346,7 +346,7 @@ Saves the selected color to print the text until the color is changed again
 ```cpp
     display.setTextSize(size)
 ```
-Sets the size of the text that is gonna be printed
+Sets the size of the text that is going to be printed
 
 ```cpp
    display.setTextWrap(True/False)
