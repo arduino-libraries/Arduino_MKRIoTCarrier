@@ -25,7 +25,4 @@ void loop() {
   Serial.print("Volatile Organic Compounds (VOC) = ");
   Serial.print(volatileOrganicCompounds);
   Serial.println(" ppm");
-
-  // wait 1 second to print again
-  delay(1000);
 }
