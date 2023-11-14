@@ -92,6 +92,7 @@ void AirQualityClass::end()
 
 float AirQualityClass::readVOC()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     unsigned int time_Start = millis();
     while(millis() - time_Start < BME68X_TIMEOUT) {
@@ -101,13 +102,14 @@ float AirQualityClass::readVOC()
         checkIaqSensorStatus();
       }
     }
-    float reading = iaqSensor->breathVocEquivalent;
-    return reading;
+    reading = iaqSensor->breathVocEquivalent;
   }
+  return reading;
 }
 
 float AirQualityClass::readGasResistor()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     unsigned int time_Start = millis();
     while(millis() - time_Start < BME68X_TIMEOUT) {
@@ -117,13 +119,14 @@ float AirQualityClass::readGasResistor()
         checkIaqSensorStatus();
       }
     }
-    float reading = iaqSensor->gasResistance;
-    return reading;
+    reading = iaqSensor->gasResistance;
   }
+  return reading;
 }
 
 float AirQualityClass::readIAQ()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     unsigned int time_Start = millis();
     while(millis() - time_Start < BME68X_TIMEOUT) {
@@ -133,13 +136,14 @@ float AirQualityClass::readIAQ()
         checkIaqSensorStatus();
       }
     }
-    float reading = iaqSensor->iaq;
-    return reading;
+    reading = iaqSensor->iaq;
   }
+  return reading;
 }
 
 float AirQualityClass::readIAQAccuracy()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     unsigned int time_Start = millis();
     while(millis() - time_Start < BME68X_TIMEOUT) {
@@ -149,13 +153,14 @@ float AirQualityClass::readIAQAccuracy()
         checkIaqSensorStatus();
       }
     }
-    float reading = iaqSensor->iaqAccuracy;
-    return reading;
+    reading = iaqSensor->iaqAccuracy;
   }
+  return reading;
 }
 
 float AirQualityClass::readStaticIAQ()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     unsigned int time_Start = millis();
     while(millis() - time_Start < BME68X_TIMEOUT) {
@@ -165,14 +170,15 @@ float AirQualityClass::readStaticIAQ()
         checkIaqSensorStatus();
       }
     }
-    float reading = iaqSensor->staticIaq;
-    return reading;
+    reading = iaqSensor->staticIaq;
   }
+  return reading;
 }
 
 
 float AirQualityClass::readCO2()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     unsigned int time_Start = millis();
     while(millis() - time_Start < BME68X_TIMEOUT) {
@@ -182,8 +188,8 @@ float AirQualityClass::readCO2()
         checkIaqSensorStatus();
       }
     }
-    float reading = iaqSensor->co2Equivalent;
-    return reading;
+    reading = iaqSensor->co2Equivalent;
   }
+  return reading;
 }
 
