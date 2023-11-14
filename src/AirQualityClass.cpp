@@ -92,56 +92,62 @@ void AirQualityClass::end()
 
 float AirQualityClass::readVOC()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     while(!iaqSensor->run()){ }
-    float reading = iaqSensor->breathVocEquivalent;
-    return reading;
+    reading = iaqSensor->breathVocEquivalent;
   }
+  return reading;
 }
 
 float AirQualityClass::readGasResistor()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     while(!iaqSensor->run()){ }
-    float reading = iaqSensor->gasResistance;
-    return reading;
+    reading = iaqSensor->gasResistance;
   }
+  return reading;
 }
 
 float AirQualityClass::readIAQ()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     while(!iaqSensor->run()){ }
-    float reading = iaqSensor->iaq;
-    return reading;
+    reading = iaqSensor->iaq;
   }
+  return reading;
 }
 
 float AirQualityClass::readIAQAccuracy()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     while(!iaqSensor->run()){ }
-    float reading = iaqSensor->iaqAccuracy;
-    return reading;
+    reading = iaqSensor->iaqAccuracy;
   }
+  return reading;
 }
 
 float AirQualityClass::readStaticIAQ()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     while(!iaqSensor->run()){ }
-    float reading = iaqSensor->staticIaq;
-    return reading;
+    reading = iaqSensor->staticIaq;
   }
+  return reading;
 }
 
 
 float AirQualityClass::readCO2()
 {
+  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     while(!iaqSensor->run()){ }
-    float reading = iaqSensor->co2Equivalent;
-    return reading;
+    reading = iaqSensor->co2Equivalent;
   }
+  return reading;
 }
 
