@@ -39,6 +39,9 @@ int AirQualityClass::begin()
       if (checkIaqSensorStatus() == STATUS_ERROR){
         return 0;
       }
+      if (iaqSensor->version.minor != 8) {
+        Serial.println("Probably wrong BSEC library from lib manager");
+      }
 
       bsec_virtual_sensor_t sensorList[10] = {
         BSEC_OUTPUT_RAW_TEMPERATURE,
