@@ -35,7 +35,7 @@ int AirQualityClass::begin()
   if (_revision == BOARD_REVISION_2) {
     if (mkr_iot_carrier_rev2::iaqSensor == nullptr) {
       iaqSensor = new Bsec();
-      iaqSensor->begin(BME680_I2C_ADDR_PRIMARY, Wire);
+      iaqSensor->begin(BME68X_I2C_ADDR_LOW, Wire);
       if (checkIaqSensorStatus() == STATUS_ERROR){
         return 0;
       }
@@ -53,7 +53,7 @@ int AirQualityClass::begin()
         BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_HUMIDITY,
       };
 
-      iaqSensor->updateSubscription(sensorList, 10, BSEC_SAMPLE_RATE_CONTINUOUS);
+      iaqSensor->updateSubscription(sensorList, 10, BSEC_SAMPLE_RATE_CONT);
       if (checkIaqSensorStatus() == STATUS_ERROR){
         return 0;
       }
@@ -68,14 +68,14 @@ int AirQualityClass::begin()
 
 int AirQualityClass::checkIaqSensorStatus(void)
 {
-  if (iaqSensor->status != BSEC_OK) {
-    if (iaqSensor->status < BSEC_OK) {
+  if (iaqSensor->bsecStatus != BSEC_OK) {
+    if (iaqSensor->bsecStatus < BSEC_OK) {
      return STATUS_ERROR;
     }
   }
 
-  if (iaqSensor->bme680Status != BME680_OK) {
-    if (iaqSensor->bme680Status < BME680_OK) {
+  if (iaqSensor->bme68xStatus != BME68X_OK) {
+    if (iaqSensor->bme68xStatus < BME68X_OK) {
      return STATUS_ERROR;
     }
   }
