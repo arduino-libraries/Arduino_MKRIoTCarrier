@@ -28,7 +28,4 @@ void loop() {
 
   Serial.print("Air Quality Index = ");
   Serial.println(airQualityIndex);
-
-  // wait 1 second to print again
-  delay(1000);
 }

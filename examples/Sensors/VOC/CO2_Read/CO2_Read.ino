@@ -20,7 +20,4 @@ void loop() {
   // print each of the sensor values
   Serial.print("CO2 Value = ");
   Serial.println(co2);
-
-  // wait 1 second to print again
-  delay(1000);
 }

@@ -24,6 +24,7 @@
 #include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
 
+#define BME68X_TIMEOUT 10000
 
 /* Type for getRevision functions */
 using getRev_t = int (*)();
