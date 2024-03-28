@@ -77,9 +77,11 @@ int MKRIoTCarrier::begin() {
   Relay2.begin();
 
   //Sensors
-  uint8_t  sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3 |
-    (_revision == BOARD_REVISION_2 ? !AirQuality.begin() << 4 : 0);
-  
+  uint8_t  sensorsOK = (_revision == BOARD_REVISION_2 ? !AirQuality.begin() << 4 : 0) |
+                       !Light.begin() << 0 |
+                       !Pressure.begin() << 1 |
+                       !IMUmodule.begin() << 2 |
+                       !Env.begin() << 3;
 
   //If some of the sensors are not connected
   if(sensorsOK > 0 ){
