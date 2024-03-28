@@ -29,6 +29,24 @@ AirQualityClass::~AirQualityClass()
 {
 }
 
+/* Configure the BSEC library with information about the sensor
+    18v/33v = Voltage at Vdd. 1.8V or 3.3V
+    3s/300s = BSEC operating mode, BSEC_SAMPLE_RATE_LP or BSEC_SAMPLE_RATE_ULP
+    4d/28d = Operating age of the sensor in days
+    generic_18v_3s_4d
+    generic_18v_3s_28d
+    generic_18v_300s_4d
+    generic_18v_300s_28d
+    generic_33v_3s_4d
+    generic_33v_3s_28d
+    generic_33v_300s_4d
+    generic_33v_300s_28d
+*/
+
+extern "C" const uint8_t bsec_config_iaq[] = {
+#include "config/generic_33v_3s_4d/bsec_iaq.txt"
+};
+
 int AirQualityClass::begin()
 {
   _revision = board_revision();
@@ -39,6 +57,7 @@ int AirQualityClass::begin()
       if (checkIaqSensorStatus() == STATUS_ERROR){
         return 0;
       }
+      iaqSensor->setConfig(bsec_config_iaq);
 
       bsec_virtual_sensor_t sensorList[13] = {
         BSEC_OUTPUT_IAQ,
@@ -55,7 +74,7 @@ int AirQualityClass::begin()
         BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_HUMIDITY,
         BSEC_OUTPUT_GAS_PERCENTAGE
       };
-      iaqSensor->updateSubscription(sensorList, 13, BSEC_SAMPLE_RATE_CONT);
+      iaqSensor->updateSubscription(sensorList, 13, BSEC_SAMPLE_RATE_LP);
       if (checkIaqSensorStatus() == STATUS_ERROR){
         return 0;
       }
@@ -94,52 +113,52 @@ void AirQualityClass::end()
 
 float AirQualityClass::readVOC()
 {
-  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->breathVocEquivalent;
+    if(iaqSensor->run()){
+      breathVocEquivalent = iaqSensor->breathVocEquivalent;
+    }
   }
-  return reading;
+  return breathVocEquivalent;
 }
 
 float AirQualityClass::readGasResistor()
 {
-  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->gasResistance;
+    if(iaqSensor->run()){
+      gasResistance = iaqSensor->gasResistance;
+    }
   }
-  return reading;
+  return gasResistance;
 }
 
 float AirQualityClass::readIAQ()
 {
-  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->iaq;
+    if(iaqSensor->run()){
+      iaq = iaqSensor->iaq;
+    }
   }
-  return reading;
+  return iaq;
 }
 
 float AirQualityClass::readIAQAccuracy()
 {
-  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->iaqAccuracy;
+    if(iaqSensor->run()){
+      iaqAccuracy = iaqSensor->iaqAccuracy;
+    }
   }
-  return reading;
+  return iaqAccuracy;
 }
 
 float AirQualityClass::readStaticIAQ()
 {
-  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->staticIaq;
+    if(iaqSensor->run()){
+      staticIaq = iaqSensor->staticIaq;
+    }
   }
-  return reading;
+  return staticIaq;
 }
 
 
@@ -147,9 +166,10 @@ float AirQualityClass::readCO2()
 {
   float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->co2Equivalent;
+    if(iaqSensor->run()){
+      co2Equivalent = iaqSensor->co2Equivalent;
+    }
   }
-  return reading;
+  return co2Equivalent;
 }
 

@@ -30,6 +30,8 @@ EnvClass::~EnvClass()
 {
 }
 
+extern const uint8_t bsec_config_iaq[];
+
 int EnvClass::begin()
 {
   _revision = board_revision();
@@ -40,21 +42,25 @@ int EnvClass::begin()
       if (checkIaqSensorStatus() == STATUS_ERROR){
         return 0;
       }
+      iaqSensor->setConfig(bsec_config_iaq);
 
-      bsec_virtual_sensor_t sensorList[10] = {
-        BSEC_OUTPUT_RAW_TEMPERATURE,
-        BSEC_OUTPUT_RAW_PRESSURE,
-        BSEC_OUTPUT_RAW_HUMIDITY,
-        BSEC_OUTPUT_RAW_GAS,
+      bsec_virtual_sensor_t sensorList[13] = {
         BSEC_OUTPUT_IAQ,
         BSEC_OUTPUT_STATIC_IAQ,
         BSEC_OUTPUT_CO2_EQUIVALENT,
         BSEC_OUTPUT_BREATH_VOC_EQUIVALENT,
+        BSEC_OUTPUT_RAW_TEMPERATURE,
+        BSEC_OUTPUT_RAW_PRESSURE,
+        BSEC_OUTPUT_RAW_HUMIDITY,
+        BSEC_OUTPUT_RAW_GAS,
+        BSEC_OUTPUT_STABILIZATION_STATUS,
+        BSEC_OUTPUT_RUN_IN_STATUS,
         BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_TEMPERATURE,
         BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_HUMIDITY,
+        BSEC_OUTPUT_GAS_PERCENTAGE
       };
 
-      iaqSensor->updateSubscription(sensorList, 10, BSEC_SAMPLE_RATE_CONT);
+      iaqSensor->updateSubscription(sensorList, 10, BSEC_SAMPLE_RATE_LP);
       if (checkIaqSensorStatus() == STATUS_ERROR){
         return 0;
       }
@@ -102,12 +108,13 @@ void EnvClass::end()
 float EnvClass::readTemperature(int units /*= CELSIUS*/)
 {
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    float reading = iaqSensor->temperature;
+    if(iaqSensor->run()){
+      temperature = iaqSensor->temperature;
+    }
     if (units == FAHRENHEIT){
-      return (reading * 9.0 / 5.0) + 32.0;
+      return (temperature * 9.0 / 5.0) + 32.0;
     } else {
-      return reading;
+      return temperature;
     }
   }
   return HTS221->readTemperature(units);
@@ -116,9 +123,10 @@ float EnvClass::readTemperature(int units /*= CELSIUS*/)
 float EnvClass::readHumidity()
 {
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    return iaqSensor->humidity;
-
+    if(iaqSensor->run()){
+      humidity = iaqSensor->humidity;
+    }
+    return humidity;
   }
   return HTS221->readHumidity();
 }

@@ -24,6 +24,8 @@ class PressureClass {
 
     LPS22HBClass* LPS22HB;
 
+    float pressure = 0.0f;
+    float temperature = 0.0f;
 
   private:
 

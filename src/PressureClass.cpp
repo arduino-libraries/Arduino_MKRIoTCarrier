@@ -29,6 +29,8 @@ PressureClass::~PressureClass()
 {
 }
 
+extern const uint8_t bsec_config_iaq[];
+
 int PressureClass::begin()
 {
   _revision = board_revision();
@@ -39,21 +41,25 @@ int PressureClass::begin()
       if (checkIaqSensorStatus() == STATUS_ERROR){
         return 0;
       }
+      iaqSensor->setConfig(bsec_config_iaq);
 
-      bsec_virtual_sensor_t sensorList[10] = {
-        BSEC_OUTPUT_RAW_TEMPERATURE,
-        BSEC_OUTPUT_RAW_PRESSURE,
-        BSEC_OUTPUT_RAW_HUMIDITY,
-        BSEC_OUTPUT_RAW_GAS,
+      bsec_virtual_sensor_t sensorList[13] = {
         BSEC_OUTPUT_IAQ,
         BSEC_OUTPUT_STATIC_IAQ,
         BSEC_OUTPUT_CO2_EQUIVALENT,
         BSEC_OUTPUT_BREATH_VOC_EQUIVALENT,
+        BSEC_OUTPUT_RAW_TEMPERATURE,
+        BSEC_OUTPUT_RAW_PRESSURE,
+        BSEC_OUTPUT_RAW_HUMIDITY,
+        BSEC_OUTPUT_RAW_GAS,
+        BSEC_OUTPUT_STABILIZATION_STATUS,
+        BSEC_OUTPUT_RUN_IN_STATUS,
         BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_TEMPERATURE,
         BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_HUMIDITY,
+        BSEC_OUTPUT_GAS_PERCENTAGE
       };
 
-      iaqSensor->updateSubscription(sensorList, 10, BSEC_SAMPLE_RATE_CONT);
+      iaqSensor->updateSubscription(sensorList, 10, BSEC_SAMPLE_RATE_LP);
       if (checkIaqSensorStatus() == STATUS_ERROR){
         return 0;
       }
@@ -102,14 +108,15 @@ void PressureClass::end()
 float PressureClass::readPressure(int units)
 {
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    float reading = iaqSensor->pressure/1000;
+    if(iaqSensor->run()){
+      pressure = iaqSensor->pressure/1000;
+    }
     if (units == MILLIBAR) { // 1 kPa = 10 millibar
-      return reading * 10;
+      return pressure * 10;
     } else if (units == PSI) {  // 1 kPa = 0.145038 PSI
-      return reading * 0.145038;
+      return pressure * 0.145038;
     } else {
-      return reading;
+      return pressure;
     }
   }
   return LPS22HB->readPressure(units);
@@ -118,12 +125,13 @@ float PressureClass::readPressure(int units)
 float PressureClass::readTemperature(int units /*= CELSIUS*/)
 {
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){}
-    float reading = iaqSensor->temperature;
+    if(iaqSensor->run()){
+      temperature = iaqSensor->temperature;
+    }
     if (units == FAHRENHEIT){
-      return (reading * 9.0 / 5.0) + 32.0;
+      return (temperature * 9.0 / 5.0) + 32.0;
     } else {
-      return reading;
+      return temperature;
     }
   }
   return LPS22HB->readTemperature();

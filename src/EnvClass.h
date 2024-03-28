@@ -28,6 +28,8 @@ class EnvClass {
 
     int (*board_revision)(void);
     int _revision;
+    float temperature = 0.0f;
+    float humidity = 0.0f;
 };
 
 #endif //_ENVCLASS_H_INCLUDED
