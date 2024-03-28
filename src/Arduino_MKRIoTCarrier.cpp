@@ -23,7 +23,10 @@
 //Touch pads values for using the case or just directly on the board
 //Define on the sketch to use it
 bool CARRIER_CASE = false;
-    
+
+mkr_iot_carrier_rev2 mkr_iot_carrier_rev2_instance;
+Bsec* mkr_iot_carrier_rev2::iaqSensor;
+
 MKRIoTCarrier::MKRIoTCarrier() {
 }
 
@@ -34,6 +37,7 @@ int MKRIoTCarrier::begin() {
   pinMode(AREF_PIN,INPUT_PULLUP);
   if (digitalRead(AREF_PIN) == LOW) {
     MKRIoTCarrier::_revision = BOARD_REVISION_2;
+    mkr_iot_carrier_rev2::iaqSensor = nullptr;
   } else {
     MKRIoTCarrier::_revision = BOARD_REVISION_1;
   }

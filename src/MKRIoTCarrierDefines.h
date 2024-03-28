@@ -62,8 +62,9 @@ namespace mkr_iot_carrier_rev1 {
     };
 };
 
-namespace mkr_iot_carrier_rev2 {
-    static Bsec *iaqSensor = nullptr;
+class mkr_iot_carrier_rev2 {
+public:
+    static Bsec *iaqSensor;
     enum relays {
         RELAY1 = 1,
         RELAY2 = 2,
@@ -84,6 +85,8 @@ namespace mkr_iot_carrier_rev2 {
         GROVE_AN2 = A6,
     };
 };
+
+extern mkr_iot_carrier_rev2 mkr_iot_carrier_rev2_instance;
 
 #define BME_SLAVE_ADDRESS   0x76
 
