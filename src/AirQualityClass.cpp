@@ -115,50 +115,50 @@ float AirQualityClass::readVOC()
 {
   if (_revision == BOARD_REVISION_2) {
     if(iaqSensor->run()){
-      breathVocEquivalent = iaqSensor->breathVocEquivalent;
+      mkr_iot_carrier_rev2::cache();
     }
   }
-  return breathVocEquivalent;
+  return mkr_iot_carrier_rev2::breathVocEquivalent;
 }
 
 float AirQualityClass::readGasResistor()
 {
   if (_revision == BOARD_REVISION_2) {
     if(iaqSensor->run()){
-      gasResistance = iaqSensor->gasResistance;
+      mkr_iot_carrier_rev2::cache();
     }
   }
-  return gasResistance;
+  return mkr_iot_carrier_rev2::gasResistance;
 }
 
 float AirQualityClass::readIAQ()
 {
   if (_revision == BOARD_REVISION_2) {
     if(iaqSensor->run()){
-      iaq = iaqSensor->iaq;
+      mkr_iot_carrier_rev2::cache();
     }
   }
-  return iaq;
+  return mkr_iot_carrier_rev2::iaq;
 }
 
 float AirQualityClass::readIAQAccuracy()
 {
   if (_revision == BOARD_REVISION_2) {
     if(iaqSensor->run()){
-      iaqAccuracy = iaqSensor->iaqAccuracy;
+      mkr_iot_carrier_rev2::cache();
     }
   }
-  return iaqAccuracy;
+  return mkr_iot_carrier_rev2::iaqAccuracy;
 }
 
 float AirQualityClass::readStaticIAQ()
 {
   if (_revision == BOARD_REVISION_2) {
     if(iaqSensor->run()){
-      staticIaq = iaqSensor->staticIaq;
+      mkr_iot_carrier_rev2::cache();
     }
   }
-  return staticIaq;
+  return mkr_iot_carrier_rev2::staticIaq;
 }
 
 
@@ -167,9 +167,9 @@ float AirQualityClass::readCO2()
   float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
     if(iaqSensor->run()){
-      co2Equivalent = iaqSensor->co2Equivalent;
+      mkr_iot_carrier_rev2::cache();
     }
   }
-  return co2Equivalent;
+  return mkr_iot_carrier_rev2::co2Equivalent;
 }
 

@@ -109,14 +109,15 @@ float PressureClass::readPressure(int units)
 {
   if (_revision == BOARD_REVISION_2) {
     if(iaqSensor->run()){
-      pressure = iaqSensor->pressure/1000;
+      mkr_iot_carrier_rev2::cache();
     }
+    auto _pressure = mkr_iot_carrier_rev2::pressure / 1000;
     if (units == MILLIBAR) { // 1 kPa = 10 millibar
-      return pressure * 10;
+      return _pressure * 10;
     } else if (units == PSI) {  // 1 kPa = 0.145038 PSI
-      return pressure * 0.145038;
+      return _pressure * 0.145038;
     } else {
-      return pressure;
+      return _pressure;
     }
   }
   return LPS22HB->readPressure(units);
@@ -126,12 +127,12 @@ float PressureClass::readTemperature(int units /*= CELSIUS*/)
 {
   if (_revision == BOARD_REVISION_2) {
     if(iaqSensor->run()){
-      temperature = iaqSensor->temperature;
+      mkr_iot_carrier_rev2::cache();
     }
     if (units == FAHRENHEIT){
-      return (temperature * 9.0 / 5.0) + 32.0;
+      return (mkr_iot_carrier_rev2::temperature * 9.0 / 5.0) + 32.0;
     } else {
-      return temperature;
+      return mkr_iot_carrier_rev2::temperature;
     }
   }
   return LPS22HB->readTemperature();

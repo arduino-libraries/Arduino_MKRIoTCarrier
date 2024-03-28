@@ -84,6 +84,26 @@ public:
         GROVE_AN1 = A0,
         GROVE_AN2 = A6,
     };
+    static void cache() {
+        breathVocEquivalent = iaqSensor->breathVocEquivalent;
+        gasResistance = iaqSensor->gasResistance;
+        iaq = iaqSensor->iaq;
+        iaqAccuracy = iaqSensor->iaqAccuracy;
+        staticIaq = iaqSensor->staticIaq;
+        co2Equivalent = iaqSensor->co2Equivalent;
+        temperature = iaqSensor->temperature;
+        pressure = iaqSensor->pressure;
+        humidity = iaqSensor->humidity;
+    };
+    static float breathVocEquivalent;
+    static float gasResistance;
+    static float iaq;
+    static float iaqAccuracy;
+    static float staticIaq;
+    static float co2Equivalent;
+    static float temperature;
+    static float pressure;
+    static float humidity;
 };
 
 extern mkr_iot_carrier_rev2 mkr_iot_carrier_rev2_instance;

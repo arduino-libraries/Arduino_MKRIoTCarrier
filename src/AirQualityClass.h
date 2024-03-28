@@ -25,12 +25,6 @@ class AirQualityClass {
   private:
     // Helper functions declarations
     int checkIaqSensorStatus(void);
-    float breathVocEquivalent = 0.0f;
-    float gasResistance = 0.0f;
-    float iaq = 0.0f;
-    float iaqAccuracy = 0.0f;
-    float staticIaq = 0.0f;
-    float co2Equivalent = 0.0f;
 
   private:
 

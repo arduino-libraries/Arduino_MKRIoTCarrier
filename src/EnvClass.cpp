@@ -109,12 +109,12 @@ float EnvClass::readTemperature(int units /*= CELSIUS*/)
 {
   if (_revision == BOARD_REVISION_2) {
     if(iaqSensor->run()){
-      temperature = iaqSensor->temperature;
+      mkr_iot_carrier_rev2::cache();
     }
     if (units == FAHRENHEIT){
-      return (temperature * 9.0 / 5.0) + 32.0;
+      return (mkr_iot_carrier_rev2::temperature * 9.0 / 5.0) + 32.0;
     } else {
-      return temperature;
+      return mkr_iot_carrier_rev2::temperature;
     }
   }
   return HTS221->readTemperature(units);
@@ -124,9 +124,9 @@ float EnvClass::readHumidity()
 {
   if (_revision == BOARD_REVISION_2) {
     if(iaqSensor->run()){
-      humidity = iaqSensor->humidity;
+      mkr_iot_carrier_rev2::cache();
     }
-    return humidity;
+    return mkr_iot_carrier_rev2::humidity;
   }
   return HTS221->readHumidity();
 }
