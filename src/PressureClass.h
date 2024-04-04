@@ -24,7 +24,6 @@ class PressureClass {
 
     LPS22HBClass* LPS22HB;
 
-
   private:
 
     int (*board_revision)(void);

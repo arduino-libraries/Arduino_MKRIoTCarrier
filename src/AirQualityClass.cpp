@@ -29,31 +29,52 @@ AirQualityClass::~AirQualityClass()
 {
 }
 
+/* Configure the BSEC library with information about the sensor
+    18v/33v = Voltage at Vdd. 1.8V or 3.3V
+    3s/300s = BSEC operating mode, BSEC_SAMPLE_RATE_LP or BSEC_SAMPLE_RATE_ULP
+    4d/28d = Operating age of the sensor in days
+    generic_18v_3s_4d
+    generic_18v_3s_28d
+    generic_18v_300s_4d
+    generic_18v_300s_28d
+    generic_33v_3s_4d
+    generic_33v_3s_28d
+    generic_33v_300s_4d
+    generic_33v_300s_28d
+*/
+
+extern "C" const uint8_t bsec_config_iaq[] = {
+#include "config/generic_33v_3s_4d/bsec_iaq.txt"
+};
+
 int AirQualityClass::begin()
 {
   _revision = board_revision();
   if (_revision == BOARD_REVISION_2) {
     if (mkr_iot_carrier_rev2::iaqSensor == nullptr) {
       iaqSensor = new Bsec();
-      iaqSensor->begin(BME680_I2C_ADDR_PRIMARY, Wire);
+      iaqSensor->begin(BME68X_I2C_ADDR_LOW, Wire);
       if (checkIaqSensorStatus() == STATUS_ERROR){
         return 0;
       }
+      iaqSensor->setConfig(bsec_config_iaq);
 
-      bsec_virtual_sensor_t sensorList[10] = {
-        BSEC_OUTPUT_RAW_TEMPERATURE,
-        BSEC_OUTPUT_RAW_PRESSURE,
-        BSEC_OUTPUT_RAW_HUMIDITY,
-        BSEC_OUTPUT_RAW_GAS,
+      bsec_virtual_sensor_t sensorList[13] = {
         BSEC_OUTPUT_IAQ,
         BSEC_OUTPUT_STATIC_IAQ,
         BSEC_OUTPUT_CO2_EQUIVALENT,
         BSEC_OUTPUT_BREATH_VOC_EQUIVALENT,
+        BSEC_OUTPUT_RAW_TEMPERATURE,
+        BSEC_OUTPUT_RAW_PRESSURE,
+        BSEC_OUTPUT_RAW_HUMIDITY,
+        BSEC_OUTPUT_RAW_GAS,
+        BSEC_OUTPUT_STABILIZATION_STATUS,
+        BSEC_OUTPUT_RUN_IN_STATUS,
         BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_TEMPERATURE,
         BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_HUMIDITY,
+        BSEC_OUTPUT_GAS_PERCENTAGE
       };
-
-      iaqSensor->updateSubscription(sensorList, 10, BSEC_SAMPLE_RATE_CONTINUOUS);
+      iaqSensor->updateSubscription(sensorList, 13, BSEC_SAMPLE_RATE_LP);
       if (checkIaqSensorStatus() == STATUS_ERROR){
         return 0;
       }
@@ -68,14 +89,14 @@ int AirQualityClass::begin()
 
 int AirQualityClass::checkIaqSensorStatus(void)
 {
-  if (iaqSensor->status != BSEC_OK) {
-    if (iaqSensor->status < BSEC_OK) {
+  if (iaqSensor->bsecStatus != BSEC_OK) {
+    if (iaqSensor->bsecStatus < BSEC_OK) {
      return STATUS_ERROR;
     }
   }
 
-  if (iaqSensor->bme680Status != BME680_OK) {
-    if (iaqSensor->bme680Status < BME680_OK) {
+  if (iaqSensor->bme68xStatus != BME68X_OK) {
+    if (iaqSensor->bme68xStatus < BME68X_OK) {
      return STATUS_ERROR;
     }
   }
@@ -92,52 +113,52 @@ void AirQualityClass::end()
 
 float AirQualityClass::readVOC()
 {
-  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->breathVocEquivalent;
+    if(iaqSensor->run()){
+      mkr_iot_carrier_rev2::cache();
+    }
   }
-  return reading;
+  return mkr_iot_carrier_rev2::breathVocEquivalent;
 }
 
 float AirQualityClass::readGasResistor()
 {
-  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->gasResistance;
+    if(iaqSensor->run()){
+      mkr_iot_carrier_rev2::cache();
+    }
   }
-  return reading;
+  return mkr_iot_carrier_rev2::gasResistance;
 }
 
 float AirQualityClass::readIAQ()
 {
-  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->iaq;
+    if(iaqSensor->run()){
+      mkr_iot_carrier_rev2::cache();
+    }
   }
-  return reading;
+  return mkr_iot_carrier_rev2::iaq;
 }
 
 float AirQualityClass::readIAQAccuracy()
 {
-  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->iaqAccuracy;
+    if(iaqSensor->run()){
+      mkr_iot_carrier_rev2::cache();
+    }
   }
-  return reading;
+  return mkr_iot_carrier_rev2::iaqAccuracy;
 }
 
 float AirQualityClass::readStaticIAQ()
 {
-  float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->staticIaq;
+    if(iaqSensor->run()){
+      mkr_iot_carrier_rev2::cache();
+    }
   }
-  return reading;
+  return mkr_iot_carrier_rev2::staticIaq;
 }
 
 
@@ -145,9 +166,10 @@ float AirQualityClass::readCO2()
 {
   float reading = 0.0;
   if (_revision == BOARD_REVISION_2) {
-    while(!iaqSensor->run()){ }
-    reading = iaqSensor->co2Equivalent;
+    if(iaqSensor->run()){
+      mkr_iot_carrier_rev2::cache();
+    }
   }
-  return reading;
+  return mkr_iot_carrier_rev2::co2Equivalent;
 }
 

@@ -23,7 +23,19 @@
 //Touch pads values for using the case or just directly on the board
 //Define on the sketch to use it
 bool CARRIER_CASE = false;
-    
+
+mkr_iot_carrier_rev2 mkr_iot_carrier_rev2_instance;
+Bsec* mkr_iot_carrier_rev2::iaqSensor;
+float mkr_iot_carrier_rev2::breathVocEquivalent;
+float mkr_iot_carrier_rev2::gasResistance;
+float mkr_iot_carrier_rev2::iaq;
+float mkr_iot_carrier_rev2::iaqAccuracy;
+float mkr_iot_carrier_rev2::staticIaq;
+float mkr_iot_carrier_rev2::co2Equivalent;
+float mkr_iot_carrier_rev2::temperature;
+float mkr_iot_carrier_rev2::pressure;
+float mkr_iot_carrier_rev2::humidity;
+
 MKRIoTCarrier::MKRIoTCarrier() {
 }
 
@@ -34,6 +46,7 @@ int MKRIoTCarrier::begin() {
   pinMode(AREF_PIN,INPUT_PULLUP);
   if (digitalRead(AREF_PIN) == LOW) {
     MKRIoTCarrier::_revision = BOARD_REVISION_2;
+    mkr_iot_carrier_rev2::iaqSensor = nullptr;
   } else {
     MKRIoTCarrier::_revision = BOARD_REVISION_1;
   }
@@ -73,9 +86,11 @@ int MKRIoTCarrier::begin() {
   Relay2.begin();
 
   //Sensors
-  uint8_t  sensorsOK = !Light.begin() << 0 |  !Pressure.begin() << 1 | !IMUmodule.begin() << 2  | !Env.begin() << 3 |
-    (_revision == BOARD_REVISION_2 ? !AirQuality.begin() << 4 : 0);
-  
+  uint8_t  sensorsOK = (_revision == BOARD_REVISION_2 ? !AirQuality.begin() << 4 : 0) |
+                       !Light.begin() << 0 |
+                       !Pressure.begin() << 1 |
+                       !IMUmodule.begin() << 2 |
+                       !Env.begin() << 3;
 
   //If some of the sensors are not connected
   if(sensorsOK > 0 ){

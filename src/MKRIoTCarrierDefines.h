@@ -9,7 +9,7 @@
 //Sensor libraries
 #include <Arduino_APDS9960.h>   //Ambient light
 #include <Arduino_LPS22HB.h>    //Pressure sensor
-#include "bsec/bsec.h"
+#include "bsec.h"
 #include <Arduino_HTS221.h>     // env sensor
 #include <Arduino_LSM6DSOX.h>
 #include <Arduino_LSM6DS3.h>
@@ -62,8 +62,9 @@ namespace mkr_iot_carrier_rev1 {
     };
 };
 
-namespace mkr_iot_carrier_rev2 {
-    static Bsec *iaqSensor = nullptr;
+class mkr_iot_carrier_rev2 {
+public:
+    static Bsec *iaqSensor;
     enum relays {
         RELAY1 = 1,
         RELAY2 = 2,
@@ -83,7 +84,29 @@ namespace mkr_iot_carrier_rev2 {
         GROVE_AN1 = A0,
         GROVE_AN2 = A6,
     };
+    static void cache() {
+        breathVocEquivalent = iaqSensor->breathVocEquivalent;
+        gasResistance = iaqSensor->gasResistance;
+        iaq = iaqSensor->iaq;
+        iaqAccuracy = iaqSensor->iaqAccuracy;
+        staticIaq = iaqSensor->staticIaq;
+        co2Equivalent = iaqSensor->co2Equivalent;
+        temperature = iaqSensor->temperature;
+        pressure = iaqSensor->pressure;
+        humidity = iaqSensor->humidity;
+    };
+    static float breathVocEquivalent;
+    static float gasResistance;
+    static float iaq;
+    static float iaqAccuracy;
+    static float staticIaq;
+    static float co2Equivalent;
+    static float temperature;
+    static float pressure;
+    static float humidity;
 };
+
+extern mkr_iot_carrier_rev2 mkr_iot_carrier_rev2_instance;
 
 #define BME_SLAVE_ADDRESS   0x76
 
