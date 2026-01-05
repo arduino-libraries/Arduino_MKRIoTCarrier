@@ -33,6 +33,9 @@ jobs:
       matrix:
         board:
           - fqbn: arduino:samd:mkrwifi1010
+            platforms: |
+              - name: arduino:samd
+            artifact-name-suffix: arduino-samd-mkrwifi1010
 
     steps:
       - name: Checkout
@@ -78,5 +81,5 @@ jobs:
       - name: Save memory usage change report as artifact
         uses: actions/upload-artifact@v6
         with:
-          name: ${{ env.SKETCHES_REPORTS_PATH }}
+          name: sketches-report-${{ matrix.board.artifact-name-suffix }}
           path: ${{ env.SKETCHES_REPORTS_PATH }}
