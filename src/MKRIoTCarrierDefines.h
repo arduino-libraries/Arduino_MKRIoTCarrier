@@ -113,7 +113,7 @@ extern mkr_iot_carrier_rev2 mkr_iot_carrier_rev2_instance;
 #define LSM6DSOX_ADDRESS           0x6A
 #define LSM6DS3_ADDRESS            0x6A
 
-#ifdef ARDUINO_SAMD_MKRWIFI1010
+#if defined(ARDUINO_SAMD_MKRWIFI1010) || defined(ARDUINO_SAMD_MKRWAN1310)
 #define AREF_PIN 25
 #endif
 
